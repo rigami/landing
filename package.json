@@ -1,0 +1,22 @@
+{
+    "name": "rigami-landing",
+    "version": "0.0.0",
+    "description": "Landing page for rigami project",
+    "main": "index.js",
+    "repository": "https://github.com/rigami-org/landing",
+    "author": "Danilkinkin",
+    "license": "MIT",
+  "scripts": {
+    "start": "razzle start",
+    "build": "razzle build",
+    "test": "razzle test --env=jsdom",
+    "start:prod": "NODE_ENV=production node build/server.js"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "razzle": "^3.1.7",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-router-dom": "^5.2.0"
+  }
+}
