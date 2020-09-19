@@ -5,6 +5,7 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import { ThemeProvider } from '@material-ui/core/styles';
 import theme from "@/theme";
 import '@/fonts/inject.css'
+import Footer from '@/ui-components/Footer';
 
 function App() {
     return (
@@ -16,6 +17,7 @@ function App() {
                         <Router>
                             <Routes path="*" />
                         </Router>
+                        <Footer />
                     </React.Suspense>
                 </div>
             </ThemeProvider>
