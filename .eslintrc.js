@@ -1,5 +1,5 @@
 module.exports = {
-    'extends': ['rigami'],
+    'extends': ["react-app", 'rigami'],
     'parser': '@babel/eslint-parser',
     'parserOptions': {
         'ecmaFeatures': {

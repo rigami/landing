@@ -1,7 +1,6 @@
 module.exports = {
     "presets": [
-        "razzle/babel", // NEEDED
-        "stage-0",
+        "react-static/babel-preset.js",
         ["@babel/preset-env", {
             "targets": {
                 "chrome": 75,
@@ -17,10 +16,6 @@ module.exports = {
         ["@babel/plugin-syntax-throw-expressions"],
         ["@babel/plugin-proposal-decorators", { "legacy": true }],
         ["@babel/plugin-proposal-class-properties", { "loose": true }],
-        /*["@babel/plugin-transform-react-jsx", {
-            "pragma": "h",
-            "pragmaFrag": "Fragment"
-        }],*/
         ["module-resolver", {
             "root": ["./src"],
             "alias": { '@': __dirname+"/src/" },

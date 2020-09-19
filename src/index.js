@@ -1,32 +1,37 @@
-import http from 'http';
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { AppContainer } from 'react-hot-loader';
 
-let app = require('./server').default;
+// Your top level component
+import App from './App';
 
-const server = http.createServer(app);
+// Export your top level component as JSX (for static rendering)
+export default App;
 
-let currentApp = app;
+// Render your app
+if (typeof document !== 'undefined') {
+    const target = document.getElementById('root');
 
-server
-  .listen(process.env.PORT || 3000, () => {
-    console.log('🚀 started');
-  })
-  .on('error', error => {
-    console.log(error);
-  });
+    const renderMethod = target.hasChildNodes()
+        ? ReactDOM.hydrate
+        : ReactDOM.render;
 
-if (module.hot) {
-  console.log('✅  Server-side HMR Enabled!');
+    const render = (Comp) => {
+        renderMethod(
+            <AppContainer>
+                <Comp />
+            </AppContainer>,
+            target,
+        );
+    };
 
-  module.hot.accept('./server', () => {
-    console.log('🔁  HMR Reloading `./server`...');
+    // Render!
+    render(App);
 
-    try {
-      app = require('./server').default;
-      server.removeListener('request', currentApp);
-      server.on('request', app);
-      currentApp = app;
-    } catch (error) {
-      console.error(error);
+    // Hot Module Replacement
+    if (module && module.hot) {
+        module.hot.accept('./App', () => {
+            render(App);
+        });
     }
-  });
 }

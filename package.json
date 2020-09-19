@@ -1,23 +1,31 @@
 {
-    "name": "rigami-landing",
-    "version": "0.0.0",
-    "description": "Landing page for rigami project",
-    "main": "index.js",
-    "repository": "https://github.com/rigami-org/landing",
-    "author": "Danilkinkin",
-    "license": "MIT",
+  "name": "rigami-landing",
+  "private": true,
+  "version": "0.0.0",
+  "description": "Landing page for rigami project",
+  "main": "index.js",
+  "repository": "https://github.com/rigami-org/landing",
+  "author": "Danilkinkin",
+  "license": "MIT",
   "scripts": {
-    "start": "razzle start",
-    "build": "razzle build",
-    "test": "razzle test --env=jsdom",
-    "start:prod": "NODE_ENV=production node build/server.js"
+    "start": "react-static start",
+    "stage": "react-static build --staging",
+    "build": "react-static build",
+    "analyze": "react-static build --analyze",
+    "serve": "serve dist -p 3000",
+    "lint": "eslint --fix --ext .jsx,.js,.json --ignore-path .gitignore ./src"
   },
   "dependencies": {
-    "express": "^4.17.1",
-    "razzle": "^3.1.7",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1",
-    "react-router-dom": "^5.2.0"
+    "@material-ui/core": "^4.11.0",
+    "clsx": "^1.1.1",
+    "@reach/router": "^1.2.1",
+    "axios": "^0.19.0",
+    "react": "^16.9.0",
+    "react-dom": "^16.9.0",
+    "react-static": "^7.2.0",
+    "react-static-plugin-reach-router": "^7.2.0",
+    "react-static-plugin-sitemap": "^7.2.0",
+    "react-static-plugin-source-filesystem": "^7.2.0"
   },
   "devDependencies": {
     "@babel/core": "^7.11.1",
@@ -36,6 +44,11 @@
     "eslint": "^7.7.0",
     "eslint-config-rigami": "../eslint-config-rigami/",
     "eslint-import-resolver-alias": "^1.1.2",
-    "eslint-import-resolver-webpack": "^0.12.2"
+    "eslint-import-resolver-webpack": "^0.12.2",
+    "babel-eslint": "^10.0.2",
+    "eslint-config-react-app": "^5.0.1",
+    "eslint-config-react-tools": "^1.1.7",
+    "eslint-plugin-flowtype": "^4.2.0",
+    "serve": "^11.1.0"
   }
 }
