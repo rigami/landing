@@ -27,13 +27,18 @@ const useStyles = makeStyles((theme) => ({
         flexGrow: 1,
     },
     artBlock: {
-        flexGrow: 1,
+        width: 700,
+        height: 400,
+        backgroundColor: '#d6d6d6',
+        flexGrow: 0,
+        marginLeft: 'auto',
     },
     description: {
         marginTop: theme.spacing(2),
     },
     button: {
         marginTop: theme.spacing(6),
+        padding: theme.spacing(1, 4),
     },
 }));
 
@@ -57,6 +62,7 @@ function TestingBlock() {
                             endIcon={(">")}
                             className={classes.button}
                             variant="contained"
+                            color="secondary"
                         >
                             Join testing
                         </Button>

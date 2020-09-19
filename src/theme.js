@@ -1,6 +1,14 @@
 import { createMuiTheme } from '@material-ui/core/styles';
 
 const theme = createMuiTheme({
+    palette: {
+        primary: {
+            main: "#62B9FE",
+        },
+        secondary: {
+            main: "#FFE16B",
+        },
+    },
     overrides: {
         MuiCssBaseline: {
             '@global': {
@@ -23,9 +31,14 @@ const theme = createMuiTheme({
                 fontFamily: 'Source Sans Pro',
             },
             'body1': {
-                fontSize: 18,
+                fontSize: 16,
                 fontFamily: 'Source Sans Pro',
             },
+        },
+    },
+    props: {
+        MuiButton: {
+            disableElevation: true,
         },
     },
 });

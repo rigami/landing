@@ -1,8 +1,7 @@
 import React from "react";
 import {makeStyles} from "@material-ui/core/styles";
 import {Box, Typography} from "@material-ui/core";
-// import LogoIcon from '../../resources/logo.svg';
-import clsx from 'clsx';
+import LogoIcon from '@/resources/logo_studio.svg';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -19,6 +18,8 @@ const useStyles = makeStyles((theme) => ({
     },
     designedByLabel: {
         maxHeight: 100,
+        marginBottom: theme.spacing(1),
+        color: theme.palette.text.secondary,
     },
 }));
 
@@ -31,9 +32,7 @@ function Footer() {
                 <Typography variant="body2" className={classes.designedByLabel}>
                     Designed by
                 </Typography>
-                <Typography variant="h5">
-                    Danilkinkin
-                </Typography>
+                <LogoIcon />
             </Box>
         </Box>
     );
