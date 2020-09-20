@@ -1,0 +1,28 @@
+{
+  "splashScreen": {
+    "description": "Create to unit"
+  },
+  "testing": {
+    "title": "Help development",
+    "description": "The project is currently under active development and is not available to the public, but you can join and help make it faster. Bonuses will be available for all testers upon release",
+    "joinButton": "Join testing"
+  },
+  "features": {
+    "crossPlatform": {
+      "title": "Cross-platform",
+      "description": "One of the most important goals, the creation of a product, when working with which you will not need to think about what system you use it on, you can access it from almost any device"
+    },
+    "simplicity": {
+      "title": "Simplicity",
+      "description": "Ease of use is also very important, so that anyone can use the product without special difficulties and skills."
+    },
+    "comfortable": {
+      "title": "Comfortable",
+      "description": "The product should be user-friendly, with a good understandable UI / UX"
+    }
+  },
+  "comingSoon": "Coming Soon",
+  "footer": {
+    "designedBy": "Designed by"
+  }
+}

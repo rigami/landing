@@ -1,6 +1,7 @@
 import React from "react";
 import {Card, Box, Typography, Button} from "@material-ui/core";
 import {makeStyles} from "@material-ui/core/styles";
+import {useTranslation} from "react-i18next";
 
 const useStyles = makeStyles((theme) => ({
     wrapper: {
@@ -46,27 +47,21 @@ function TextBlock({ title, text }) {
 
 function FeaturesBlock() {
     const classes = useStyles();
+    const { t } = useTranslation();
 
     return (
         <Box className={classes.wrapper}>
             <TextBlock
-                title="Cross-platform"
-                text={
-                    `One of the most important goals, the creation of a product, 
-                    when working with which you will not need to think about what system you use it on, 
-                    you can access it from almost any device`
-                }
+                title={t('features.crossPlatform.title')}
+                text={t('features.crossPlatform.description')}
             />
             <TextBlock
-                title="Simplicity"
-                text={
-                    `Ease of use is also very important, 
-                    so that anyone can use the product without special difficulties and skills.`
-                }
+                title={t('features.simplicity.title')}
+                text={t('features.simplicity.description')}
             />
             <TextBlock
-                title="Comfortable"
-                text="The product should be user-friendly, with a good understandable UI / UX"
+                title={t('features.comfortable.title')}
+                text={t('features.comfortable.description')}
             />
         </Box>
     );

@@ -1,6 +1,7 @@
 import React from "react";
 import {Box, Typography} from "@material-ui/core";
 import {makeStyles} from "@material-ui/core/styles";
+import {useTranslation} from "react-i18next";
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -17,11 +18,12 @@ const useStyles = makeStyles((theme) => ({
 
 function DemoBlock() {
     const classes = useStyles();
+    const { t } = useTranslation();
 
     return (
         <Box className={classes.root}>
             <Typography variant="h5">
-                Coming Soon... 🔥
+                {t('comingSoon')}... 🔥
             </Typography>
         </Box>
     );

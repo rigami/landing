@@ -1,6 +1,7 @@
 import React from "react";
 import {Card, Box, Typography, Button} from "@material-ui/core";
 import {makeStyles} from "@material-ui/core/styles";
+import {useTranslation} from "react-i18next";
 
 const useStyles = makeStyles((theme) => ({
     wrapper: {
@@ -44,6 +45,7 @@ const useStyles = makeStyles((theme) => ({
 
 function TestingBlock() {
     const classes = useStyles();
+    const { t } = useTranslation();
 
     return (
         <Box className={classes.wrapper}>
@@ -51,20 +53,17 @@ function TestingBlock() {
                 <Box className={classes.maxWidth}>
                     <Box className={classes.textBlock}>
                         <Typography variant="h4">
-                            Help development
+                            {t('testing.title')}
                         </Typography>
                         <Typography variant="body1" className={classes.description}>
-                            The project is currently under active development and is not available to the public,
-                            but you can join and help make it faster.
-                            Bonuses will be available for all testers upon release
+                            {t('testing.description')}
                         </Typography>
                         <Button
-                            endIcon={(">")}
                             className={classes.button}
                             variant="contained"
                             color="secondary"
                         >
-                            Join testing
+                            {t('testing.joinButton')}
                         </Button>
                     </Box>
                     <Box className={classes.artBlock}>

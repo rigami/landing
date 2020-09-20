@@ -2,6 +2,7 @@ import React from "react";
 import {makeStyles} from "@material-ui/core/styles";
 import {Box, Typography} from "@material-ui/core";
 import LogoIcon from '@/resources/logo_studio.svg';
+import {useTranslation} from "react-i18next";
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -25,14 +26,17 @@ const useStyles = makeStyles((theme) => ({
 
 function Footer() {
     const classes = useStyles();
+    const { t } = useTranslation();
 
     return (
         <Box className={classes.root}>
             <Box className={classes.designedByBlock}>
                 <Typography variant="body2" className={classes.designedByLabel}>
-                    Designed by
+                    {t('footer.designedBy')}
                 </Typography>
-                <LogoIcon />
+                <a href="https://danilkinkin.com/" target="_blank">
+                    <LogoIcon />
+                </a>
             </Box>
         </Box>
     );

@@ -3,6 +3,7 @@ import {makeStyles} from "@material-ui/core/styles";
 import {Box, Typography} from "@material-ui/core";
 import LogoIcon from '@/resources/logo.svg';
 import clsx from 'clsx';
+import { useTranslation } from 'react-i18next';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -40,8 +41,7 @@ const useStyles = makeStyles((theme) => ({
 
 function SplashScreen() {
     const classes = useStyles();
-
-    console.log('LogoIcon', LogoIcon)
+    const { t } = useTranslation();
 
     return (
         <Box className={classes.root}>
@@ -50,12 +50,12 @@ function SplashScreen() {
             <Box className={clsx(classes.block)}>
                 <LogoIcon />
                 <Typography variant="body1" className={classes.description}>
-                    Create to unit
+                    {t('splashScreen.description')}
                 </Typography>
             </Box>
             <Box className={clsx(classes.block, classes.comingSoonBlock)}>
                 <Typography variant="h5">
-                    Coming Soon... 🔥
+                    {t('comingSoon')}... 🔥
                 </Typography>
             </Box>
             <Box className={clsx(classes.block, classes.cardsBlock)}>

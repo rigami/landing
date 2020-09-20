@@ -3,6 +3,7 @@ import SplashScreen from "./SplashScreen";
 import TestingBlock from "./TestingBlock";
 import FeaturesBlock from "./FeaturesBlock";
 import DemoBlock from "./DemoBlock";
+import Footer from '@/ui-components/Footer';
 
 function Home() {
     return (
@@ -13,6 +14,7 @@ function Home() {
                 <FeaturesBlock />
                 <DemoBlock />
             </div>
+            <Footer />
         </Fragment>
     );
 }

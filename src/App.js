@@ -1,25 +1,49 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {Root, Routes} from 'react-static';
 import { Router } from '@reach/router'
 import CssBaseline from '@material-ui/core/CssBaseline';
 import { ThemeProvider } from '@material-ui/core/styles';
 import theme from "@/theme";
 import '@/fonts/inject.css'
-import Footer from '@/ui-components/Footer';
+import i18n from 'i18next';
+import LanguageDetector from 'i18next-browser-languagedetector';
+import { initReactI18next } from 'react-i18next';
+import Backend from 'i18next-http-backend';
 
 function App() {
+
+    const locale = async () => {
+        await i18n
+            .use(initReactI18next);
+
+        if (true /* PRODUCTION_MODE */) {
+            await i18n
+                .use(LanguageDetector)
+                .use(Backend);
+        }
+
+        await i18n
+            .init({
+                fallbackLng: 'en', // PRODUCTION_MODE ? 'en' : 'dev',
+                // debug: true,
+                interpolation: { escapeValue: false },
+                backend: { loadPath: '/i18n/{{lng}}.json' },
+            });
+    };
+
+    useEffect(() => {
+        locale();
+    }, []);
+
     return (
         <Root>
             <ThemeProvider theme={theme}>
                 <CssBaseline />
-                <div className="content">
-                    <React.Suspense fallback={<em>Loading...</em>}>
-                        <Router>
-                            <Routes path="*" />
-                        </Router>
-                        <Footer />
-                    </React.Suspense>
-                </div>
+                <React.Suspense fallback={<em>Loading...</em>}>
+                    <Router>
+                        <Routes path="*" />
+                    </Router>
+                </React.Suspense>
             </ThemeProvider>
         </Root>
     );
