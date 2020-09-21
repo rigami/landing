@@ -1,7 +1,9 @@
-import React from "react";
-import {Card, Box, Typography, Button} from "@material-ui/core";
-import {makeStyles} from "@material-ui/core/styles";
-import {useTranslation} from "react-i18next";
+import React from 'react';
+import {
+    Card, Box, Typography, Button,
+} from '@material-ui/core';
+import { makeStyles } from '@material-ui/core/styles';
+import { useTranslation } from 'react-i18next';
 
 const useStyles = makeStyles((theme) => ({
     wrapper: {
@@ -25,9 +27,7 @@ const useStyles = makeStyles((theme) => ({
         alignItems: 'center',
         textAlign: 'center',
     },
-    title: {
-        marginBottom: theme.spacing(2),
-    },
+    title: { marginBottom: theme.spacing(2) },
 }));
 
 function TextBlock({ title, text }) {

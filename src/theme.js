@@ -2,22 +2,14 @@ import { createMuiTheme } from '@material-ui/core/styles';
 
 const theme = createMuiTheme({
     palette: {
-        primary: {
-            main: "#62B9FE",
-        },
-        secondary: {
-            main: "#FFE16B",
-        },
+        primary: { main: '#62B9FE' },
+        secondary: { main: '#FFE16B' },
     },
     overrides: {
         MuiCssBaseline: {
             '@global': {
-                html: {
-                    WebkitFontSmoothing: 'auto',
-                },
-                body: {
-                    backgroundColor: '#fff',
-                },
+                html: { WebkitFontSmoothing: 'auto' },
+                body: { backgroundColor: '#fff' },
             },
         },
         MuiTypography: {
@@ -36,11 +28,7 @@ const theme = createMuiTheme({
             },
         },
     },
-    props: {
-        MuiButton: {
-            disableElevation: true,
-        },
-    },
+    props: { MuiButton: { disableElevation: true } },
 });
 
 export default theme;

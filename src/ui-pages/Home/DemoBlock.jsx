@@ -1,7 +1,7 @@
-import React from "react";
-import {Box, Typography} from "@material-ui/core";
-import {makeStyles} from "@material-ui/core/styles";
-import {useTranslation} from "react-i18next";
+import React from 'react';
+import { Box, Typography } from '@material-ui/core';
+import { makeStyles } from '@material-ui/core/styles';
+import { useTranslation } from 'react-i18next';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -23,7 +23,8 @@ function DemoBlock() {
     return (
         <Box className={classes.root}>
             <Typography variant="h5">
-                {t('comingSoon')}... 🔥
+                {t('comingSoon')}
+                ... 🔥
             </Typography>
         </Box>
     );

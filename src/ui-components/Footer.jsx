@@ -1,8 +1,8 @@
-import React from "react";
-import {makeStyles} from "@material-ui/core/styles";
-import {Box, Typography} from "@material-ui/core";
+import React from 'react';
+import { makeStyles } from '@material-ui/core/styles';
+import { Box, Typography } from '@material-ui/core';
 import LogoIcon from '@/resources/logo_studio.svg';
-import {useTranslation} from "react-i18next";
+import { useTranslation } from 'react-i18next';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -31,12 +31,12 @@ function Footer() {
     return (
         <Box className={classes.root}>
             <Box className={classes.designedByBlock}>
-                <Typography variant="body2" className={classes.designedByLabel}>
-                    {t('footer.designedBy')}
-                </Typography>
                 <a href="https://danilkinkin.com/" target="_blank">
                     <LogoIcon />
                 </a>
+                <Typography variant="body2" className={classes.designedByLabel}>
+                    {t('footer.design&development')}
+                </Typography>
             </Box>
         </Box>
     );

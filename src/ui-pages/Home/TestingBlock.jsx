@@ -1,12 +1,12 @@
-import React from "react";
-import {Card, Box, Typography, Button} from "@material-ui/core";
-import {makeStyles} from "@material-ui/core/styles";
-import {useTranslation} from "react-i18next";
+import React from 'react';
+import {
+    Card, Box, Typography, Button,
+} from '@material-ui/core';
+import { makeStyles } from '@material-ui/core/styles';
+import { useTranslation } from 'react-i18next';
 
 const useStyles = makeStyles((theme) => ({
-    wrapper: {
-        padding: theme.spacing(4),
-    },
+    wrapper: { padding: theme.spacing(4) },
     root: {
         height: 850,
         width: '100%',
@@ -34,9 +34,7 @@ const useStyles = makeStyles((theme) => ({
         flexGrow: 0,
         marginLeft: 'auto',
     },
-    description: {
-        marginTop: theme.spacing(2),
-    },
+    description: { marginTop: theme.spacing(2) },
     button: {
         marginTop: theme.spacing(6),
         padding: theme.spacing(1, 4),
@@ -66,9 +64,7 @@ function TestingBlock() {
                             {t('testing.joinButton')}
                         </Button>
                     </Box>
-                    <Box className={classes.artBlock}>
-
-                    </Box>
+                    <Box className={classes.artBlock} />
                 </Box>
             </Card>
         </Box>
