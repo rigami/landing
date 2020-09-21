@@ -16,7 +16,7 @@ const theme = createMuiTheme({
             'h5': {
                 fontSize: 18,
                 fontWeight: 'bold',
-                fontFamily: 'Red Hat Display',
+                fontFamily: 'Ubuntu',
             },
             'h4': {
                 fontSize: 32,
