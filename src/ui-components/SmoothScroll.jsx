@@ -23,7 +23,7 @@ function SmoothScroll({ children, onScroll }) {
         Scrollbar.use(ViewScrollPlugin, OverscrollPlugin);
 
         const scrollbar = Scrollbar.init(rootRef.current, {
-            damping: 0.2,
+            damping: 0.25,
             thumbMinSize: 0,
             continuousScrolling: true,
             syncCallbacks: true,

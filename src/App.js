@@ -9,8 +9,8 @@ import i18n from 'i18next';
 import LanguageDetector from 'i18next-browser-languagedetector';
 import { initReactI18next } from 'react-i18next';
 import Backend from 'i18next-http-backend';
-import SmoothScroll from "./ui-components/SmoothScroll";
-import useMainStateStore from "@/utils/mainStateStore";
+import useMainStateStore from '@/utils/mainStateStore';
+import LoadScreen from './ui-pages/LoadScreen';
 
 function App() {
     const { eventBus } = useMainStateStore();
@@ -42,12 +42,10 @@ function App() {
         <Root>
             <ThemeProvider theme={theme}>
                 <CssBaseline />
-                <React.Suspense fallback={<em>Loading...</em>}>
-                    <SmoothScroll onScroll={(scrollOffset) => eventBus.call('document.scroll', scrollOffset)}>
-                        <Router>
-                            <Routes path="*" />
-                        </Router>
-                    </SmoothScroll>
+                <React.Suspense fallback={<LoadScreen />}>
+                    <Router>
+                        <Routes path="*" />
+                    </Router>
                 </React.Suspense>
             </ThemeProvider>
         </Root>

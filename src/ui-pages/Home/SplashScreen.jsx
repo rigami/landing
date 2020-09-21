@@ -1,10 +1,15 @@
-import React, {useEffect, useState, Fragment, useRef} from 'react';
+import React, {
+    useEffect,
+    useState,
+    Fragment,
+    useRef,
+} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Box, Typography } from '@material-ui/core';
 import LogoIcon from '@/resources/logo.svg';
 import clsx from 'clsx';
 import { useTranslation } from 'react-i18next';
-import useMainStateStore from "../../utils/mainStateStore";
+import useMainStateStore from '../../utils/mainStateStore';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -81,25 +86,6 @@ const useStyles = makeStyles((theme) => ({
     secondHeaderHide: { opacity: 0 },
 }));
 
-const exponentialEaseInOut = (t, b, c, d) => {
-    t /= d / 2;
-    if (t < 1) return c / 2 * Math.pow(2, 10 * (t - 1)) + b;
-    t--;
-    return c / 2 * (-Math.pow(2, -10 * t) + 2) + b;
-};
-
-const easeInOutQuad = (t, b, c, d) => {
-    t /= d / 2;
-    if (t < 1) return c / 2 * t * t + b;
-    t--;
-    return -c / 2 * (t * (t - 2) - 1) + b;
-};
-
-const easeInQuad = (t, b, c, d) => {
-    t /= d;
-    return c * t * t * t + b;
-};
-
 function SplashScreen() {
     const classes = useStyles();
     const { eventBus } = useMainStateStore();
@@ -114,7 +100,6 @@ function SplashScreen() {
     const scrollHandler = (offset) => {
         if (typeof window === 'undefined') return;
 
-
         const computeScrollOffset = offset;
         const computeClientHeight = document.documentElement.clientHeight;
         const secondHeaderRefHeight = Math.max(computeClientHeight - computeScrollOffset, 115);
@@ -126,7 +111,7 @@ function SplashScreen() {
         if (computeScrollOffset > computeClientHeight - 115) {
             secondHeaderStickyRef.current.style.transform = `translateY(${computeScrollOffset - computeClientHeight + 115}px)`;
         } else {
-            secondHeaderStickyRef.current.style.transform = `translateY(0px)`;
+            secondHeaderStickyRef.current.style.transform = 'translateY(0px)';
         }
 
         setShadowHeader(computeScrollOffset > computeClientHeight - 115);
@@ -138,13 +123,11 @@ function SplashScreen() {
     };
 
     useEffect(() => {
-        // addEventListener('scroll', scrollHandler, false);
         addEventListener('resize', resizeHandler, false);
 
         const listenId = eventBus.on('document.scroll', scrollHandler);
 
         return () => {
-            // removeEventListener('scroll', scrollHandler, false);
             eventBus.removeListener(listenId);
             removeEventListener('resize', resizeHandler, false);
         };

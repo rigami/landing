@@ -9,7 +9,10 @@ const theme = createMuiTheme({
         MuiCssBaseline: {
             '@global': {
                 html: { WebkitFontSmoothing: 'auto' },
-                body: { backgroundColor: '#fff' },
+                body: {
+                    backgroundColor: '#fff',
+                    overflow: 'hidden',
+                },
             },
         },
         MuiTypography: {

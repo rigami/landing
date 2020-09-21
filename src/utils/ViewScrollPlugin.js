@@ -26,7 +26,9 @@ class ViewScrollPlugin extends ScrollbarPlugin {
         }));
         this._reverseBreakpoints = [...this._breakpoints].reverse();
 
-        this._breakpointAim = this._reverseBreakpoints.find((breakpoint) => this.scrollbar.offset.y >= breakpoint.value - this.options.detectOffset);
+        this._breakpointAim = this._reverseBreakpoints.find((breakpoint) => (
+            this.scrollbar.offset.y >= breakpoint.value - this.options.detectOffset
+        ));
     }
 
     onRender(remainMomentum) {
@@ -43,9 +45,13 @@ class ViewScrollPlugin extends ScrollbarPlugin {
         this._remain = remainMomentum.y;
 
         if (this._direction === 'up') {
-            this._breakpointAim = this._reverseBreakpoints.find((breakpoint) => this.scrollbar.offset.y >= breakpoint.value - this.options.detectOffset);
+            this._breakpointAim = this._reverseBreakpoints.find((breakpoint) => (
+                this.scrollbar.offset.y >= breakpoint.value - this.options.detectOffset
+            ));
         } else if (this._direction === 'down') {
-            this._breakpointAim = this._breakpoints.find((breakpoint) => this.scrollbar.offset.y <= breakpoint.value + this.options.detectOffset);
+            this._breakpointAim = this._breakpoints.find((breakpoint) => (
+                this.scrollbar.offset.y <= breakpoint.value + this.options.detectOffset
+            ));
         }
 
         if (this._breakpointCurrent?.value !== this._breakpointAim?.value) {
