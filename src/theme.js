@@ -32,6 +32,10 @@ const theme = createMuiTheme({
         },
     },
     props: { MuiButton: { disableElevation: true } },
+    shape: {
+        borderRadius: 4,
+        borderRadiusBold: 8,
+    },
 });
 
 export default theme;

@@ -11,6 +11,7 @@ import clsx from 'clsx';
 import { useTranslation } from 'react-i18next';
 import useMainStateStore from '../../utils/mainStateStore';
 import LangSwitcher from "../../ui-components/LangSwitcher";
+import Cards from "./Cards";
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -48,6 +49,7 @@ const useStyles = makeStyles((theme) => ({
     cardsBlock: {
         minHeight: '45vh',
         maxHeight: '50vh',
+        alignItems: 'flex-end',
     },
     secondHeaderWrapper: {
         position: 'sticky',
@@ -163,7 +165,9 @@ function SplashScreen() {
                         ... 🔥
                     </Typography>
                 </Box>
-                <Box className={clsx(classes.block, classes.cardsBlock)} />
+                <Box className={clsx(classes.block, classes.cardsBlock)}>
+                    <Cards />
+                </Box>
             </Box>
             <Box className={classes.secondHeaderWrapper} ref={secondHeaderStickyRef}>
                 <Box

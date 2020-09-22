@@ -11,8 +11,6 @@ function LangSwitcher() {
     const [anchorEl, setAnchorEl] = useState(null);
     const [activeLang, setActiveLang] = useState(i18ns.find(({ code }) => code === i18next.language));
 
-    console.log(i18next)
-
     const handleClick = (event) => {
         setAnchorEl(event.currentTarget);
     };
