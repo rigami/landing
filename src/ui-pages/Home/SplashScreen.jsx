@@ -10,6 +10,7 @@ import LogoIcon from '@/resources/logo.svg';
 import clsx from 'clsx';
 import { useTranslation } from 'react-i18next';
 import useMainStateStore from '../../utils/mainStateStore';
+import LangSwitcher from "../../ui-components/LangSwitcher";
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -35,6 +36,14 @@ const useStyles = makeStyles((theme) => ({
         color: theme.palette.text.secondary,
     },
     fixedBlock: { maxHeight: '15vh' },
+    topBar: {
+        margin: '0 auto',
+        maxWidth: 1600,
+        width: '100%',
+        flexGrow: 0,
+        padding: 16,
+        alignItems: 'flex-end',
+    },
     comingSoonBlock: { flexGrow: 0 },
     cardsBlock: {
         minHeight: '45vh',
@@ -139,7 +148,9 @@ function SplashScreen() {
                 className={classes.root}
                 ref={mainHeaderRef}
             >
-                <Box className={clsx(classes.block, classes.fixedBlock)} />
+                <Box className={clsx(classes.block, classes.topBar)}>
+                    <LangSwitcher />
+                </Box>
                 <Box className={clsx(classes.block)}>
                     <LogoIcon />
                     <Typography variant="body1" className={classes.description}>
