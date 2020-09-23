@@ -7,7 +7,7 @@ const i18ns = [
     { label: '🇺🇸 English', code: 'en' },
 ];
 
-function LangSwitcher() {
+function LangSwitcher({ ...other }) {
     const [anchorEl, setAnchorEl] = useState(null);
     const [activeLang, setActiveLang] = useState(i18ns.find(({ code }) => code === i18next.language));
 
@@ -28,7 +28,7 @@ function LangSwitcher() {
 
     return (
         <Fragment>
-            <Button onClick={handleClick}>
+            <Button {...other} onClick={handleClick}>
                 {activeLang.label || 'Unknown lang'}
             </Button>
             <Menu

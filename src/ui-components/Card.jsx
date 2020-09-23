@@ -15,19 +15,12 @@ const useStyles = makeStyles((theme) => ({
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
+        justifyContent: 'flex-end',
         position: 'relative',
         '&:hover $menuIcon': {
             opacity: 1,
             pointerEvents: 'auto',
         },
-    },
-    rootActionWrapper: {
-        width: '100%',
-        height: '100%',
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'stretch',
-        justifyContent: 'flex-end',
     },
     icon: { margin: 'auto' },
     body: {
@@ -78,6 +71,10 @@ const useStyles = makeStyles((theme) => ({
         overflow: 'hidden',
         marginTop: theme.spacing(0.6),
         wordBreak: 'break-word',
+        whiteSpace: 'break-spaces',
+    },
+    bigDescription: {
+        '-webkit-line-clamp': 16,
     },
     menuIcon: {
         position: 'absolute',
@@ -93,6 +90,7 @@ const BKMS_VARIANT = {
     SMALL: 'SMALL',
     POSTER: 'POSTER',
     SYMBOL: 'SYMBOL',
+    NOTE: 'NOTE',
 };
 
 function CardLink(props) {
@@ -109,32 +107,38 @@ function CardLink(props) {
 
     return (
         <Card className={clsx(classes.root, externalClassName)} variant="outlined" {...other}>
-            <CardActionArea className={classes.rootActionWrapper}>
-                {icoVariant === BKMS_VARIANT.POSTER && (
-                    <Image variant={BKMS_VARIANT.POSTER} src={imageUrl} className={classes.extendBanner} />
-                )}
-                {icoVariant !== BKMS_VARIANT.POSTER && (
-                    <Box className={classes.banner}>
-                        <Image
-                            variant={icoVariant}
-                            src={imageUrl}
-                            alternativeIcon={icoVariant === BKMS_VARIANT.SYMBOL ? name[0]?.toUpperCase() : undefined}
-                            className={clsx(classes.icon, classes.borderIcon)}
-                        />
-                    </Box>
-                )}
-                <div className={classes.body}>
-                    <div className={classes.categoriesWrapper}>
-                        {categories && categories.map((color) => (
-                            <div className={classes.category} style={{ backgroundColor: color }} />
-                        ))}
-                    </div>
-                    <Typography className={classes.title}>{name}</Typography>
-                    {description && (
-                        <Typography variant="body2" className={classes.description}>{description}</Typography>
-                    )}
+            {icoVariant === BKMS_VARIANT.POSTER && (
+                <Image variant={BKMS_VARIANT.POSTER} src={imageUrl} className={classes.extendBanner} />
+            )}
+            {icoVariant !== BKMS_VARIANT.POSTER && (
+                <Box className={classes.banner}>
+                    <Image
+                        variant={icoVariant}
+                        src={imageUrl}
+                        alternativeIcon={icoVariant === BKMS_VARIANT.SYMBOL ? name[0]?.toUpperCase() : undefined}
+                        className={clsx(classes.icon, classes.borderIcon)}
+                    />
+                </Box>
+            )}
+            <div className={classes.body}>
+                <div className={classes.categoriesWrapper}>
+                    {categories && categories.map((color) => (
+                        <div className={classes.category} style={{ backgroundColor: color }} />
+                    ))}
                 </div>
-            </CardActionArea>
+                <Typography className={classes.title}>{name}</Typography>
+                {description && (
+                    <Typography
+                        variant="body2"
+                        className={clsx(
+                            classes.description,
+                            icoVariant === BKMS_VARIANT.NOTE && classes.bigDescription,
+                        )}
+                    >
+                        {description}
+                    </Typography>
+                )}
+            </div>
         </Card>
     );
 }

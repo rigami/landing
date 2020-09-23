@@ -8,6 +8,7 @@ import DemoBlock from './DemoBlock';
 import SmoothLoad from '../../ui-components/SmoothLoad';
 import SmoothScroll from '../../ui-components/SmoothScroll';
 
+
 function Home() {
     const { eventBus } = useMainStateStore();
 

@@ -12,6 +12,7 @@ import { useTranslation } from 'react-i18next';
 import useMainStateStore from '../../utils/mainStateStore';
 import LangSwitcher from "../../ui-components/LangSwitcher";
 import Cards from "./Cards";
+import SmoothLoad from "../../ui-components/SmoothLoad";
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -50,17 +51,20 @@ const useStyles = makeStyles((theme) => ({
         minHeight: '45vh',
         maxHeight: '50vh',
         alignItems: 'flex-end',
+        width: '100%',
+        justifyContent: 'flex-start',
+        paddingTop: 32,
     },
     secondHeaderWrapper: {
-        position: 'sticky',
-        top: 115,
+        height: '100vh',
+        position: 'relative',
         width: '100%',
         zIndex: theme.zIndex.modal,
     },
     secondHeader: {
         height: '100%',
         width: '100%',
-        overflow: 'hidden',
+        // overflow: 'hidden',
         backgroundColor: '#FFF',
         display: 'flex',
         flexDirection: 'column-reverse',
@@ -68,10 +72,9 @@ const useStyles = makeStyles((theme) => ({
     },
     secondHeaderShadow: {
         position: 'absolute',
-        height: 0,
         width: '100%',
         bottom: 0,
-        '&::after': {
+        /* '&::after': {
             content: '""',
             position: 'absolute',
             width: '100%',
@@ -79,7 +82,7 @@ const useStyles = makeStyles((theme) => ({
             height: 48,
             left: 0,
             background: 'linear-gradient(to top, #00000014, transparent)',
-        },
+        }, */
     },
     secondHeaderBlock: {
         display: 'flex',
@@ -89,12 +92,20 @@ const useStyles = makeStyles((theme) => ({
         height: 115,
         bottom: 0,
         width: '100%',
-        maxWidth: 1600,
+        padding: theme.spacing(0, 4),
+        maxWidth: 1600 + theme.spacing(8),
+        position: 'relative',
         margin: '0 auto',
         transition: 'opacity 0.3s ease 0s',
     },
     shadowHeader: { boxShadow: 'rgba(5, 5, 5, 0.06) 0px 2px 31px' },
     secondHeaderHide: { opacity: 0 },
+    langSwitcher: {
+        position: 'absolute',
+        zIndex: theme.zIndex.modal,
+        top: theme.spacing(2),
+        right: theme.spacing(4),
+    },
 }));
 
 function SplashScreen() {
@@ -103,7 +114,7 @@ function SplashScreen() {
     const { t } = useTranslation();
     const [shadowHeader, setShadowHeader] = useState(false);
     const [secondHeaderHide, setSecondHeaderHide] = useState(false);
-    const mainHeaderRef = useRef(null);
+    // const mainHeaderRef = useRef(null);
     const secondHeaderRef = useRef(null);
     const secondHeaderWrapperRef = useRef(null);
     const secondHeaderStickyRef = useRef(null);
@@ -116,8 +127,8 @@ function SplashScreen() {
         const secondHeaderRefHeight = Math.max(computeClientHeight - computeScrollOffset, 115);
 
         secondHeaderRef.current.style.height = `${secondHeaderRefHeight}px`;
-        secondHeaderWrapperRef.current.style.height = `${computeScrollOffset * 2.4}px`;
-        mainHeaderRef.current.style.transform = `translateY(-${(computeScrollOffset / computeClientHeight) * 50}%)`;
+        // secondHeaderWrapperRef.current.style.height = `${/* computeScrollOffset * 2.4*/ computeClientHeight * 0.7}px`;
+        // mainHeaderRef.current.style.transform = `translateY(-${(computeScrollOffset / computeClientHeight) * 50}%)`;
 
         if (computeScrollOffset > computeClientHeight - 115) {
             secondHeaderStickyRef.current.style.transform = `translateY(${computeScrollOffset - computeClientHeight + 115}px)`;
@@ -146,7 +157,7 @@ function SplashScreen() {
 
     return (
         <Fragment>
-            <Box
+            {/* <Box
                 className={classes.root}
                 ref={mainHeaderRef}
             >
@@ -168,7 +179,7 @@ function SplashScreen() {
                 <Box className={clsx(classes.block, classes.cardsBlock)}>
                     <Cards />
                 </Box>
-            </Box>
+            </Box> */}
             <Box className={classes.secondHeaderWrapper} ref={secondHeaderStickyRef}>
                 <Box
                     className={classes.secondHeaderShadow}
@@ -183,10 +194,11 @@ function SplashScreen() {
                         <Box
                             className={clsx(
                                 classes.secondHeaderBlock,
-                                secondHeaderHide && classes.secondHeaderHide,
+                                // secondHeaderHide && classes.secondHeaderHide,
                             )}
                             ref={secondHeaderRef}
                         >
+                            <LangSwitcher className={classes.langSwitcher} />
                             <LogoIcon width={180} height={45} />
                             <Typography variant="h5">
                                 {t('comingSoon')}

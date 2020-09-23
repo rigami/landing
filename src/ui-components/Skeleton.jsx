@@ -1,33 +1,19 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import { Box, Typography } from '@material-ui/core';
+import { Box } from '@material-ui/core';
+import clsx from "clsx";
 
 const useStyles = makeStyles((theme) => ({
     root: {
-        display: 'flex',
-        height: 320,
-        width: '100%',
-        padding: theme.spacing(4),
-        maxWidth: 1600,
-        margin: 'auto',
-    },
-    designedByBlock: {
-        marginLeft: 'auto',
-        marginTop: 'auto',
-    },
-    designedByLabel: {
-        maxHeight: 100,
-        marginBottom: theme.spacing(1),
-        color: theme.palette.text.secondary,
+        backgroundColor: theme.palette.background.paper,
     },
 }));
 
-function Skeleton() {
+function Skeleton({ variant, animation, width, height, className: externalClassName, ...other }) {
     const classes = useStyles();
 
     return (
-        <Box className={classes.root}>
-        </Box>
+        <Box className={clsx(classes.root, externalClassName)} style={{ width, height }} />
     );
 }
 

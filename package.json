@@ -30,7 +30,8 @@
     "react-static-plugin-reach-router": "^7.2.0",
     "react-static-plugin-sitemap": "^7.2.0",
     "react-static-plugin-source-filesystem": "^7.2.0",
-    "smooth-scrollbar": "^8.5.2"
+    "smooth-scrollbar": "^8.5.2",
+    "react-resize-detector": "^5.0.7"
   },
   "devDependencies": {
     "@babel/core": "^7.11.1",
