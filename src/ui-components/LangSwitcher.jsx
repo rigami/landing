@@ -29,7 +29,7 @@ function LangSwitcher({ ...other }) {
     return (
         <Fragment>
             <Button {...other} onClick={handleClick}>
-                {activeLang.label || 'Unknown lang'}
+                {activeLang?.label || 'Unknown lang'}
             </Button>
             <Menu
                 anchorEl={anchorEl}

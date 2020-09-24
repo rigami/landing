@@ -2,7 +2,7 @@ import React, { useRef, useEffect } from 'react';
 import { Box } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import Scrollbar from 'smooth-scrollbar';
-import OverscrollPlugin from 'smooth-scrollbar/plugins/overscroll';
+import OverscrollPlugin from 'smooth-scrollbar/dist/plugins/overscroll';
 //import ViewScrollPlugin from '@/utils/ViewScrollPlugin';
 
 const useStyles = makeStyles((theme) => ({
@@ -28,10 +28,10 @@ function SmoothScroll({ children, onScroll }) {
             continuousScrolling: true,
             syncCallbacks: true,
             plugins: {
-                overscroll: {
+               /* overscroll: {
                     effect: 'bounce',
                     maxOverscroll: 150,
-                },
+                }, */
                 /* viewScrollPlugin: {
                     breakpoints: [
                         {

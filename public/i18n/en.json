@@ -5,7 +5,15 @@
   "testing": {
     "title": "Help development",
     "description": "The project is currently under active development and is not available to the public, but you can join and help make it faster. Bonuses will be available for all testers upon release",
-    "joinButton": "Join testing"
+    "joinButton": "Join testing",
+    "form": {
+
+    },
+    "thankScreen": {
+      "title": "Thank you, {{name}}",
+      "description": "We will notify you by email when we are ready to connect you to testing.",
+      "retryButton": "Added new"
+    }
   },
   "features": {
     "crossPlatform": {

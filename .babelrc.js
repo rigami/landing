@@ -1,6 +1,5 @@
 module.exports = {
     "presets": [
-        "react-static/babel-preset.js",
         ["@babel/preset-env", {
             "targets": {
                 "chrome": 75,
@@ -13,6 +12,8 @@ module.exports = {
         "@babel/preset-react",
     ],
     "plugins": [
+        ["inline-react-svg"],
+        ["@babel/plugin-proposal-export-default-from"],
         ["@babel/plugin-syntax-throw-expressions"],
         ["@babel/plugin-proposal-decorators", { "legacy": true }],
         ["@babel/plugin-proposal-class-properties", { "loose": true }],

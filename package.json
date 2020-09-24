@@ -8,36 +8,30 @@
   "author": "Danilkinkin",
   "license": "MIT",
   "scripts": {
-    "start": "react-static start",
-    "stage": "react-static build --staging",
-    "build": "react-static build",
-    "analyze": "react-static build --analyze",
-    "serve": "serve dist -p 3000",
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
     "lint": "eslint --fix --ext .jsx,.js,.json --ignore-path .gitignore ./src"
   },
   "dependencies": {
+    "@material-ui/core": "^4.11.0",
+    "clsx": "^1.1.1",
     "i18next": "^19.6.3",
     "i18next-browser-languagedetector": "^6.0.1",
     "i18next-http-backend": "^1.0.18",
+    "next": "9.5.3",
+    "react": "16.13.1",
+    "react-dom": "16.13.1",
     "react-i18next": "^11.7.0",
-    "@material-ui/core": "^4.11.0",
-    "@reach/router": "^1.2.1",
-    "axios": "^0.19.0",
-    "clsx": "^1.1.1",
-    "react": "^16.9.0",
-    "react-dom": "^16.9.0",
-    "react-static": "^7.2.0",
-    "react-static-plugin-reach-router": "^7.2.0",
-    "react-static-plugin-sitemap": "^7.2.0",
-    "react-static-plugin-source-filesystem": "^7.2.0",
-    "smooth-scrollbar": "^8.5.2",
-    "react-resize-detector": "^5.0.7"
+    "react-resize-detector": "^5.0.7",
+    "smooth-scrollbar": "^8.5.2"
   },
   "devDependencies": {
     "@babel/core": "^7.11.1",
     "@babel/eslint-parser": "^7.11.5",
     "@babel/plugin-proposal-class-properties": "^7.10.4",
     "@babel/plugin-proposal-decorators": "^7.10.5",
+    "@babel/plugin-proposal-export-default-from": "^7.10.4",
     "@babel/plugin-syntax-throw-expressions": "^7.10.4",
     "@babel/plugin-transform-react-jsx": "^7.10.4",
     "@babel/preset-env": "^7.11.0",
@@ -46,6 +40,7 @@
     "@babel/types": "^7.11.0",
     "babel-eslint": "^10.0.2",
     "babel-loader": "^8.1.0",
+    "babel-plugin-inline-react-svg": "^1.1.1",
     "babel-plugin-module-resolver": "^4.0.0",
     "babel-plugin-transform-decorators": "^6.24.1",
     "eslint": "^7.7.0",
@@ -56,8 +51,6 @@
     "eslint-import-resolver-webpack": "^0.12.2",
     "eslint-plugin-flowtype": "^4.2.0",
     "file-loader": "^6.0.0",
-    "react-static-plugin-svg": "^0.0.1",
-    "react-svg-loader": "^3.0.3",
-    "serve": "^11.1.0"
+    "react-svg-loader": "^3.0.3"
   }
 }
