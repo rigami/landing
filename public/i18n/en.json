@@ -7,12 +7,21 @@
     "description": "The project is currently under active development and is not available to the public, but you can join and help make it faster. Bonuses will be available for all testers upon release",
     "joinButton": "Join testing",
     "form": {
-
+      "name": {
+        "label": "Full name or nickname"
+      },
+      "email": {
+        "label": "Email"
+      },
+      "reason": {
+        "label": "Reason"
+      },
+      "submit": "Send request"
     },
     "thankScreen": {
       "title": "Thank you, {{name}}",
       "description": "We will notify you by email when we are ready to connect you to testing.",
-      "retryButton": "Added new"
+      "retryButton": "Create another request"
     }
   },
   "features": {

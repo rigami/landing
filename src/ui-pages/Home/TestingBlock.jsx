@@ -64,23 +64,26 @@ function TestingBlock() {
     const classes = useStyles();
     const { t } = useTranslation();
     const [stage, setStage] = useState(STAGE.BUTTON);
-    const [dataRR, setDataRR] = useState({
+    const [data, setData] = useState({
         name: '',
         email: '',
         reason: '',
     });
-    /* const [errors, setErrors] = useState({
+    const [errors, setErrors] = useState({
         name: false,
         email: false,
         reason: false,
-    }); */
+    });
 
-    const handleInput = (key, event) => {
-        console.log("wegweg", dataRR)
-        setDataRR((oldData) => ({ ...oldData, [key]: event.target.value }));
+    const handleInput = (key, value) => {
+        setData((oldData) => ({ ...oldData, [key]: value }));
 
+        setErrors((oldErrors) => ({ ...oldErrors, [key]: false }));
+    };
+
+    const handleValid = (key, value) => {
         if (key === 'email') {
-
+            setErrors((oldErrors) => ({ ...oldErrors, email: !/.+[@].+[.].+/.test(value) }));
         }
     };
 
@@ -115,36 +118,45 @@ function TestingBlock() {
                             <form onSubmit={handleSubmit}>
                                 <TextField
                                     fullWidth
-                                    value={dataRR.name}
+                                    value={data.name}
                                     variant="outlined"
                                     label={t('testing.form.name.label')+'*'}
-                                    onChange={(event) => handleInput('name', event)}
+                                    onChange={(event) => handleInput('name', event.target.value)}
                                     className={clsx(classes.marginTop, classes.bigMarginTop)}
                                 />
                                 <TextField
                                     fullWidth
-                                    value={dataRR.email}
+                                    value={data.email}
                                     variant="outlined"
                                     label={t('testing.form.email.label')+'*'}
-                                    onChange={(event) => handleInput('email', event)}
+                                    onChange={(event) => handleInput('email', event.target.value)}
                                     className={classes.marginTop}
+                                    error={errors.email}
+                                    helperText={errors.email && t('testing.form.email.errorValid')}
+                                    onBlur={(event) => handleValid('email', event.target.value)}
                                 />
                                 <TextField
                                     fullWidth
-                                    value={dataRR.reason}
+                                    value={data.reason}
                                     variant="outlined"
                                     multiline
                                     label={t('testing.form.reason.label')+'*'}
                                     className={classes.marginTop}
-                                    onChange={(event) => handleInput('reason', event)}
+                                    onChange={(event) => handleInput('reason', event.target.value)}
                                 />
                                 <Button
                                     className={classes.button}
                                     variant="contained"
                                     color="secondary"
                                     type="submit"
+                                    disabled={
+                                        !data.name?.trim()
+                                        || !data.email?.trim()
+                                        || !data.reason?.trim()
+                                        || errors.email
+                                    }
                                 >
-                                    {t('testing.submit')}
+                                    {t('testing.form.submit')}
                                 </Button>
                             </form>
                         </Collapse>
@@ -153,14 +165,21 @@ function TestingBlock() {
                                 variant="h5"
                                 className={classes.bigMarginTop}
                             >
-                                {t('testing.thankScreen.title', { name: "Danil" })}
+                                {t('testing.thankScreen.title', { name: data.name })}
                             </Typography>
                             <Typography variant="body1">{t('testing.thankScreen.description')}</Typography>
                             <Button
                                 className={classes.button}
                                 variant="contained"
                                 color="secondary"
-                                onClick={() => setStage(STAGE.FORM)}
+                                onClick={() => {
+                                    setData({
+                                        name: '',
+                                        email: '',
+                                        reason: '',
+                                    });
+                                    setStage(STAGE.FORM);
+                                }}
                             >
                                 {t('testing.thankScreen.retryButton')}
                             </Button>

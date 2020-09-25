@@ -119,7 +119,7 @@ function SplashScreen() {
     const secondHeaderWrapperRef = useRef(null);
     const secondHeaderStickyRef = useRef(null);
 
-    const scrollHandler = (offset) => {
+    const scrollHandler = (offset = 0) => {
         if (typeof window === 'undefined') return;
 
         const computeScrollOffset = offset;
@@ -148,6 +148,8 @@ function SplashScreen() {
         addEventListener('resize', resizeHandler, false);
 
         const listenId = eventBus.on('document.scroll', scrollHandler);
+
+        scrollHandler();
 
         return () => {
             eventBus.removeListener(listenId);

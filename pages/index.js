@@ -1,10 +1,5 @@
-import PageHome from '../src/ui-pages/Home';
 import React from "react";
+import Page from '../src/ui-pages/Home';
 
-function Page() {
-    return (
-        <PageHome />
-    );
-}
-
-export default Page;
+const PageCompute = () => <Page />;
+export default PageCompute;
