@@ -52,6 +52,34 @@ const useStyles = makeStyles((theme) => ({
     bigMarginTop: {
         marginTop: theme.spacing(4),
     },
+    bottomLabel: {
+        position: 'relative',
+        '&::after': {
+            content: 'attr(data-bottom-label)',
+            position: 'absolute',
+            bottom: 0,
+            right: 10,
+            transform: 'translateY(5px)',
+            backgroundColor: '#fafafa',
+            padding: theme.spacing(0, 0.5),
+            fontSize: '0.8rem',
+            fontFamily: '"Roboto", "Helvetica", "Arial", sans-serif',
+            fontWeight: 400,
+            lineHeight: 1,
+            letterSpacing: '0.00938em',
+            color: theme.palette.text.secondary,
+            transition: theme.transitions.create('color', {
+                duration: theme.transitions.duration.shorter,
+                easing: theme.transitions.easing.easeInOut,
+            }),
+        },
+        '&.Mui-focused::after': {
+            color: theme.palette.primary.main,
+        },
+        '&.Mui-error::after': {
+            color: theme.palette.error.main,
+        },
+    },
 }));
 
 const STAGE = {
@@ -81,9 +109,14 @@ function TestingBlock() {
         setErrors((oldErrors) => ({ ...oldErrors, [key]: false }));
     };
 
+    const validEmail = (value) => /.+[@].+[.].+/.test(value);
+
     const handleValid = (key, value) => {
         if (key === 'email') {
-            setErrors((oldErrors) => ({ ...oldErrors, email: !/.+[@].+[.].+/.test(value) }));
+            setErrors((oldErrors) => ({ ...oldErrors, email: value.trim() && !validEmail(value) }));
+        }
+        if (key === 'reason') {
+            setErrors((oldErrors) => ({ ...oldErrors, reason: value.trim().length > 500 }));
         }
     };
 
@@ -130,10 +163,10 @@ function TestingBlock() {
                                     variant="outlined"
                                     label={t('testing.form.email.label')+'*'}
                                     onChange={(event) => handleInput('email', event.target.value)}
+                                    onBlur={(event) => handleValid('email', event.target.value)}
                                     className={classes.marginTop}
                                     error={errors.email}
                                     helperText={errors.email && t('testing.form.email.errorValid')}
-                                    onBlur={(event) => handleValid('email', event.target.value)}
                                 />
                                 <TextField
                                     fullWidth
@@ -142,7 +175,20 @@ function TestingBlock() {
                                     multiline
                                     label={t('testing.form.reason.label')+'*'}
                                     className={classes.marginTop}
-                                    onChange={(event) => handleInput('reason', event.target.value)}
+                                    InputProps={{
+                                        'data-bottom-label': `${data.reason.trim().length}/500`,
+                                        classes: {
+                                            root: data.reason.trim().length > 400 && classes.bottomLabel,
+                                        }
+                                    }}
+                                    onChange={(event) => {
+                                        handleInput('reason', event.target.value);
+                                        handleValid('reason', event.target.value);
+                                    }}
+                                    error={errors.reason}
+                                    helperText={errors.reason && t('testing.form.reason.errorValid')}
+                                    rows={2}
+                                    rowsMax={16}
                                 />
                                 <Button
                                     className={classes.button}
@@ -151,9 +197,10 @@ function TestingBlock() {
                                     type="submit"
                                     disabled={
                                         !data.name?.trim()
-                                        || !data.email?.trim()
+                                        || !validEmail(data.email)
                                         || !data.reason?.trim()
                                         || errors.email
+                                        || errors.reason
                                     }
                                 >
                                     {t('testing.form.submit')}

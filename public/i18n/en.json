@@ -11,10 +11,12 @@
         "label": "Full name or nickname"
       },
       "email": {
-        "label": "Email"
+        "label": "Email",
+        "errorValid": "Incorrect mail format"
       },
       "reason": {
-        "label": "Reason"
+        "label": "Reason",
+        "errorValid": "Message length must not exceed 500 characters"
       },
       "submit": "Send request"
     },
