@@ -154,6 +154,7 @@ function TestingBlock() {
                                     value={data.name}
                                     variant="outlined"
                                     label={t('testing.form.name.label')+'*'}
+                                    autoComplete='name'
                                     onChange={(event) => handleInput('name', event.target.value)}
                                     className={clsx(classes.marginTop, classes.bigMarginTop)}
                                 />
@@ -162,6 +163,7 @@ function TestingBlock() {
                                     value={data.email}
                                     variant="outlined"
                                     label={t('testing.form.email.label')+'*'}
+                                    autoComplete='email'
                                     onChange={(event) => handleInput('email', event.target.value)}
                                     onBlur={(event) => handleValid('email', event.target.value)}
                                     className={classes.marginTop}

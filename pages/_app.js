@@ -7,6 +7,7 @@ import SmoothLoad from "../src/ui-components/SmoothLoad";
 import SmoothScroll from '@/ui-components/SmoothScroll';
 import useMainStateStore from '@/utils/mainStateStore';
 import '@/fonts/inject.css';
+import Head from 'next/head'
 
 class MyApp extends App {
     componentDidMount() {
@@ -18,6 +19,12 @@ class MyApp extends App {
 
         return (
             <Fragment>
+                <Head>
+                    <title>Rigami</title>
+                    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
+                    <link rel="icon" type="image/png" sizes="32x32" href="32x32.png" />
+                    <link rel="icon" type="image/png" sizes="16x16" href="16x16.png" />
+                </Head>
                 <CssBaseline />
                 <ThemeProvider theme={theme}>
                     <SmoothLoad>
