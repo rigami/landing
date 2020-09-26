@@ -10,9 +10,7 @@ import LogoIcon from '@/resources/logo.svg';
 import clsx from 'clsx';
 import { useTranslation } from 'react-i18next';
 import useMainStateStore from '../../utils/mainStateStore';
-import LangSwitcher from "../../ui-components/LangSwitcher";
-import Cards from "./Cards";
-import SmoothLoad from "../../ui-components/SmoothLoad";
+import LangSwitcher from '../../ui-components/LangSwitcher';
 
 const useStyles = makeStyles((theme) => ({
     root: {

@@ -1,34 +1,45 @@
-import { BKMS_VARIANT } from "@/ui-components/Card";
+import { BKMS_VARIANT } from '@/ui-components/Card';
 
 export default [
     [
-        { type: BKMS_VARIANT.SMALL, title: 'Yandex.Music', description: '', categories: [], url: '' },
+        {
+            type: BKMS_VARIANT.SMALL,
+            title: 'Yandex.Music',
+            description: '',
+            categories: [],
+            url: '',
+        },
         {
             type: BKMS_VARIANT.SMALL,
             title: 'Google Translate',
             description: 'Google\'s free service instantly translates words, phrases, and web pages between English and over 100 other languages.',
             categories: [],
-            url: 'https://translate.google.com/'
+            url: 'https://translate.google.com/',
         },
         {
             type: BKMS_VARIANT.NOTE,
             title: 'Work plan',
-            description: '- Do one thing first\n' +
-                '- Do something else later\n' +
-                '- Do something else in the end\n' +
-                '- To complete',
+            description: '- Do one thing first\n'
+                + '- Do something else later\n'
+                + '- Do something else in the end\n'
+                + '- To complete',
             categories: [],
             url: '',
         },
     ],
     [
-        { type: BKMS_VARIANT.SMALL, title: 'YouTube', categories: [], url: '' },
+        {
+            type: BKMS_VARIANT.SMALL,
+            title: 'YouTube',
+            categories: [],
+            url: '',
+        },
         {
             type: BKMS_VARIANT.POSTER,
             title: 'Краснознаменная дивизия имени моей бабушки',
             description: '«Краснознаменная Дивизия Имени Моей Бабушки» — московская группа из 8 человек, исполняющая экспериментальный рок с элементами барокко-попа, пост-панка, академического минимализма, шугейза и афро-попа.',
             categories: [],
-            url: 'https://vk.com/kdimb'
+            url: 'https://vk.com/kdimb',
         },
         {
             type: BKMS_VARIANT.POSTER,
@@ -37,7 +48,13 @@ export default [
             categories: [],
             url: 'http://rigami.io/',
         },
-        { type: BKMS_VARIANT.SMALL, title: '', description: '', categories: [], url: '' },
+        {
+            type: BKMS_VARIANT.SMALL,
+            title: '',
+            description: '',
+            categories: [],
+            url: '',
+        },
     ],
     [
         {
@@ -50,9 +67,9 @@ export default [
         {
             type: BKMS_VARIANT.NOTE,
             title: 'Work plan',
-            description: '- Do one thing first\n' +
-                '- Do something else later\n' +
-                '- Do something else in the end',
+            description: '- Do one thing first\n'
+                + '- Do something else later\n'
+                + '- Do something else in the end',
             categories: [],
             url: '',
         },
@@ -72,13 +89,18 @@ export default [
             categories: [],
             url: 'https://danilkinkin.com/',
         },
-        { type: BKMS_VARIANT.SMALL, title: 'Telegram Messanger', categories: [], url: '' },
+        {
+            type: BKMS_VARIANT.SMALL,
+            title: 'Telegram Messanger',
+            categories: [],
+            url: '',
+        },
         {
             type: BKMS_VARIANT.POSTER,
             title: 'Краснознаменная дивизия имени моей бабушки',
             description: '«Краснознаменная Дивизия Имени Моей Бабушки» — московская группа из 8 человек, исполняющая экспериментальный рок с элементами барокко-попа, пост-панка, академического минимализма, шугейза и афро-попа.',
             categories: [],
-            url: 'https://vk.com/kdimb'
+            url: 'https://vk.com/kdimb',
         },
     ],
     [
@@ -139,14 +161,14 @@ export default [
         {
             type: BKMS_VARIANT.NOTE,
             title: 'Work plan',
-            description: '- Do one thing first\n' +
-                '- Do something else later\n' +
-                '- Do something else in the end\n' +
-                '- To complete\n' +
-                '- Do one thing first\n' +
-                '- Do something else later\n' +
-                '- Do something else in the end\n' +
-                '- To complete',
+            description: '- Do one thing first\n'
+                + '- Do something else later\n'
+                + '- Do something else in the end\n'
+                + '- To complete\n'
+                + '- Do one thing first\n'
+                + '- Do something else later\n'
+                + '- Do something else in the end\n'
+                + '- To complete',
             categories: [],
             url: '',
         },

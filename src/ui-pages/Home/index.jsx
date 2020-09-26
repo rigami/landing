@@ -5,7 +5,6 @@ import TestingBlock from './TestingBlock';
 import FeaturesBlock from './FeaturesBlock';
 import DemoBlock from './DemoBlock';
 
-
 function Home() {
     return (
         <Fragment>

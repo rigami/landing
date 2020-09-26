@@ -1,10 +1,16 @@
 import React, { Fragment, useState } from 'react';
 import { Button, Menu, MenuItem } from '@material-ui/core';
-import i18next from "i18next";
+import i18next from 'i18next';
 
 const i18ns = [
-    { label: '🇷🇺 Русский', code: 'ru' },
-    { label: '🇺🇸 English', code: 'en' },
+    {
+        label: '🇷🇺 Русский',
+        code: 'ru',
+    },
+    {
+        label: '🇺🇸 English',
+        code: 'en',
+    },
 ];
 
 function LangSwitcher({ ...other }) {

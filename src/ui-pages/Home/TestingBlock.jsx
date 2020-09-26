@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import {
     Card,
     Box,
@@ -9,7 +9,7 @@ import {
 } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import { useTranslation } from 'react-i18next';
-import clsx from "clsx";
+import clsx from 'clsx';
 
 const useStyles = makeStyles((theme) => ({
     wrapper: { padding: theme.spacing(4) },
@@ -46,12 +46,8 @@ const useStyles = makeStyles((theme) => ({
         marginTop: theme.spacing(6),
         padding: theme.spacing(1, 4),
     },
-    marginTop: {
-        marginTop: theme.spacing(2),
-    },
-    bigMarginTop: {
-        marginTop: theme.spacing(4),
-    },
+    marginTop: { marginTop: theme.spacing(2) },
+    bigMarginTop: { marginTop: theme.spacing(4) },
     bottomLabel: {
         position: 'relative',
         '&::after': {
@@ -73,12 +69,8 @@ const useStyles = makeStyles((theme) => ({
                 easing: theme.transitions.easing.easeInOut,
             }),
         },
-        '&.Mui-focused::after': {
-            color: theme.palette.primary.main,
-        },
-        '&.Mui-error::after': {
-            color: theme.palette.error.main,
-        },
+        '&.Mui-focused::after': { color: theme.palette.primary.main },
+        '&.Mui-error::after': { color: theme.palette.error.main },
     },
 }));
 
@@ -104,19 +96,31 @@ function TestingBlock() {
     });
 
     const handleInput = (key, value) => {
-        setData((oldData) => ({ ...oldData, [key]: value }));
+        setData((oldData) => ({
+            ...oldData,
+            [key]: value,
+        }));
 
-        setErrors((oldErrors) => ({ ...oldErrors, [key]: false }));
+        setErrors((oldErrors) => ({
+            ...oldErrors,
+            [key]: false,
+        }));
     };
 
     const validEmail = (value) => /.+[@].+[.].+/.test(value);
 
     const handleValid = (key, value) => {
         if (key === 'email') {
-            setErrors((oldErrors) => ({ ...oldErrors, email: value.trim() && !validEmail(value) }));
+            setErrors((oldErrors) => ({
+                ...oldErrors,
+                email: value.trim() && !validEmail(value),
+            }));
         }
         if (key === 'reason') {
-            setErrors((oldErrors) => ({ ...oldErrors, reason: value.trim().length > 500 }));
+            setErrors((oldErrors) => ({
+                ...oldErrors,
+                reason: value.trim().length > 500,
+            }));
         }
     };
 
@@ -153,8 +157,8 @@ function TestingBlock() {
                                     fullWidth
                                     value={data.name}
                                     variant="outlined"
-                                    label={t('testing.form.name.label')+'*'}
-                                    autoComplete='name'
+                                    label={`${t('testing.form.name.label')}*`}
+                                    autoComplete="name"
                                     onChange={(event) => handleInput('name', event.target.value)}
                                     className={clsx(classes.marginTop, classes.bigMarginTop)}
                                 />
@@ -162,8 +166,8 @@ function TestingBlock() {
                                     fullWidth
                                     value={data.email}
                                     variant="outlined"
-                                    label={t('testing.form.email.label')+'*'}
-                                    autoComplete='email'
+                                    label={`${t('testing.form.email.label')}*`}
+                                    autoComplete="email"
                                     onChange={(event) => handleInput('email', event.target.value)}
                                     onBlur={(event) => handleValid('email', event.target.value)}
                                     className={classes.marginTop}
@@ -175,13 +179,11 @@ function TestingBlock() {
                                     value={data.reason}
                                     variant="outlined"
                                     multiline
-                                    label={t('testing.form.reason.label')+'*'}
+                                    label={`${t('testing.form.reason.label')}*`}
                                     className={classes.marginTop}
                                     InputProps={{
                                         'data-bottom-label': `${data.reason.trim().length}/500`,
-                                        classes: {
-                                            root: data.reason.trim().length > 400 && classes.bottomLabel,
-                                        }
+                                        classes: { root: data.reason.trim().length > 400 && classes.bottomLabel },
                                     }}
                                     onChange={(event) => {
                                         handleInput('reason', event.target.value);

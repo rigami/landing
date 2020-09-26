@@ -1,19 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { makeStyles } from '@material-ui/core/styles';
 import { Box, Fade } from '@material-ui/core';
-import clsx from 'clsx';
-import i18n from "i18next";
-import {initReactI18next} from "react-i18next";
-import LanguageDetector from "i18next-browser-languagedetector";
-import Backend from "i18next-http-backend";
-
-const useStyles = makeStyles(() => ({
-    root: { transition: '0.6s ease' },
-    rootHide: {
-        transform: 'translateY(0.3vh)',
-        opacity: 0,
-    },
-}));
+import i18n from 'i18next';
+import { initReactI18next } from 'react-i18next';
+import LanguageDetector from 'i18next-browser-languagedetector';
+import Backend from 'i18next-http-backend';
 
 const loadLocale = async () => {
     await i18n

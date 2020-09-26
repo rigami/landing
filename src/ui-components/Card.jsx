@@ -73,9 +73,7 @@ const useStyles = makeStyles((theme) => ({
         wordBreak: 'break-word',
         whiteSpace: 'break-spaces',
     },
-    bigDescription: {
-        '-webkit-line-clamp': 16,
-    },
+    bigDescription: { '-webkit-line-clamp': 16 },
     menuIcon: {
         position: 'absolute',
         right: theme.spacing(0.5),
