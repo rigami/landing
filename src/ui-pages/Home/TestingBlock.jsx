@@ -6,6 +6,7 @@ import {
     Button,
     Collapse,
     TextField,
+    CircularProgress,
 } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import { useTranslation } from 'react-i18next';
@@ -42,10 +43,7 @@ const useStyles = makeStyles((theme) => ({
         marginLeft: 'auto',
     },
     description: { marginTop: theme.spacing(2) },
-    button: {
-        marginTop: theme.spacing(6),
-        padding: theme.spacing(1, 4),
-    },
+    button: { padding: theme.spacing(1, 4) },
     marginTop: { marginTop: theme.spacing(2) },
     bigMarginTop: { marginTop: theme.spacing(4) },
     bottomLabel: {
@@ -72,6 +70,17 @@ const useStyles = makeStyles((theme) => ({
         '&.Mui-focused::after': { color: theme.palette.primary.main },
         '&.Mui-error::after': { color: theme.palette.error.main },
     },
+    buttonWrapper: {
+        position: 'relative',
+        display: 'inline-block',
+    },
+    buttonProgress: {
+        position: 'absolute',
+        top: '50%',
+        left: '50%',
+        marginTop: -12,
+        marginLeft: -12,
+    },
 }));
 
 const STAGE = {
@@ -94,6 +103,7 @@ function TestingBlock() {
         email: false,
         reason: false,
     });
+    const [sendingStatus, setSendingStatus] = useState('wait');
 
     const handleInput = (key, value) => {
         setData((oldData) => ({
@@ -113,7 +123,7 @@ function TestingBlock() {
         if (key === 'email') {
             setErrors((oldErrors) => ({
                 ...oldErrors,
-                email: value.trim() && !validEmail(value),
+                email: value.trim() && !validEmail(value) ? 'NOT_VALID' : false,
             }));
         }
         if (key === 'reason') {
@@ -124,10 +134,42 @@ function TestingBlock() {
         }
     };
 
-    const handleSubmit = (event) => {
+    const handleSubmit = async (event) => {
         event.preventDefault();
 
-        setStage(STAGE.ENDING_SCREEN);
+        setSendingStatus('pending');
+
+        try {
+            const result = await fetch(
+                'http://localhost:8080/testing/request',
+                {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(data),
+                },
+            );
+            console.log('result', result);
+
+            if (result.status === 200) {
+                setStage(STAGE.ENDING_SCREEN);
+                setSendingStatus('done');
+            } else {
+                const computeResult = await result.text();
+
+                if (computeResult === 'EMAIL_ALREADY_USE') {
+                    setErrors((oldErrors) => ({
+                        ...oldErrors,
+                        email: 'ALREADY_USE',
+                    }));
+                    setSendingStatus('wait');
+                } else {
+                    throw new Error(result.statusText);
+                }
+            }
+        } catch (e) {
+            console.error(e);
+            setSendingStatus('failed');
+        }
     };
 
     return (
@@ -172,7 +214,11 @@ function TestingBlock() {
                                     onBlur={(event) => handleValid('email', event.target.value)}
                                     className={classes.marginTop}
                                     error={errors.email}
-                                    helperText={errors.email && t('testing.form.email.errorValid')}
+                                    helperText={
+                                        errors.email && t(`testing.form.email.${
+                                            errors.email === 'ALREADY_USE' ? 'errorAlreadyUse' : 'errorValid'
+                                        }`)
+                                    }
                                 />
                                 <TextField
                                     fullWidth
@@ -194,21 +240,32 @@ function TestingBlock() {
                                     rows={2}
                                     rowsMax={16}
                                 />
-                                <Button
-                                    className={classes.button}
-                                    variant="contained"
-                                    color="secondary"
-                                    type="submit"
-                                    disabled={
-                                        !data.name?.trim()
-                                        || !validEmail(data.email)
-                                        || !data.reason?.trim()
-                                        || errors.email
-                                        || errors.reason
-                                    }
-                                >
-                                    {t('testing.form.submit')}
-                                </Button>
+                                <Collapse in={sendingStatus === 'failed'}>
+                                    <Typography color="error" variant="body1">
+                                        {t('testing.form.failedSend')}
+                                    </Typography>
+                                </Collapse>
+                                <div className={clsx(classes.buttonWrapper, classes.bigMarginTop)}>
+                                    <Button
+                                        className={classes.button}
+                                        variant="contained"
+                                        color="secondary"
+                                        type="submit"
+                                        disabled={
+                                            !data.name?.trim()
+                                            || !validEmail(data.email)
+                                            || !data.reason?.trim()
+                                            || errors.email
+                                            || errors.reason
+                                            || sendingStatus === 'pending'
+                                        }
+                                    >
+                                        {t('testing.form.submit')}
+                                    </Button>
+                                    {sendingStatus === 'pending' && (
+                                        <CircularProgress size={24} className={classes.buttonProgress} />
+                                    )}
+                                </div>
                             </form>
                         </Collapse>
                         <Collapse in={stage === STAGE.ENDING_SCREEN}>
@@ -220,7 +277,7 @@ function TestingBlock() {
                             </Typography>
                             <Typography variant="body1">{t('testing.thankScreen.description')}</Typography>
                             <Button
-                                className={classes.button}
+                                className={clsx(classes.button, classes.bigMarginTop)}
                                 variant="contained"
                                 color="secondary"
                                 onClick={() => {

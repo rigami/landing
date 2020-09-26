@@ -12,13 +12,15 @@
       },
       "email": {
         "label": "Email",
-        "errorValid": "Incorrect mail format"
+        "errorValid": "Incorrect mail format",
+        "errorAlreadyUse": "Application from this mail already exists"
       },
       "reason": {
         "label": "Reason",
         "errorValid": "Message length must not exceed 500 characters"
       },
-      "submit": "Send request"
+      "submit": "Send request",
+      "failedSend": "Failed to send your application, please try again later"
     },
     "thankScreen": {
       "title": "Thank you, {{name}}",
