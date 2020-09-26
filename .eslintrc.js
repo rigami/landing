@@ -1,5 +1,5 @@
 module.exports = {
-    'extends': ["react-app", 'rigami'],
+    'extends': ['react-app', 'rigami'],
     'parser': '@babel/eslint-parser',
     'parserOptions': {
         'ecmaFeatures': {
@@ -10,11 +10,12 @@ module.exports = {
         },
         'ecmaVersion': 2020,
         'sourceType': 'module',
+        babelOptions: { configFile: './.babelrc.js' },
     },
     'settings': {
         'import/resolver': {
             alias: {
-                map: ['@', `${__dirname}/src/`],
+                map: [['@', `${__dirname}/src/`]],
                 extensions: ['.js', '.jsx', '.json'],
             },
         },
