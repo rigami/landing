@@ -11,6 +11,7 @@ import {
 import { makeStyles } from '@material-ui/core/styles';
 import { useTranslation } from 'react-i18next';
 import clsx from 'clsx';
+import config from '@/config';
 
 const useStyles = makeStyles((theme) => ({
     wrapper: { padding: theme.spacing(4) },
@@ -141,7 +142,7 @@ function TestingBlock() {
 
         try {
             const result = await fetch(
-                'http://localhost:8080/testing/request',
+                `${config.server_url}/testing/request`,
                 {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
