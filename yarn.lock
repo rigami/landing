@@ -3114,8 +3114,9 @@ eslint-config-react-tools@^1.1.7:
     eslint-plugin-jsx-a11y "^6.0.3"
     eslint-plugin-react "^7.7.0"
 
-eslint-config-rigami@../eslint-config-rigami/:
+eslint-config-rigami@rigami-org/eslint-config-rigami:
   version "1.0.1"
+  resolved "git+ssh://git@github.com/rigami-org/eslint-config-rigami.git#b6db3184aca15b199766618f64ec273cfc921339"
   dependencies:
     eslint-config-airbnb "^18.2.0"
     eslint-import-resolver-node "^0.3.4"

@@ -6,18 +6,14 @@ import LanguageDetector from 'i18next-browser-languagedetector';
 import Backend from 'i18next-http-backend';
 
 const loadLocale = async () => {
-    await i18n
-        .use(initReactI18next);
-
-    if (true /* PRODUCTION_MODE */) {
-        await i18n
-            .use(LanguageDetector)
-            .use(Backend);
-    }
+    console.log("Is production mode", PRODUCTION_MODE)
 
     await i18n
+        .use(initReactI18next)
+        .use(LanguageDetector)
+        .use(Backend)
         .init({
-            fallbackLng: 'en', // PRODUCTION_MODE ? 'en' : 'dev',
+            fallbackLng: PRODUCTION_MODE ? 'en' : 'en',
             // debug: true,
             interpolation: { escapeValue: false },
             backend: { loadPath: '/i18n/{{lng}}.json' },

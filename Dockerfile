@@ -1,6 +1,23 @@
 # stage1 as builder
 FROM node:latest as builder
 
+# add credentials on build
+ARG SSH_PRV_KEY
+ARG SSH_PUB_KEY
+
+#RUN apt-get update && apt-get install -y openssh-server
+
+# Authorize SSH Host
+RUN mkdir -p /root/.ssh && \
+    chmod 0700 /root/.ssh && \
+    ssh-keyscan github.com > /root/.ssh/known_hosts
+
+# Add the keys and set permissions
+RUN echo "$SSH_PRV_KEY" > /root/.ssh/id_rsa && \
+    echo "$SSH_PUB_KEY" > /root/.ssh/id_rsa.pub && \
+    chmod 600 /root/.ssh/id_rsa && \
+    chmod 600 /root/.ssh/id_rsa.pub
+
 # copy the package.json to install dependencies
 COPY package.json yarn.lock ./
 
