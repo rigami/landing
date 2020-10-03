@@ -1,0 +1,32 @@
+version: "3.1"
+services:
+    rigami:
+        build:
+            context: .
+            args:
+              - SSH_PRV_KEY=$SSH_PRV_KEY
+              - SSH_PUB_KEY=$SSH_PUB_KEY
+#    nginx:
+#        build: .
+#        image: umputun/nginx-le:latest
+#        hostname: nginx
+#        restart: always
+#        container_name: nginx
+#        depends_on:
+#          - "rigami"
+#
+#        volumes:
+#            - ./etc/ssl:/etc/nginx/ssl
+#            - ./etc/service.conf:/etc/nginx/service.conf
+#        ports:
+#            - "80:80"
+#            - "443:443"
+#
+#        environment:
+#            - TZ=UTC
+#            - LETSENCRYPT=true
+#            - LE_EMAIL=youremail@example.com
+#            - LE_FQDN=yourdomain.com
+#            #- SSL_CERT=le-crt.pem
+#            #- SSL_KEY=le-key.pem
+#            #- SSL_CHAIN_CERT=le-chain-crt.pem

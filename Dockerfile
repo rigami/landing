@@ -5,8 +5,6 @@ FROM node:latest as builder
 ARG SSH_PRV_KEY
 ARG SSH_PUB_KEY
 
-#RUN apt-get update && apt-get install -y openssh-server
-
 # Authorize SSH Host
 RUN mkdir -p /root/.ssh && \
     chmod 0700 /root/.ssh && \
