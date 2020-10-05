@@ -1,15 +1,18 @@
-version: "3.1"
+version: "3.3"
 networks:
   web:
     external: true
 services:
-    rigami:
+    landing:
         build:
             context: .
             args:
               - SSH_PRV_KEY=$SSH_PRV_KEY
               - SSH_PUB_KEY=$SSH_PUB_KEY
-        ports:
-            - 80:80
         networks:
           - web
+        labels:
+          - traefik.backend=landing
+          - traefik.frontend.rule=Host:rigami.io
+          - traefik.docker.network=web
+          - traefik.port=80
