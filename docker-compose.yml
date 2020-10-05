@@ -14,4 +14,5 @@ services:
         labels:
           - "traefik.enable=true"
           - "traefik.http.routers.landing.rule=Host(`rigami.io`)"
-          - "traefik.http.routers.landing.entrypoints=http"
+          - "traefik.http.routers.landing.entrypoints=http,https"
+          - "traefik.http.routers.landing.tls=true"
