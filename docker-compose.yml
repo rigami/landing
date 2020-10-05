@@ -12,7 +12,6 @@ services:
         networks:
           - web
         labels:
-          - traefik.backend=landing
-          - traefik.frontend.rule=Host:rigami.io
-          - traefik.docker.network=web
-          - traefik.port=80
+          - "traefik.http.routers.landing.rule=Host(`rigami.io`)"
+          - "traefik.http.routers.landing.entrypoints=web"
+          - "traefik.http.routers.landing.port=80"
