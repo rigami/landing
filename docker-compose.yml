@@ -12,6 +12,7 @@ services:
         networks:
           - web
         labels:
+          - "traefik.enable=true"
           - "traefik.http.routers.landing.rule=Host(`rigami.io`)"
           - "traefik.http.routers.landing.entrypoints=web"
           - "traefik.http.routers.landing.port=80"
