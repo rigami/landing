@@ -9,6 +9,7 @@ services:
             args:
               - SSH_PRV_KEY=$SSH_PRV_KEY
               - SSH_PUB_KEY=$SSH_PUB_KEY
+        restart: unless-stopped
         networks:
           - web
         labels:
