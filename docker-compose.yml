@@ -15,6 +15,7 @@ services:
           - "traefik.enable=true"
           - "traefik.http.routers.landing.rule=Host(`rigami.io`)"
           - "traefik.http.routers.landing.entrypoints=http,https"
-          - "traefik.http.routers.landing.middlewares=redirect-to-https"
+          - "traefik.http.routers.landing.middlewares=redirect-to-https@file"
           - "traefik.http.routers.landing.tls=true"
           - "traefik.http.routers.landing.tls.certresolver=letsEncrypt"
+          - "traefik.http.services.landing-service.loadbalancer.servers.address=xxx.xxx.xxx.xxx:80"
