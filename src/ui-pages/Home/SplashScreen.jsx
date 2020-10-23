@@ -5,7 +5,7 @@ import React, {
     useRef,
 } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import { Box, Typography } from '@material-ui/core';
+import { Box, Typography, Collapse } from '@material-ui/core';
 import LogoIcon from '@/resources/logo.svg';
 import clsx from 'clsx';
 import { useTranslation } from 'react-i18next';
@@ -32,7 +32,7 @@ const useStyles = makeStyles((theme) => ({
         flexShrink: 1,
     },
     description: {
-        marginTop: theme.spacing(3),
+        marginTop: theme.spacing(2),
         color: theme.palette.text.secondary,
     },
     fixedBlock: { maxHeight: '15vh' },
@@ -104,6 +104,11 @@ const useStyles = makeStyles((theme) => ({
         top: theme.spacing(2),
         right: theme.spacing(4),
     },
+    leftBlock: {
+        display: 'flex',
+        flexDirection: 'column',
+        maxWidth: 320,
+    },
 }));
 
 function SplashScreen() {
@@ -111,8 +116,7 @@ function SplashScreen() {
     const { eventBus } = useMainStateStore();
     const { t } = useTranslation();
     const [shadowHeader, setShadowHeader] = useState(false);
-    const [secondHeaderHide, setSecondHeaderHide] = useState(false);
-    // const mainHeaderRef = useRef(null);
+    const [descriptionHide, setDescriptionHide] = useState(false);
     const secondHeaderRef = useRef(null);
     const secondHeaderWrapperRef = useRef(null);
     const secondHeaderStickyRef = useRef(null);
@@ -125,8 +129,6 @@ function SplashScreen() {
         const secondHeaderRefHeight = Math.max(computeClientHeight - computeScrollOffset, 115);
 
         secondHeaderRef.current.style.height = `${secondHeaderRefHeight}px`;
-        // secondHeaderWrapperRef.current.style.height = `${/* computeScrollOffset * 2.4*/ computeClientHeight * 0.7}px`;
-        // mainHeaderRef.current.style.transform = `translateY(-${(computeScrollOffset / computeClientHeight) * 50}%)`;
 
         if (computeScrollOffset > computeClientHeight - 115) {
             secondHeaderStickyRef.current.style.transform = `translateY(${computeScrollOffset - computeClientHeight + 115}px)`;
@@ -135,7 +137,7 @@ function SplashScreen() {
         }
 
         setShadowHeader(computeScrollOffset > computeClientHeight - 115);
-        setSecondHeaderHide(computeScrollOffset * 4 < computeClientHeight);
+        setDescriptionHide(computeScrollOffset * 2 > computeClientHeight);
     };
 
     const resizeHandler = () => {
@@ -157,29 +159,6 @@ function SplashScreen() {
 
     return (
         <Fragment>
-            {/* <Box
-                className={classes.root}
-                ref={mainHeaderRef}
-            >
-                <Box className={clsx(classes.block, classes.topBar)}>
-                    <LangSwitcher />
-                </Box>
-                <Box className={clsx(classes.block)}>
-                    <LogoIcon />
-                    <Typography variant="body1" className={classes.description}>
-                        {t('splashScreen.description')}
-                    </Typography>
-                </Box>
-                <Box className={clsx(classes.block, classes.comingSoonBlock)}>
-                    <Typography variant="h5">
-                        {t('comingSoon')}
-                        ... 🔥
-                    </Typography>
-                </Box>
-                <Box className={clsx(classes.block, classes.cardsBlock)}>
-                    <Cards />
-                </Box>
-            </Box> */}
             <Box className={classes.secondHeaderWrapper} ref={secondHeaderStickyRef}>
                 <Box
                     className={classes.secondHeaderShadow}
@@ -199,11 +178,20 @@ function SplashScreen() {
                             ref={secondHeaderRef}
                         >
                             <LangSwitcher className={classes.langSwitcher} />
-                            <LogoIcon width={180} height={45} />
-                            <Typography variant="h5">
-                                {t('comingSoon')}
-                                ... 🔥
-                            </Typography>
+                            <Box className={classes.leftBlock}>
+                                <LogoIcon width={180} height={45} />
+                                <Collapse in={!descriptionHide}>
+                                    <Typography variant="body1" className={classes.description}>
+                                        {t('splashScreen.description')}
+                                    </Typography>
+                                </Collapse>
+                                <Collapse in={descriptionHide}>
+                                    <Typography variant="h5">
+                                        {t('comingSoon')}
+                                        ... 🔥
+                                    </Typography>
+                                </Collapse>
+                            </Box>
                         </Box>
                     </Box>
                 </Box>

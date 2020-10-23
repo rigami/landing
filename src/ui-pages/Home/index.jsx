@@ -12,7 +12,6 @@ function Home() {
             <div>
                 <TestingBlock />
                 <FeaturesBlock />
-                <DemoBlock />
             </div>
             <Footer />
         </Fragment>
