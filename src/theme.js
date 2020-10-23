@@ -1,6 +1,7 @@
 import { createMuiTheme } from '@material-ui/core/styles';
 
 const theme = createMuiTheme({
+    breakpoints: { values: { lg: 1600 } },
     palette: {
         primary: { main: '#62B9FE' },
         secondary: { main: '#FFE16B' },
@@ -35,6 +36,10 @@ const theme = createMuiTheme({
     shape: {
         borderRadius: 4,
         borderRadiusBold: 8,
+    },
+    transitions: {
+        easing: { extraEaseInOut: 'cubic-bezier(0.85, 0.01, 0.13, 1)' },
+        duration: { extra: 450 },
     },
 });
 
