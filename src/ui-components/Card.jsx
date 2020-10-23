@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { forwardRef } from 'react';
 import {
     Card,
     Typography,
@@ -91,7 +91,7 @@ const BKMS_VARIANT = {
     NOTE: 'NOTE',
 };
 
-function CardLink(props) {
+function CardLink(props, ref) {
     const {
         name = '',
         categories,
@@ -104,11 +104,16 @@ function CardLink(props) {
     const classes = useStyles();
 
     return (
-        <Card className={clsx(classes.root, externalClassName)} variant="outlined" {...other}>
+        <Card
+            className={clsx(classes.root, externalClassName)}
+            variant="outlined"
+            {...other}
+            ref={ref}
+        >
             {icoVariant === BKMS_VARIANT.POSTER && (
                 <Image variant={BKMS_VARIANT.POSTER} src={imageUrl} className={classes.extendBanner} />
             )}
-            {icoVariant !== BKMS_VARIANT.POSTER && (
+            {icoVariant !== BKMS_VARIANT.POSTER && icoVariant !== BKMS_VARIANT.NOTE && (
                 <Box className={classes.banner}>
                     <Image
                         variant={icoVariant}
@@ -141,5 +146,5 @@ function CardLink(props) {
     );
 }
 
-export default CardLink;
+export default forwardRef((props, ref) => CardLink(props, ref));
 export { BKMS_VARIANT };

@@ -5,54 +5,21 @@ import React, {
     useRef,
 } from 'react';
 import { fade, makeStyles } from '@material-ui/core/styles';
-import { Box, Typography, Collapse } from '@material-ui/core';
+import {
+    Box, Typography, Collapse, Container,
+} from '@material-ui/core';
 import LogoIcon from '@/resources/logo.svg';
 import clsx from 'clsx';
 import { useTranslation } from 'react-i18next';
 import { KeyboardArrowDownRounded as ArrowDownIcon } from '@material-ui/icons';
 import useMainStateStore from '@/utils/mainStateStore';
 import LangSwitcher from '@/ui-components/LangSwitcher';
+import CardLink, { BKMS_VARIANT } from '@/ui-components/Card';
 
 const useStyles = makeStyles((theme) => ({
-    root: {
-        display: 'flex',
-        flexDirection: 'column',
-        minHeight: '100vh',
-        width: '100%',
-        backgroundColor: '#FAFAFA',
-        alignItems: 'center',
-        justifyContent: 'center',
-        position: 'relative',
-    },
-    block: {
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        justifyContent: 'center',
-        flexGrow: 1,
-        flexShrink: 1,
-    },
     description: {
         marginTop: theme.spacing(2),
         color: theme.palette.text.secondary,
-    },
-    fixedBlock: { maxHeight: '15vh' },
-    topBar: {
-        margin: '0 auto',
-        maxWidth: 1600,
-        width: '100%',
-        flexGrow: 0,
-        padding: 16,
-        alignItems: 'flex-end',
-    },
-    comingSoonBlock: { flexGrow: 0 },
-    cardsBlock: {
-        minHeight: '45vh',
-        maxHeight: '50vh',
-        alignItems: 'flex-end',
-        width: '100%',
-        justifyContent: 'flex-start',
-        paddingTop: 32,
     },
     secondHeaderWrapper: {
         height: '100vh',
@@ -73,32 +40,22 @@ const useStyles = makeStyles((theme) => ({
         position: 'absolute',
         width: '100%',
         bottom: 0,
-        /* '&::after': {
-            content: '""',
-            position: 'absolute',
-            width: '100%',
-            top: -48,
-            height: 48,
-            left: 0,
-            background: 'linear-gradient(to top, #00000014, transparent)',
-        }, */
     },
     secondHeaderBlock: {
         display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'center',
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center',
         flexShrink: 0,
         height: 115,
         bottom: 0,
         width: '100%',
         padding: theme.spacing(0, 4),
-        maxWidth: 1600 + theme.spacing(8),
         position: 'relative',
         margin: '0 auto',
         transition: 'opacity 0.3s ease 0s',
     },
     shadowHeader: { boxShadow: 'rgba(5, 5, 5, 0.06) 0px 2px 31px' },
-    secondHeaderHide: { opacity: 0 },
     langSwitcher: {
         position: 'absolute',
         zIndex: theme.zIndex.modal,
@@ -140,6 +97,29 @@ const useStyles = makeStyles((theme) => ({
         }),
     },
     hide: { opacity: 0 },
+    rightBlock: {
+        flexGrow: 1,
+        display: 'flex',
+        alignItems: 'center',
+        flexDirection: 'column',
+    },
+    card: { position: 'absolute' },
+    card1: {
+        transform: 'translate(-40px, -220px)',
+        boxShadow: theme.shadows[6],
+    },
+    card2: {
+        transform: 'translate(90px, -120px)',
+        boxShadow: theme.shadows[10],
+    },
+    card3: {
+        transform: 'translate(40px, -16px)',
+        boxShadow: theme.shadows[18],
+    },
+    card4: {
+        transform: 'translate(-100px, -80px)',
+        boxShadow: theme.shadows[24],
+    },
 }));
 
 function SplashScreen() {
@@ -151,6 +131,10 @@ function SplashScreen() {
     const secondHeaderRef = useRef(null);
     const secondHeaderWrapperRef = useRef(null);
     const secondHeaderStickyRef = useRef(null);
+    const card1Ref = useRef(null);
+    const card2Ref = useRef(null);
+    const card3Ref = useRef(null);
+    const card4Ref = useRef(null);
 
     const scrollHandler = (offset = 0) => {
         if (typeof window === 'undefined') return;
@@ -162,9 +146,15 @@ function SplashScreen() {
         secondHeaderRef.current.style.height = `${secondHeaderRefHeight}px`;
 
         if (computeScrollOffset > computeClientHeight - 115) {
-            secondHeaderStickyRef.current.style.transform = `translateY(${computeScrollOffset - computeClientHeight + 115}px)`;
+            secondHeaderStickyRef.current.style.transform = `translateY(${
+                computeScrollOffset - computeClientHeight + 115
+            }px)`;
         } else {
             secondHeaderStickyRef.current.style.transform = 'translateY(0px)';
+            card1Ref.current.style.transform = `translate(-40px, ${-220 - computeScrollOffset * 1.2}px)`;
+            card2Ref.current.style.transform = `translate(90px, ${-120 - computeScrollOffset}px)`;
+            card3Ref.current.style.transform = `translate(40px, ${-16 - computeScrollOffset * 0.8}px)`;
+            card4Ref.current.style.transform = `translate(-100px, ${-80 - computeScrollOffset * 0.6}px)`;
         }
 
         setShadowHeader(computeScrollOffset > computeClientHeight - 115);
@@ -172,7 +162,6 @@ function SplashScreen() {
     };
 
     const resizeHandler = () => {
-        if (typeof window === 'undefined') return;
     };
 
     useEffect(() => {
@@ -191,23 +180,9 @@ function SplashScreen() {
     return (
         <Fragment>
             <Box className={classes.secondHeaderWrapper} ref={secondHeaderStickyRef}>
-                <Box
-                    className={classes.secondHeaderShadow}
-                    ref={secondHeaderWrapperRef}
-                >
-                    <Box
-                        className={clsx(
-                            classes.secondHeader,
-                            shadowHeader && classes.shadowHeader,
-                        )}
-                    >
-                        <Box
-                            className={clsx(
-                                classes.secondHeaderBlock,
-                                // secondHeaderHide && classes.secondHeaderHide,
-                            )}
-                            ref={secondHeaderRef}
-                        >
+                <Box className={classes.secondHeaderShadow} ref={secondHeaderWrapperRef}>
+                    <Box className={clsx(classes.secondHeader, shadowHeader && classes.shadowHeader)}>
+                        <Container className={classes.secondHeaderBlock} ref={secondHeaderRef}>
                             <LangSwitcher className={classes.langSwitcher} />
                             <Box className={classes.leftBlock}>
                                 <LogoIcon width={180} height={45} />
@@ -223,10 +198,54 @@ function SplashScreen() {
                                     </Typography>
                                 </Collapse>
                             </Box>
+                            <Box className={classes.rightBlock}>
+                                <CardLink
+                                    ref={card1Ref}
+                                    name="aweg"
+                                    description="wegw"
+                                    categories={['#f00']}
+                                    icoVariant={BKMS_VARIANT.SMALL}
+                                    imageUrl=""
+                                    className={clsx(classes.card, classes.card1)}
+                                />
+                                <CardLink
+                                    ref={card2Ref}
+                                    name="aweg"
+                                    description="wegw"
+                                    categories={[]}
+                                    icoVariant={BKMS_VARIANT.POSTER}
+                                    imageUrl=""
+                                    className={clsx(classes.card, classes.card2)}
+                                />
+                                <CardLink
+                                    ref={card3Ref}
+                                    name="Work plan"
+                                    description="- Do one thing first
+- Do something else later
+- Do something else in the end
+- To complete
+- Do one thing first
+- Do something else later
+- Do something else in the end
+- To complete"
+                                    categories={['#f00']}
+                                    icoVariant={BKMS_VARIANT.NOTE}
+                                    className={clsx(classes.card, classes.card3)}
+                                />
+                                <CardLink
+                                    ref={card4Ref}
+                                    name="Danilkinkin"
+                                    description="Hi, I’m Danil, I’m developing web applications, websites and other interestin..."
+                                    categories={[]}
+                                    icoVariant={BKMS_VARIANT.SMALL}
+                                    imageUrl=""
+                                    className={clsx(classes.card, classes.card4)}
+                                />
+                            </Box>
                             <Box className={clsx(classes.arrowDownWrapper, descriptionHide && classes.hide)}>
                                 <ArrowDownIcon className={classes.arrowDown} />
                             </Box>
-                        </Box>
+                        </Container>
                     </Box>
                 </Box>
             </Box>
