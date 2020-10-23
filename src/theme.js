@@ -38,7 +38,10 @@ const theme = createMuiTheme({
         borderRadiusBold: 8,
     },
     transitions: {
-        easing: { extraEaseInOut: 'cubic-bezier(0.85, 0.01, 0.13, 1)' },
+        easing: {
+            extraEaseInOut: 'cubic-bezier(0.85, 0.01, 0.13, 1)',
+            invertEaseInOut: 'cubic-bezier(0, 0.79, 0.98, 0.19)',
+        },
         duration: { extra: 450 },
     },
 });

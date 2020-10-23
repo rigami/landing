@@ -4,13 +4,14 @@ import React, {
     Fragment,
     useRef,
 } from 'react';
-import { makeStyles } from '@material-ui/core/styles';
+import { fade, makeStyles } from '@material-ui/core/styles';
 import { Box, Typography, Collapse } from '@material-ui/core';
 import LogoIcon from '@/resources/logo.svg';
 import clsx from 'clsx';
 import { useTranslation } from 'react-i18next';
-import useMainStateStore from '../../utils/mainStateStore';
-import LangSwitcher from '../../ui-components/LangSwitcher';
+import { KeyboardArrowDownRounded as ArrowDownIcon } from '@material-ui/icons';
+import useMainStateStore from '@/utils/mainStateStore';
+import LangSwitcher from '@/ui-components/LangSwitcher';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -109,6 +110,36 @@ const useStyles = makeStyles((theme) => ({
         flexDirection: 'column',
         maxWidth: 320,
     },
+    arrowDown: {
+        color: fade(theme.palette.common.black, 0.3),
+        animation: `
+            $arrowDownAnimationTransform 1.4s ${theme.transitions.easing.invertEaseInOut} infinite,
+            $arrowDownAnimationOpacity 1.4s ease-in-out infinite
+        `,
+    },
+    '@keyframes arrowDownAnimationTransform': {
+        '0%': { transform: 'translateY(-24px)' },
+        '100%': { transform: 'translateY(24px)' },
+    },
+    '@keyframes arrowDownAnimationOpacity': {
+        '0%': { opacity: 0 },
+        '50%': { opacity: 1 },
+        '100%': { opacity: 0 },
+    },
+    arrowDownWrapper: {
+        position: 'absolute',
+        left: 0,
+        right: 0,
+        bottom: theme.spacing(4),
+        margin: 'auto',
+        display: 'flex',
+        justifyContent: 'center',
+        transition: theme.transitions.create(['opacity'], {
+            duration: theme.transitions.duration.shorter,
+            easing: theme.transitions.easing.easeInOut,
+        }),
+    },
+    hide: { opacity: 0 },
 }));
 
 function SplashScreen() {
@@ -191,6 +222,9 @@ function SplashScreen() {
                                         ... 🔥
                                     </Typography>
                                 </Collapse>
+                            </Box>
+                            <Box className={clsx(classes.arrowDownWrapper, descriptionHide && classes.hide)}>
+                                <ArrowDownIcon className={classes.arrowDown} />
                             </Box>
                         </Box>
                     </Box>
