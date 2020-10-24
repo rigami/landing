@@ -82,6 +82,7 @@ const useStyles = makeStyles((theme) => ({
         flexDirection: 'column',
         width: 260,
         paddingTop: theme.spacing(4),
+        paddingRight: theme.spacing(4),
     },
     linksBlockTitle: { marginBottom: theme.spacing(2) },
     linksBlockLink: { marginTop: theme.spacing(1) },
