@@ -6,12 +6,16 @@ import React, {
 } from 'react';
 import { fade, makeStyles } from '@material-ui/core/styles';
 import {
-    Box, Typography, Collapse, Container,
+    Box,
+    Typography,
+    Collapse,
+    Container,
+    Tooltip,
 } from '@material-ui/core';
 import LogoIcon from '@/resources/logo.svg';
 import clsx from 'clsx';
 import { useTranslation } from 'react-i18next';
-import { KeyboardArrowDownRounded as ArrowDownIcon } from '@material-ui/icons';
+import { KeyboardArrowDownRounded as ArrowDownIcon, HomeRounded as HomeIcon } from '@material-ui/icons';
 import useMainStateStore from '@/utils/mainStateStore';
 import LangSwitcher from '@/ui-components/LangSwitcher';
 import CardLink, { BKMS_VARIANT } from '@/ui-components/Card';
@@ -65,6 +69,7 @@ const useStyles = makeStyles((theme) => ({
     leftBlock: {
         display: 'flex',
         flexDirection: 'column',
+        alignItems: 'end',
         maxWidth: 320,
     },
     arrowDown: {
@@ -124,14 +129,66 @@ const useStyles = makeStyles((theme) => ({
         transform: 'translate(-100px, -80px)',
         boxShadow: theme.shadows[24],
     },
+    designerLink: {
+        display: 'flex',
+        padding: theme.spacing(0.5, 0),
+        position: 'relative',
+        flexDirection: 'row',
+        alignItems: 'center',
+        width: 'min-content',
+        '& > *': { zIndex: 1 },
+        '&::after': {
+            content: '""',
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            height: '100%',
+            width: 0,
+            zIndex: 0,
+            backgroundColor: '#ceecfd',
+            transition: theme.transitions.create(['width'], {
+                duration: theme.transitions.duration.extra,
+                easing: theme.transitions.easing.extraEaseInOut,
+            }),
+        },
+        '&:hover::after': { width: `calc(100% + ${theme.spacing(10)}px)` },
+    },
+    linkWrapper: {
+        '&:hover + $designedByLabel': { transform: `translateY(${theme.spacing(1)}px)` },
+        '&:hover $openInNewIcon': { opacity: 1 },
+        '&:hover $logoIcon': { transform: `translateX(${theme.spacing(7)}px)` },
+    },
+    openInNewIcon: {
+        position: 'absolute',
+        left: theme.spacing(2),
+        color: fade(theme.palette.common.black, 0.4),
+        pointerEvents: 'none',
+        opacity: 0,
+        transition: theme.transitions.create(['opacity'], {
+            duration: theme.transitions.duration.extra,
+            easing: theme.transitions.easing.extraEaseInOut,
+        }),
+    },
+    logoIcon: {
+        transition: theme.transitions.create(['transform'], {
+            duration: theme.transitions.duration.extra,
+            easing: theme.transitions.easing.extraEaseInOut,
+        }),
+    },
+    designedByLabel: {
+        transition: theme.transitions.create(['transform'], {
+            duration: theme.transitions.duration.extra,
+            easing: theme.transitions.easing.extraEaseInOut,
+        }),
+    },
 }));
 
-function SplashScreen() {
+function SplashScreen({ shrink = false }) {
     const classes = useStyles();
     const { eventBus } = useMainStateStore();
     const { t } = useTranslation();
     const [shadowHeader, setShadowHeader] = useState(false);
-    const [descriptionHide, setDescriptionHide] = useState(false);
+    const [descriptionHide, setDescriptionHide] = useState(shrink || false);
     const secondHeaderRef = useRef(null);
     const secondHeaderWrapperRef = useRef(null);
     const secondHeaderStickyRef = useRef(null);
@@ -171,6 +228,8 @@ function SplashScreen() {
     };
 
     useEffect(() => {
+        if (shrink) return;
+
         addEventListener('resize', resizeHandler, false);
 
         const listenId = eventBus.on('document.scroll', scrollHandler);
@@ -185,62 +244,86 @@ function SplashScreen() {
 
     return (
         <Fragment>
-            <Box className={classes.secondHeaderWrapper} ref={secondHeaderStickyRef}>
+            <Box
+                className={classes.secondHeaderWrapper}
+                ref={secondHeaderStickyRef}
+                style={{ height: shrink && 115 }}
+            >
                 <Box className={classes.secondHeaderShadow} ref={secondHeaderWrapperRef}>
-                    <Box className={clsx(classes.secondHeader, shadowHeader && classes.shadowHeader)}>
-                        <Container className={classes.secondHeaderBlock} ref={secondHeaderRef}>
+                    <Box className={clsx(classes.secondHeader, (shadowHeader || shrink) && classes.shadowHeader)}>
+                        <Container
+                            className={classes.secondHeaderBlock}
+                            ref={secondHeaderRef}
+                            style={{ height: shrink && 115 }}
+                        >
                             <LangSwitcher className={classes.langSwitcher} />
                             <Box className={classes.leftBlock}>
-                                <LogoIcon width={180} height={45} />
-                                <Collapse in={!descriptionHide}>
-                                    <Typography variant="body1" className={classes.description}>
-                                        {t('splashScreen.description')}
-                                    </Typography>
-                                </Collapse>
-                                <Collapse in={descriptionHide}>
+                                {location.pathname !== '/' ? (
+                                    <Tooltip
+                                        title={t('splashScreen.linkHomeTooltip')}
+                                        enterDelay={400}
+                                        enterNextDelay={400}
+                                    >
+                                        <a href={location.origin} className={classes.linkWrapper}>
+                                            <Box className={classes.designerLink}>
+                                                <HomeIcon className={classes.openInNewIcon} />
+                                                <LogoIcon width={180} height={45} className={classes.logoIcon} />
+                                            </Box>
+                                        </a>
+                                    </Tooltip>
+                                ) : (
+                                    <LogoIcon width={180} height={45} className={classes.logoIcon} />
+                                )}
+                                <Collapse in={descriptionHide} className={classes.designedByLabel}>
                                     <Typography variant="h5">
                                         {t('comingSoon')}
                                         ... 🔥
                                     </Typography>
                                 </Collapse>
+                                <Collapse in={!descriptionHide}>
+                                    <Typography variant="body1" className={classes.description}>
+                                        {t('splashScreen.description')}
+                                    </Typography>
+                                </Collapse>
                             </Box>
-                            <Box className={classes.rightBlock}>
-                                <CardLink
-                                    ref={card1Ref}
-                                    name="Основной плейлист"
-                                    description="Плейлист на Яндекс Музыке"
-                                    categories={[
-                                        '#25A3E2',
-                                        '#EA4A99',
-                                        '#0000E4',
-                                        '#EAC74A',
-                                        '#ff8400',
-                                    ]}
-                                    icoVariant={BKMS_VARIANT.SMALL}
-                                    imageUrl="https://music.yandex.ru/users/y79519420181/playlists/101"
-                                    className={clsx(classes.card, classes.card1)}
-                                />
-                                <CardLink
-                                    ref={card2Ref}
-                                    name="Let's Talk elementary OS 6 ⋅ elementary Blog"
-                                    description="Updates for July, plus early access to the next major version"
-                                    categories={['#EA4A99', '#25A3E2', '#EAC74A']}
-                                    icoVariant={BKMS_VARIANT.POSTER}
-                                    imageUrl="https://blog.elementary.io/updates-for-july-2020/"
-                                    className={clsx(classes.card, classes.card2)}
-                                />
-                                <CardLink
-                                    ref={card3Ref}
-                                    name="YouTube"
-                                    categories={['#EA4A99', '#25A3E2', '#EAC74A']}
-                                    icoVariant={BKMS_VARIANT.SMALL}
-                                    imageUrl="https://www.youtube.com/?gl=RU&hl=ru"
-                                    className={clsx(classes.card, classes.card3)}
-                                />
-                                <CardLink
-                                    ref={card4Ref}
-                                    name="Work plan"
-                                    description="- Do one thing first
+                            {!shrink && (
+                                <Box className={classes.rightBlock}>
+                                    <CardLink
+                                        ref={card1Ref}
+                                        name="Основной плейлист"
+                                        description="Плейлист на Яндекс Музыке"
+                                        categories={[
+                                            '#25A3E2',
+                                            '#EA4A99',
+                                            '#0000E4',
+                                            '#EAC74A',
+                                            '#ff8400',
+                                        ]}
+                                        icoVariant={BKMS_VARIANT.SMALL}
+                                        imageUrl="https://music.yandex.ru/users/y79519420181/playlists/101"
+                                        className={clsx(classes.card, classes.card1)}
+                                    />
+                                    <CardLink
+                                        ref={card2Ref}
+                                        name="Let's Talk elementary OS 6 ⋅ elementary Blog"
+                                        description="Updates for July, plus early access to the next major version"
+                                        categories={['#EA4A99', '#25A3E2', '#EAC74A']}
+                                        icoVariant={BKMS_VARIANT.POSTER}
+                                        imageUrl="https://blog.elementary.io/updates-for-july-2020/"
+                                        className={clsx(classes.card, classes.card2)}
+                                    />
+                                    <CardLink
+                                        ref={card3Ref}
+                                        name="YouTube"
+                                        categories={['#EA4A99', '#25A3E2', '#EAC74A']}
+                                        icoVariant={BKMS_VARIANT.SMALL}
+                                        imageUrl="https://www.youtube.com/?gl=RU&hl=ru"
+                                        className={clsx(classes.card, classes.card3)}
+                                    />
+                                    <CardLink
+                                        ref={card4Ref}
+                                        name="Work plan"
+                                        description="- Do one thing first
 - Do something else later
 - Do something else in the end
 - To complete
@@ -248,25 +331,26 @@ function SplashScreen() {
 - Do something else later
 - Do something else in the end
 - To complete"
-                                    categories={['#ff8400', '#0000E4']}
-                                    icoVariant={BKMS_VARIANT.NOTE}
-                                    className={clsx(classes.card, classes.card4)}
-                                />
-                                <CardLink
-                                    ref={card5Ref}
-                                    name="Danilkinkin"
-                                    description="Hi, I’m Danil, I’m developing web applications, websites and other interestin..."
-                                    categories={[
-                                        '#ff8400',
-                                        '#0000E4',
-                                        '#25A3E2',
-                                        '#EAC74A',
-                                    ]}
-                                    icoVariant={BKMS_VARIANT.SMALL}
-                                    imageUrl=""
-                                    className={clsx(classes.card, classes.card5)}
-                                />
-                            </Box>
+                                        categories={['#ff8400', '#0000E4']}
+                                        icoVariant={BKMS_VARIANT.NOTE}
+                                        className={clsx(classes.card, classes.card4)}
+                                    />
+                                    <CardLink
+                                        ref={card5Ref}
+                                        name="Danilkinkin"
+                                        description="Hi, I’m Danil, I’m developing web applications, websites and other interestin..."
+                                        categories={[
+                                            '#ff8400',
+                                            '#0000E4',
+                                            '#25A3E2',
+                                            '#EAC74A',
+                                        ]}
+                                        icoVariant={BKMS_VARIANT.SMALL}
+                                        imageUrl=""
+                                        className={clsx(classes.card, classes.card5)}
+                                    />
+                                </Box>
+                            )}
                             <Box className={clsx(classes.arrowDownWrapper, descriptionHide && classes.hide)}>
                                 <ArrowDownIcon className={classes.arrowDown} />
                             </Box>

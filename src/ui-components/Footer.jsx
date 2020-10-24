@@ -1,7 +1,7 @@
 import React from 'react';
 import { fade, makeStyles } from '@material-ui/core/styles';
 import {
-    Box, Container, Link, Typography,
+    Box, Container, Link, Tooltip, Typography,
 } from '@material-ui/core';
 import LogoIcon from '@/resources/logo_studio.svg';
 import { useTranslation } from 'react-i18next';
@@ -13,6 +13,7 @@ const useStyles = makeStyles((theme) => ({
         height: 320,
         width: '100%',
         backgroundColor: theme.palette.background.default,
+        marginTop: 'auto',
     },
     container: {
         display: 'flex',
@@ -138,12 +139,18 @@ function Footer() {
                     />
                 </Box>
                 <Box className={classes.designedByBlock}>
-                    <a href="https://danilkinkin.com/" target="_blank" className={classes.linkWrapper}>
-                        <Box className={classes.designerLink}>
-                            <LogoIcon />
-                            <OpenInNewIcon className={classes.openInNewIcon} />
-                        </Box>
-                    </a>
+                    <Tooltip
+                        title={t('footer.linkDesignerTooltip')}
+                        enterDelay={400}
+                        enterNextDelay={400}
+                    >
+                        <a href="https://danilkinkin.com/" target="_blank" className={classes.linkWrapper}>
+                            <Box className={classes.designerLink}>
+                                <LogoIcon />
+                                <OpenInNewIcon className={classes.openInNewIcon} />
+                            </Box>
+                        </a>
+                    </Tooltip>
                     <Typography variant="body2" className={classes.designedByLabel}>
                         {t('footer.design&development')}
                     </Typography>

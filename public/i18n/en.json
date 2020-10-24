@@ -1,6 +1,7 @@
 {
   "splashScreen": {
-    "description": "To preserve everything and from everywhere. For access everywhere and from anywhere"
+    "description": "To preserve everything and from everywhere. For access everywhere and from anywhere",
+    "linkHomeTooltip": "Go to Main page"
   },
   "testing": {
     "title": "Help development",
@@ -45,6 +46,7 @@
   "comingSoon": "Coming Soon",
   "footer": {
     "design&development": "Design & Development",
+    "linkDesignerTooltip": "Go to developer page",
     "links": {
       "review": {
         "title": "Review",
@@ -54,6 +56,29 @@
       "other": {
         "title": "Other",
         "privacyPolicy": "Privacy policy"
+      }
+    }
+  },
+  "page": {
+    "review": {
+      "title": "Review",
+      "description": "Write review",
+      "form": {
+        "email": {
+          "label": "Email",
+          "errorValid": "Invalid mail format"
+        },
+        "review": {
+          "label": "Review text",
+          "errorValid": "Message length must not exceed 500 characters"
+        },
+        "submit": "Send review",
+        "failedSend": "Failed to send feedback, please try again later"
+      },
+      "thankScreen": {
+        "title": "Thank you!",
+        "description": "We will analyze your review, and if necessary, we will answer you by mail",
+        "retryButton": "Write another review"
       }
     }
   }

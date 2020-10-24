@@ -1,6 +1,7 @@
 import React, { Fragment } from 'react';
 import App from 'next/app';
 import { ThemeProvider } from '@material-ui/core/styles';
+import { Box } from '@material-ui/core';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import theme from '@/theme';
 import SmoothLoad from '@/ui-components/SmoothLoad';
@@ -35,7 +36,15 @@ class MyApp extends App {
                 <ThemeProvider theme={theme}>
                     <SmoothLoad>
                         <SmoothScroll onScroll={(scrollOffset) => eventBus.call('document.scroll', scrollOffset)}>
-                            <Component {...pageProps} />
+                            <Box
+                                style={{
+                                    minHeight: '100vh',
+                                    display: 'flex',
+                                    flexDirection: 'column',
+                                }}
+                            >
+                                <Component {...pageProps} />
+                            </Box>
                         </SmoothScroll>
                     </SmoothLoad>
                 </ThemeProvider>
