@@ -139,7 +139,8 @@ function Footer() {
                         links={[
                             {
                                 label: t('footer.links.other.privacyPolicy'),
-                                url: '/policy',
+                                url: 'https://github.com/rigami-org/readme/blob/main/POLICY.md',
+                                target: '_blank',
                             },
                             {
                                 label: t('footer.links.other.github'),
