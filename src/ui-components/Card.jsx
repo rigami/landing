@@ -16,6 +16,7 @@ const useStyles = makeStyles((theme) => ({
         alignItems: 'center',
         justifyContent: 'flex-end',
         position: 'relative',
+        border: 'none',
         '&:hover $menuIcon': {
             opacity: 1,
             pointerEvents: 'auto',
