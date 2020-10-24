@@ -2,7 +2,6 @@ import React, { forwardRef } from 'react';
 import {
     Card,
     Typography,
-    CardActionArea,
     Box,
 } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
@@ -26,7 +25,6 @@ const useStyles = makeStyles((theme) => ({
     body: {
         width: '100%',
         padding: theme.spacing(1, 2),
-        paddingTop: 0,
         boxSizing: 'border-box',
     },
     categoriesWrapper: {
@@ -54,6 +52,7 @@ const useStyles = makeStyles((theme) => ({
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
+        marginBottom: theme.spacing(-1),
     },
     extendBanner: {
         width: '100%',
