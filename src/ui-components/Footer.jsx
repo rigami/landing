@@ -93,12 +93,13 @@ function Block({ title, links }) {
     return (
         <Box className={classes.linksBlock}>
             <Typography variant="h5" className={classes.linksBlockTitle}>{title}</Typography>
-            {links.map(({ label, url }) => (
+            {links.map(({ label, url, ...other }) => (
                 <Link
                     href={url}
                     key={url}
                     className={classes.linksBlockLink}
                     color="textSecondary"
+                    {...other}
                 >
                     {label}
                 </Link>
@@ -126,6 +127,11 @@ function Footer() {
                                 label: t('footer.links.review.reportBug'),
                                 url: '/bug-report',
                             },
+                            {
+                                label: t('footer.links.review.githubIssue'),
+                                url: 'https://github.com/rigami-org/readme/issues',
+                                target: '_blank',
+                            },
                         ]}
                     />
                     <Block
@@ -134,6 +140,11 @@ function Footer() {
                             {
                                 label: t('footer.links.other.privacyPolicy'),
                                 url: '/policy',
+                            },
+                            {
+                                label: t('footer.links.other.github'),
+                                url: 'https://github.com/rigami-org/readme',
+                                target: '_blank',
                             },
                         ]}
                     />

@@ -6,7 +6,7 @@ import {
     Button,
     Collapse,
     TextField,
-    CircularProgress,
+    CircularProgress, Container,
 } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import { useTranslation } from 'react-i18next';
@@ -21,16 +21,15 @@ const useStyles = makeStyles((theme) => ({
         backgroundColor: '#FAFAFA',
         padding: theme.spacing(12),
         display: 'flex',
+        flexDirection: 'column',
     },
     maxWidth: {
         display: 'flex',
         flexDirection: 'row',
-        width: '100%',
         height: '100%',
         alignItems: 'center',
         justifyContent: 'center',
-        maxWidth: 1600,
-        margin: 'auto',
+        flexGrow: 1,
     },
     textBlock: {
         maxWidth: 470,
@@ -176,7 +175,7 @@ function TestingBlock() {
     return (
         <Box className={classes.wrapper}>
             <Card elevation={0} square className={classes.root}>
-                <Box className={classes.maxWidth}>
+                <Container className={classes.maxWidth}>
                     <Box className={classes.textBlock}>
                         <Typography variant="h4">
                             {t('testing.title')}
@@ -295,7 +294,7 @@ function TestingBlock() {
                         </Collapse>
                     </Box>
                     <Box className={classes.artBlock} />
-                </Box>
+                </Container>
             </Card>
         </Box>
     );

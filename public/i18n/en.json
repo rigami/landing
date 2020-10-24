@@ -51,26 +51,35 @@
       "review": {
         "title": "Review",
         "writeReview": "Write review",
-        "reportBug": "Bug report"
+        "reportBug": "Bug report",
+        "githubIssue": "Issues and Questions page on GitHub"
       },
       "other": {
         "title": "Other",
-        "privacyPolicy": "Privacy policy"
+        "privacyPolicy": "Privacy policy",
+        "github": "Project on GitHub"
       }
     }
   },
   "page": {
-    "review": {
-      "title": "Review",
-      "description": "Write review",
+    "report": {
+      "github": "You can also write on github",
       "form": {
         "email": {
           "label": "Email",
           "errorValid": "Invalid mail format"
         },
-        "review": {
-          "label": "Review text",
-          "errorValid": "Message length must not exceed 500 characters"
+        "text": {
+          "errorValid": "Message length must not exceed 500 character"
+        }
+      }
+    },
+    "review": {
+      "title": "Review",
+      "description": "Write review",
+      "form": {
+        "text": {
+          "label": "Review text"
         },
         "submit": "Send review",
         "failedSend": "Failed to send feedback, please try again later"
@@ -79,6 +88,22 @@
         "title": "Thank you!",
         "description": "We will analyze your review, and if necessary, we will answer you by mail",
         "retryButton": "Write another review"
+      }
+    },
+    "bug": {
+      "title": "Bug report",
+      "description": "Report the problem to us",
+      "form": {
+        "text": {
+          "label": "Report text"
+        },
+        "submit": "Send report",
+        "failedSend": "Failed to send report, please try again later"
+      },
+      "thankScreen": {
+        "title": "Thank you!",
+        "description": "We will analyze your report, and if necessary, we will answer you by mail",
+        "retryButton": "Write another bug report"
       }
     }
   }

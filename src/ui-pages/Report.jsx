@@ -9,7 +9,9 @@ import {
     Container,
     TextField,
     Typography,
+    Link,
 } from '@material-ui/core';
+import { NavigateNextRounded as ArrowRightIcon } from '@material-ui/icons';
 import { useTranslation } from 'react-i18next';
 import { makeStyles } from '@material-ui/core/styles';
 import clsx from 'clsx';
@@ -92,6 +94,7 @@ const useStyles = makeStyles((theme) => ({
         paddingTop: theme.spacing(6),
         paddingBottom: theme.spacing(6),
     },
+    githubLink: { marginTop: theme.spacing(1) },
 }));
 
 const STAGE = {
@@ -99,7 +102,12 @@ const STAGE = {
     ENDING_SCREEN: 'ENDING_SCREEN',
 };
 
-function Review() {
+const REPORT_TYPE = {
+    BUG: 'BUG',
+    REVIEW: 'REVIEW',
+};
+
+function Report({ type = REPORT_TYPE.REVIEW }) {
     const classes = useStyles();
     const { t } = useTranslation();
     const [stage, setStage] = useState(STAGE.FORM);
@@ -112,6 +120,7 @@ function Review() {
         text: false,
     });
     const [sendingStatus, setSendingStatus] = useState('wait');
+    const reportType = type.toLowerCase();
 
     const handleInput = (key, value) => {
         setData((oldData) => ({
@@ -185,24 +194,32 @@ function Review() {
             <SplashScreen shrink />
             <Container className={classes.pageWrapper}>
                 <Box className={classes.formWrapper}>
-                    <Typography variant="h4">{t('page.review.title')}</Typography>
-                    <Typography variant="body1">{t('page.review.description')}</Typography>
+                    <Typography variant="h4">{t(`page.${reportType}.title`)}</Typography>
+                    <Typography variant="body1">{t(`page.${reportType}.description`)}</Typography>
+                    <Button
+                        component={Link}
+                        href="https://github.com/rigami-org/readme/issues"
+                        underline="none"
+                        target="_blank"
+                        endIcon={(<ArrowRightIcon />)}
+                        className={classes.githubLink}
+                    >
+                        {t('page.report.github')}
+                    </Button>
                     <Collapse in={stage === STAGE.FORM}>
                         <form onSubmit={handleSubmit}>
                             <TextField
                                 fullWidth
                                 value={data.email}
                                 variant="outlined"
-                                label={`${t('page.review.form.email.label')}*`}
+                                label={`${t('page.report.form.email.label')}*`}
                                 autoComplete="email"
                                 onChange={(event) => handleInput('email', event.target.value)}
                                 onBlur={(event) => handleValid('email', event.target.value)}
                                 className={classes.marginTop}
                                 error={errors.email}
                                 helperText={
-                                    errors.email && t(`testing.form.email.${
-                                        errors.email === 'ALREADY_USE' ? 'errorAlreadyUse' : 'errorValid'
-                                    }`)
+                                    errors.email && t('page.report.form.email.errorValid')
                                 }
                             />
                             <TextField
@@ -210,7 +227,7 @@ function Review() {
                                 value={data.text}
                                 variant="outlined"
                                 multiline
-                                label={`${t('page.review.form.review.label')}*`}
+                                label={`${t(`page.${reportType}.form.text.label`)}*`}
                                 className={classes.marginTop}
                                 InputProps={{
                                     'data-bottom-label': `${data.text.trim().length}/500`,
@@ -221,13 +238,13 @@ function Review() {
                                     handleValid('text', event.target.value);
                                 }}
                                 error={errors.text}
-                                helperText={errors.text && t('page.review.form.review.errorValid')}
+                                helperText={errors.text && t('page.report.form.text.errorValid')}
                                 rows={2}
                                 rowsMax={16}
                             />
                             <Collapse in={sendingStatus === 'failed'}>
                                 <Typography color="error" variant="body1">
-                                    {t('page.review.form.failedSend')}
+                                    {t(`page.${reportType}.form.failedSend`)}
                                 </Typography>
                             </Collapse>
                             <div className={clsx(classes.buttonWrapper, classes.bigMarginTop)}>
@@ -244,7 +261,7 @@ function Review() {
                                         || sendingStatus === 'pending'
                                     }
                                 >
-                                    {t('page.review.form.submit')}
+                                    {t(`page.${reportType}.form.submit`)}
                                 </Button>
                                 {sendingStatus === 'pending' && (
                                     <CircularProgress size={24} className={classes.buttonProgress} />
@@ -257,9 +274,9 @@ function Review() {
                             variant="h5"
                             className={classes.bigMarginTop}
                         >
-                            {t('page.review.thankScreen.title')}
+                            {t(`page.${reportType}.thankScreen.title`)}
                         </Typography>
-                        <Typography variant="body1">{t('page.review.thankScreen.description')}</Typography>
+                        <Typography variant="body1">{t(`page.${reportType}.thankScreen.description`)}</Typography>
                         <Button
                             className={clsx(classes.button, classes.bigMarginTop)}
                             variant="contained"
@@ -272,7 +289,7 @@ function Review() {
                                 setStage(STAGE.FORM);
                             }}
                         >
-                            {t('page.review.thankScreen.retryButton')}
+                            {t(`page.${reportType}.thankScreen.retryButton`)}
                         </Button>
                     </Collapse>
                 </Box>
@@ -282,4 +299,6 @@ function Review() {
     );
 }
 
-export default Review;
+export default Report;
+
+export { REPORT_TYPE };

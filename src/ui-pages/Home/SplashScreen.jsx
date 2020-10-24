@@ -54,7 +54,6 @@ const useStyles = makeStyles((theme) => ({
         height: 115,
         bottom: 0,
         width: '100%',
-        padding: theme.spacing(0, 4),
         position: 'relative',
         margin: '0 auto',
         transition: 'opacity 0.3s ease 0s',
