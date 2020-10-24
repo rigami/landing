@@ -1,3 +1,5 @@
+![Logo](docs/GitHub_readme_header.jpg)
+
 Landing page for rigami project
 
 ## Build and start
