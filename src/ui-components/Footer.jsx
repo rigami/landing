@@ -1,6 +1,8 @@
 import React from 'react';
 import { fade, makeStyles } from '@material-ui/core/styles';
-import { Box, Container, Typography } from '@material-ui/core';
+import {
+    Box, Container, Link, Typography,
+} from '@material-ui/core';
 import LogoIcon from '@/resources/logo_studio.svg';
 import { useTranslation } from 'react-i18next';
 import { OpenInNewRounded as OpenInNewIcon } from '@material-ui/icons';
@@ -19,6 +21,7 @@ const useStyles = makeStyles((theme) => ({
     links: {
         width: '100%',
         flexGrow: 1,
+        display: 'flex',
     },
     designedByBlock: {
         marginLeft: 'auto',
@@ -73,7 +76,35 @@ const useStyles = makeStyles((theme) => ({
             easing: theme.transitions.easing.extraEaseInOut,
         }),
     },
+    linksBlock: {
+        display: 'flex',
+        flexDirection: 'column',
+        width: 260,
+        paddingTop: theme.spacing(4),
+    },
+    linksBlockTitle: { marginBottom: theme.spacing(2) },
+    linksBlockLink: { marginTop: theme.spacing(1) },
 }));
+
+function Block({ title, links }) {
+    const classes = useStyles();
+
+    return (
+        <Box className={classes.linksBlock}>
+            <Typography variant="h5" className={classes.linksBlockTitle}>{title}</Typography>
+            {links.map(({ label, url }) => (
+                <Link
+                    href={url}
+                    key={url}
+                    className={classes.linksBlockLink}
+                    color="textSecondary"
+                >
+                    {label}
+                </Link>
+            ))}
+        </Box>
+    );
+}
 
 function Footer() {
     const classes = useStyles();
@@ -82,7 +113,30 @@ function Footer() {
     return (
         <Box className={classes.root}>
             <Container className={classes.container}>
-                <Box className={classes.links} />
+                <Box className={classes.links}>
+                    <Block
+                        title={t('footer.links.review.title')}
+                        links={[
+                            {
+                                label: t('footer.links.review.writeReview'),
+                                url: '/review',
+                            },
+                            {
+                                label: t('footer.links.review.reportBug'),
+                                url: '/bug-report',
+                            },
+                        ]}
+                    />
+                    <Block
+                        title={t('footer.links.other.title')}
+                        links={[
+                            {
+                                label: t('footer.links.other.privacyPolicy'),
+                                url: '/policy',
+                            },
+                        ]}
+                    />
+                </Box>
                 <Box className={classes.designedByBlock}>
                     <a href="https://danilkinkin.com/" target="_blank" className={classes.linkWrapper}>
                         <Box className={classes.designerLink}>

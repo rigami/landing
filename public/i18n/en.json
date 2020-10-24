@@ -44,6 +44,17 @@
   },
   "comingSoon": "Coming Soon",
   "footer": {
-    "design&development": "Design & Development"
+    "design&development": "Design & Development",
+    "links": {
+      "review": {
+        "title": "Review",
+        "writeReview": "Write review",
+        "reportBug": "Bug report"
+      },
+      "other": {
+        "title": "Other",
+        "privacyPolicy": "Privacy policy"
+      }
+    }
   }
 }

@@ -44,6 +44,17 @@
   },
   "comingSoon": "Уже скоро",
   "footer": {
-    "design&development": "Дизайн & Разработка"
+    "design&development": "Дизайн & Разработка",
+    "links": {
+      "review": {
+        "title": "Ревью",
+        "writeReview": "Напсиать отзыв",
+        "reportBug": "Сообщить о проблеме"
+      },
+      "other": {
+        "title": "Другое",
+        "privacyPolicy": "Политика конфеденциональности"
+      }
+    }
   }
 }
