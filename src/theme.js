@@ -1,11 +1,12 @@
 import { createMuiTheme } from '@material-ui/core/styles';
 
 const theme = createMuiTheme({
-    breakpoints: { values: { lg: 1600 } },
     palette: {
         primary: { main: '#62B9FE' },
         secondary: { main: '#FFE16B' },
     },
+}, {
+    breakpoints: { values: { lg: 1600 } },
     overrides: {
         MuiCssBaseline: {
             '@global': {

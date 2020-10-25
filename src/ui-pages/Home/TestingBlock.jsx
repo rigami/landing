@@ -6,7 +6,9 @@ import {
     Button,
     Collapse,
     TextField,
-    CircularProgress, Container,
+    CircularProgress,
+    Container,
+    Hidden,
 } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import { useTranslation } from 'react-i18next';
@@ -19,7 +21,6 @@ const useStyles = makeStyles((theme) => ({
         minHeight: 850,
         width: '100%',
         backgroundColor: '#FAFAFA',
-        padding: theme.spacing(12),
         display: 'flex',
         flexDirection: 'column',
     },
@@ -293,7 +294,9 @@ function TestingBlock() {
                             </Button>
                         </Collapse>
                     </Box>
-                    <Box className={classes.artBlock} />
+                    <Hidden smDown>
+                        <Box className={classes.artBlock} />
+                    </Hidden>
                 </Container>
             </Card>
         </Box>

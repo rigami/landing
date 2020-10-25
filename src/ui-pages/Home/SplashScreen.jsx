@@ -30,6 +30,7 @@ const useStyles = makeStyles((theme) => ({
         position: 'relative',
         width: '100%',
         zIndex: theme.zIndex.modal,
+        overflow: 'hidden',
     },
     secondHeader: {
         height: '100%',
@@ -69,7 +70,13 @@ const useStyles = makeStyles((theme) => ({
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'end',
-        maxWidth: 320,
+        maxWidth: 384,
+        zIndex: 1,
+        background: 'linear-gradient(to right, white 280px, transparent)',
+        flexGrow: 1,
+        height: '100%',
+        justifyContent: 'center',
+        paddingRight: 64,
     },
     arrowDown: {
         color: fade(theme.palette.common.black, 0.3),
@@ -95,6 +102,7 @@ const useStyles = makeStyles((theme) => ({
         margin: 'auto',
         display: 'flex',
         justifyContent: 'center',
+        zIndex: 1,
         transition: theme.transitions.create(['opacity'], {
             duration: theme.transitions.duration.shorter,
             easing: theme.transitions.easing.easeInOut,
