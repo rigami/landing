@@ -19,6 +19,11 @@ import { KeyboardArrowDownRounded as ArrowDownIcon, HomeRounded as HomeIcon } fr
 import useMainStateStore from '@/utils/mainStateStore';
 import LangSwitcher from '@/ui-components/LangSwitcher';
 import CardLink, { BKMS_VARIANT } from '@/ui-components/Card';
+import yndxMscIcon from '@/resources/yndx_msc_icon.png';
+import youtubeIcon from '@/resources/youtube_icon.png';
+import elementaryPoster from '@/resources/elementary_poster.png';
+
+console.log(yndxMscIcon);
 
 const useStyles = makeStyles((theme) => ({
     description: {
@@ -121,7 +126,7 @@ const useStyles = makeStyles((theme) => ({
         boxShadow: theme.shadows[6],
     },
     card2: {
-        transform: 'translate(90px, -120px)',
+        transform: 'translate(90px, -100px)',
         boxShadow: theme.shadows[10],
     },
     card3: {
@@ -221,7 +226,7 @@ function SplashScreen({ shrink = false }) {
         } else {
             secondHeaderStickyRef.current.style.transform = 'translateY(0px)';
             card1Ref.current.style.transform = `translate(-40px, ${-220 - computeScrollOffset * 1.3}px)`;
-            card2Ref.current.style.transform = `translate(90px, ${-120 - computeScrollOffset * 1.15}px)`;
+            card2Ref.current.style.transform = `translate(90px, ${-100 - computeScrollOffset * 1.15}px)`;
             card4Ref.current.style.transform = `translate(40px, ${-16 - computeScrollOffset}px)`;
             card3Ref.current.style.transform = `translate(-110px, ${144 - computeScrollOffset * 0.85}px)`;
             card5Ref.current.style.transform = `translate(-100px, ${-80 - computeScrollOffset * 0.7}px)`;
@@ -295,6 +300,7 @@ function SplashScreen({ shrink = false }) {
                             </Box>
                             {!shrink && (
                                 <Box className={classes.rightBlock}>
+                                    {/* https://music.yandex.ru/users/y79519420181/playlists/101 */}
                                     <CardLink
                                         ref={card1Ref}
                                         name="Основной плейлист"
@@ -307,24 +313,26 @@ function SplashScreen({ shrink = false }) {
                                             '#ff8400',
                                         ]}
                                         icoVariant={BKMS_VARIANT.SMALL}
-                                        imageUrl="https://music.yandex.ru/users/y79519420181/playlists/101"
+                                        imageUrl={yndxMscIcon}
                                         className={clsx(classes.card, classes.card1)}
                                     />
+                                    {/* https://blog.elementary.io/updates-for-july-2020/ */}
                                     <CardLink
                                         ref={card2Ref}
                                         name="Let's Talk elementary OS 6 ⋅ elementary Blog"
                                         description="Updates for July, plus early access to the next major version"
                                         categories={['#EA4A99', '#25A3E2', '#EAC74A']}
                                         icoVariant={BKMS_VARIANT.POSTER}
-                                        imageUrl="https://blog.elementary.io/updates-for-july-2020/"
+                                        imageUrl={elementaryPoster}
                                         className={clsx(classes.card, classes.card2)}
                                     />
+                                    {/* https://www.youtube.com/?gl=RU */}
                                     <CardLink
                                         ref={card3Ref}
                                         name="YouTube"
                                         categories={['#EA4A99', '#25A3E2', '#EAC74A']}
                                         icoVariant={BKMS_VARIANT.SMALL}
-                                        imageUrl="https://www.youtube.com/?gl=RU&hl=ru"
+                                        imageUrl={youtubeIcon}
                                         className={clsx(classes.card, classes.card3)}
                                     />
                                     <CardLink

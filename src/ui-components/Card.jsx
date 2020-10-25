@@ -57,7 +57,7 @@ const useStyles = makeStyles((theme) => ({
     },
     extendBanner: {
         width: '100%',
-        height: 90,
+        height: 100,
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
