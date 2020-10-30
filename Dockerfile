@@ -27,7 +27,7 @@ WORKDIR /app
 COPY . .
 
 # Build the project and copy the files
-RUN yarn build && yarn next export
+RUN yarn build
 
 # stage 2 webserver
 FROM nginx:alpine

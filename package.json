@@ -9,9 +9,12 @@
   "license": "MIT",
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "next build && next export",
     "start": "next start",
     "lint": "eslint --fix --ext .jsx,.js,.json --ignore-path .gitignore ./src"
+  },
+  "resolutions": {
+    "webpack": "^5.2.0"
   },
   "dependencies": {
     "@material-ui/core": "^4.11.0",
