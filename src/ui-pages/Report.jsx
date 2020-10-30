@@ -158,7 +158,7 @@ function Report({ type = REPORT_TYPE.REVIEW }) {
 
         try {
             const result = await fetch(
-                `${config.server_url}/report/review`,
+                `${config.server_url}/report/${type === REPORT_TYPE.REVIEW ? 'review' : 'bug-report'}`,
                 {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
