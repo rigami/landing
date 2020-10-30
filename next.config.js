@@ -1,4 +1,7 @@
-module.exports = {
+const withPlugins = require('next-compose-plugins');
+const withBundleAnalyzer = require('@next/bundle-analyzer');
+
+module.exports = withPlugins([withBundleAnalyzer({ enabled: process.env.ANALYZE === 'true' })], {
     webpack: (config, { dev, webpack }) => ({
         ...config,
         plugins: [...(config?.plugins || []), new webpack.DefinePlugin({ PRODUCTION_MODE: JSON.stringify(!dev) })],
@@ -8,7 +11,7 @@ module.exports = {
                 ...(config?.module?.rules || []),
                 {
                     test: /\.svg$/,
-                    issuer: { test: /\.(js|ts)x?$/ },
+                    issuer: /\.(js|ts)x?$/,
                     loader: require.resolve('react-svg-loader'),
                     options: { svgo: { plugins: [{ removeViewBox: false }] } },
                 },
@@ -24,4 +27,4 @@ module.exports = {
             ],
         },
     }),
-};
+});
