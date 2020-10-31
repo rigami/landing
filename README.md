@@ -1,10 +1,10 @@
 ![Logo](docs/GitHub_readme_header.jpg)
 
-Landing page for rigami project
+Landing pages for rigami project
 
 ## Build and start
 
-##### Enviroment variables
+##### Environment variables
 
 - `SSH_PUB_KEY` The public ssh key is certified in github. Needed for private loading of dependencies
 - `SSH_PRV_KEY` The private ssh key.
