@@ -6,7 +6,7 @@ const theme = createMuiTheme({
         secondary: { main: '#FFE16B' },
     },
 }, {
-    breakpoints: { values: { lg: 1600 } },
+    breakpoints: { values: { lg: 1530 } },
     overrides: {
         MuiCssBaseline: {
             '@global': {
@@ -30,6 +30,14 @@ const theme = createMuiTheme({
             'body1': {
                 fontSize: 16,
                 fontFamily: 'Source Sans Pro',
+            },
+        },
+        MuiContainer: {
+            root: {
+                '@media (min-width: 600px)': {
+                    paddingLeft: 32,
+                    paddingRight: 32,
+                },
             },
         },
     },
