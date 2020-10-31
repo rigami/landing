@@ -14,6 +14,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import { useTranslation } from 'react-i18next';
 import clsx from 'clsx';
 import config from '@/config';
+import testingImageUrl from '@/resources/testing.png';
 
 const useStyles = makeStyles((theme) => ({
     wrapper: { padding: theme.spacing(4) },
@@ -38,10 +39,12 @@ const useStyles = makeStyles((theme) => ({
     },
     artBlock: {
         width: 700,
-        height: 400,
-        backgroundColor: '#d6d6d6',
+        height: 550,
         flexGrow: 0,
         marginLeft: 'auto',
+        backgroundSize: 'contain',
+        backgroundRepeat: 'no-repeat',
+        backgroundPosition: 'center',
     },
     description: { marginTop: theme.spacing(2) },
     button: { padding: theme.spacing(1, 4) },
@@ -149,7 +152,6 @@ function TestingBlock() {
                     body: JSON.stringify(data),
                 },
             );
-            console.log('result', result);
 
             if (result.status === 200) {
                 setStage(STAGE.ENDING_SCREEN);
@@ -295,7 +297,7 @@ function TestingBlock() {
                         </Collapse>
                     </Box>
                     <Hidden smDown>
-                        <Box className={classes.artBlock} />
+                        <Box className={classes.artBlock} style={{ backgroundImage: `url(${testingImageUrl})` }} />
                     </Hidden>
                 </Container>
             </Card>
