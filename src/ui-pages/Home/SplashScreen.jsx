@@ -204,6 +204,7 @@ function SplashScreen({ shrink = false }) {
     const secondHeaderRef = useRef(null);
     const secondHeaderWrapperRef = useRef(null);
     const secondHeaderStickyRef = useRef(null);
+    const scrollOffset = useRef(0);
     const card1Ref = useRef(null);
     const card2Ref = useRef(null);
     const card3Ref = useRef(null);
@@ -213,7 +214,9 @@ function SplashScreen({ shrink = false }) {
     const scrollHandler = (offset = 0) => {
         if (typeof window === 'undefined') return;
 
-        const computeScrollOffset = offset;
+        if (offset) scrollOffset.current = offset;
+
+        const computeScrollOffset = scrollOffset.current;
         const computeClientHeight = document.documentElement.clientHeight;
         const secondHeaderRefHeight = Math.max(computeClientHeight - computeScrollOffset, 115);
 
@@ -237,6 +240,7 @@ function SplashScreen({ shrink = false }) {
     };
 
     const resizeHandler = () => {
+        scrollHandler();
     };
 
     useEffect(() => {
