@@ -123,7 +123,13 @@ const useStyles = makeStyles((theme) => ({
         alignItems: 'center',
         flexDirection: 'column',
     },
-    card: { position: 'absolute' },
+    card: {
+        position: 'absolute',
+        transition: theme.transitions.create(['transform'], {
+            duration: theme.transitions.duration.shorter,
+            easing: theme.transitions.easing.easeInOut,
+        }),
+    },
     card1: {
         transform: 'translate(-40px, -220px)',
         boxShadow: theme.shadows[6],
