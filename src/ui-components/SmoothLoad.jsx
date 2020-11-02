@@ -4,9 +4,12 @@ import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
 import LanguageDetector from 'i18next-browser-languagedetector';
 import Backend from 'i18next-http-backend';
+import { makeStyles } from '@material-ui/core/styles';
+
+const useStyles = makeStyles((theme) => ({ root: { backgroundColor: theme.palette.background.paper } }));
 
 const loadLocale = async () => {
-    console.log("Is production mode", PRODUCTION_MODE)
+    console.log('Is production mode', PRODUCTION_MODE);
 
     await i18n
         .use(initReactI18next)
@@ -21,6 +24,7 @@ const loadLocale = async () => {
 };
 
 function SmoothLoad({ children }) {
+    const classes = useStyles();
     const [isShow, setIsShow] = useState(false);
 
     useEffect(() => {
@@ -31,7 +35,7 @@ function SmoothLoad({ children }) {
 
     return (
         <Fade in={isShow} unmountOnExit>
-            <Box>
+            <Box className={classes.root}>
                 {children}
             </Box>
         </Fade>

@@ -32,10 +32,12 @@ const useStyles = makeStyles((theme) => ({
     },
     secondHeaderWrapper: {
         height: '100vh',
-        position: 'relative',
+        position: 'sticky',
+        top: 0,
         width: '100%',
         zIndex: theme.zIndex.modal,
         overflow: 'hidden',
+        pointerEvents: 'none',
     },
     secondHeader: {
         height: '100%',
@@ -49,7 +51,8 @@ const useStyles = makeStyles((theme) => ({
     secondHeaderShadow: {
         position: 'absolute',
         width: '100%',
-        bottom: 0,
+        top: 0,
+        pointerEvents: 'auto',
     },
     secondHeaderBlock: {
         display: 'flex',
@@ -222,18 +225,11 @@ function SplashScreen({ shrink = false }) {
 
         secondHeaderRef.current.style.height = `${secondHeaderRefHeight}px`;
 
-        if (computeScrollOffset > computeClientHeight - 115) {
-            secondHeaderStickyRef.current.style.transform = `translateY(${
-                computeScrollOffset - computeClientHeight + 115
-            }px)`;
-        } else {
-            secondHeaderStickyRef.current.style.transform = 'translateY(0px)';
-            card1Ref.current.style.transform = `translate(-40px, ${-220 - computeScrollOffset * 1.3}px)`;
-            card2Ref.current.style.transform = `translate(90px, ${-100 - computeScrollOffset * 1.15}px)`;
-            card4Ref.current.style.transform = `translate(40px, ${-16 - computeScrollOffset}px)`;
-            card3Ref.current.style.transform = `translate(-110px, ${144 - computeScrollOffset * 0.85}px)`;
-            card5Ref.current.style.transform = `translate(-100px, ${-80 - computeScrollOffset * 0.7}px)`;
-        }
+        card1Ref.current.style.transform = `translate(-40px, ${-220 - computeScrollOffset * 1.3}px)`;
+        card2Ref.current.style.transform = `translate(90px, ${-100 - computeScrollOffset * 1.15}px)`;
+        card4Ref.current.style.transform = `translate(40px, ${-16 - computeScrollOffset}px)`;
+        card3Ref.current.style.transform = `translate(-110px, ${144 - computeScrollOffset * 0.85}px)`;
+        card5Ref.current.style.transform = `translate(-100px, ${-80 - computeScrollOffset * 0.7}px)`;
 
         setShadowHeader(computeScrollOffset > computeClientHeight - 115);
         setDescriptionHide(computeScrollOffset * 2 > computeClientHeight);
@@ -244,13 +240,13 @@ function SplashScreen({ shrink = false }) {
     };
 
     useEffect(() => {
-        if (shrink) return;
+        if (shrink || typeof window === 'undefined') return;
 
         addEventListener('resize', resizeHandler, false);
 
         const listenId = eventBus.on('document.scroll', scrollHandler);
 
-        scrollHandler();
+        scrollHandler(window.scrollY);
 
         return () => {
             eventBus.removeListener(listenId);
