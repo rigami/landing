@@ -50,7 +50,7 @@
     "links": {
       "review": {
         "title": "Ревью",
-        "writeReview": "Напсиать отзыв",
+        "writeReview": "Написать отзыв",
         "reportBug": "Сообщить о проблеме",
         "githubIssue": "Страница проблем и вопросов на GitHub"
       },
@@ -63,7 +63,7 @@
   },
   "page": {
     "report": {
-      "github": "Вы также можете написать на github",
+      "github": "Вы также можете сделать это на github",
       "form": {
         "email": {
           "label": "Почта",

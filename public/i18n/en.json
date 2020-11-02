@@ -63,7 +63,7 @@
   },
   "page": {
     "report": {
-      "github": "You can also write on github",
+      "github": "You can also do this on github",
       "form": {
         "email": {
           "label": "Email",
