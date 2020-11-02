@@ -131,7 +131,7 @@ function Footer() {
                             },
                             {
                                 label: t('footer.links.review.githubIssue'),
-                                url: 'https://github.com/rigami-org/readme/issues',
+                                url: 'https://github.com/rigami/readme/issues',
                                 target: '_blank',
                             },
                         ]}
@@ -141,12 +141,12 @@ function Footer() {
                         links={[
                             {
                                 label: t('footer.links.other.privacyPolicy'),
-                                url: 'https://github.com/rigami-org/readme/blob/main/POLICY.md',
+                                url: 'https://github.com/rigami/readme/blob/main/POLICY.md',
                                 target: '_blank',
                             },
                             {
                                 label: t('footer.links.other.github'),
-                                url: 'https://github.com/rigami-org/readme',
+                                url: 'https://github.com/rigami/readme',
                                 target: '_blank',
                             },
                         ]}
