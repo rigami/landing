@@ -31,6 +31,14 @@ class MyApp extends App {
                         rel="icon" type="image/png" sizes="16x16"
                         href="16x16.png"
                     />
+                    <script async src="https://www.googletagmanager.com/gtag/js?id=G-RLN7C8YBGE" />
+                    <script>
+                        {`window.dataLayer = window.dataLayer || [];
+                        function gtag(){dataLayer.push(arguments);}
+                        gtag('js', new Date());
+
+                        gtag('config', 'G-RLN7C8YBGE');`}
+                    </script>
                 </Head>
                 <CssBaseline />
                 <ThemeProvider theme={theme}>

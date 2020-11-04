@@ -15,7 +15,7 @@
     "lint": "eslint --fix --ext .jsx,.js,.json --ignore-path .gitignore ."
   },
   "resolutions": {
-    "webpack": "^5.3.2"
+    "webpack": "^5.4.0"
   },
   "dependencies": {
     "@material-ui/core": "^4.11.0",
