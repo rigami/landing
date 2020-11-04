@@ -6,7 +6,12 @@ const theme = createMuiTheme({
         secondary: { main: '#FFE16B' },
     },
 }, {
-    breakpoints: { values: { lg: 1530 } },
+    breakpoints: {
+        values: {
+            md: 1100,
+            lg: 1530,
+        },
+    },
     overrides: {
         MuiCssBaseline: {
             '@global': {
@@ -18,18 +23,26 @@ const theme = createMuiTheme({
             },
         },
         MuiTypography: {
+            'h2': {
+                fontWeight: 600,
+                wordBreak: 'break-word',
+            },
+            'h3': { wordBreak: 'break-word' },
             'h5': {
                 fontSize: 18,
                 fontWeight: 'bold',
                 fontFamily: 'Ubuntu',
+                wordBreak: 'break-word',
             },
             'h4': {
                 fontSize: 32,
                 fontFamily: 'Source Sans Pro',
+                wordBreak: 'break-word',
             },
             'body1': {
                 fontSize: 16,
                 fontFamily: 'Source Sans Pro',
+                wordBreak: 'break-word',
             },
         },
         MuiContainer: {
@@ -40,7 +53,9 @@ const theme = createMuiTheme({
                 },
             },
         },
+        MuiButton: { label: { wordBreak: 'break-word' } },
     },
+    typography: { fontFamily: '"Red Hat Display", "Ubuntu", "Source Sans Pro", sans-serif' },
     props: { MuiButton: { disableElevation: true } },
     shape: {
         borderRadius: 4,

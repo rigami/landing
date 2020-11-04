@@ -12,7 +12,7 @@
     "build-analize": "ANALYZE=true next build",
     "build": "next build && next export",
     "start": "next start",
-    "lint": "eslint --fix --ext .jsx,.js,.json --ignore-path .gitignore ./src"
+    "lint": "eslint --fix --ext .jsx,.js,.json --ignore-path .gitignore ."
   },
   "resolutions": {
     "webpack": "^5.3.2"

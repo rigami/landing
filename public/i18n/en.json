@@ -29,6 +29,9 @@
       "retryButton": "Create another request"
     }
   },
+  "bookmarks": {
+    "description": "Convenient bookmark management. Light and dark theme"
+  },
   "features": {
     "crossPlatform": {
       "title": "Cross-platform",
@@ -105,6 +108,15 @@
         "description": "We will analyze your report, and if necessary, we will answer you by mail",
         "retryButton": "Write another bug report"
       }
+    },
+    "migrateFromClockTab":{
+      "title": "Migrate from ClockTab to Rigami",
+      "description": "Rigami is a completely new reimagined expansion. It is faster, more stable and more convenient. Now it is under active development and testing. You can help us release it to the public sooner. You can try the new extension and tell us about your experience. Rigami supports save files from СlockTab, you can transfer these save files to Rigami",
+      "download": "Get extension",
+      "bookmarks": {
+        "description": "Convenient bookmark management. Light and dark theme"
+      },
+      "finalDescription": "Try the new best extension"
     }
   }
 }
