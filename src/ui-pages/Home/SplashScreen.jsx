@@ -125,10 +125,10 @@ const useStyles = makeStyles((theme) => ({
     },
     card: {
         position: 'absolute',
-        transition: theme.transitions.create(['transform'], {
+        /* transition: theme.transitions.create(['transform'], {
             duration: theme.transitions.duration.shorter,
             easing: theme.transitions.easing.easeInOut,
-        }),
+        }), */
     },
     card1: {
         transform: 'translate(-40px, -220px)',
