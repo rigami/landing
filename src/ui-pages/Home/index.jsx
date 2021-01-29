@@ -7,31 +7,25 @@ import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
 import { useTranslation } from 'react-i18next';
 import sctBookmarksUrl from '@/resources/screenshot-bookmarks.jpg';
+import Header from '@/ui-components/Header';
+import ContentCard from '@/ui-components/ContentCard';
+import ContentButton from '@/ui-components/ContentButton';
 import TestingBlock from './TestingBlock';
 import SplashScreen from './SplashScreen';
 import FeaturesBlock from './FeaturesBlock';
 
 const useStyles = makeStyles((theme) => ({
-    screenshot: {
-        borderRadius: theme.shape.borderRadius,
-        boxShadow: theme.shadows[16],
-    },
-    bookmarksBlockWrp: { backgroundColor: '#F6F6F6' },
-    bookmarksBlock: {
-        textAlign: 'center',
-        height: 'calc(70vh)',
-        minHeight: 500,
-        overflow: 'hidden',
-        paddingTop: theme.spacing(14),
+    content: {
         display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
+        flexWrap: 'wrap',
+        // borderBottom: `1px solid ${theme.palette.divider}`,
     },
-    sctBookmarks: {
-        marginTop: theme.spacing(14),
-        width: '100%',
-        minWidth: 660,
+    card: {
+        flexGrow: 1,
+        // borderRight: `1px solid ${theme.palette.divider}`,
+        // '&:last-child': { borderRight: 'none' },
     },
+    fullWidthCard: { width: '100%' },
 }));
 
 function Home() {
@@ -40,21 +34,38 @@ function Home() {
 
     return (
         <Fragment>
+            <Header />
             <SplashScreen />
-            <div>
-                <TestingBlock />
-                <Box className={classes.bookmarksBlockWrp}>
-                    <Container className={classes.bookmarksBlock} maxWidth="md">
-                        <Typography variant="body1">{t('bookmarks.description')}</Typography>
-                        <CardMedia
-                            image={sctBookmarksUrl}
-                            component="img"
-                            className={clsx(classes.sctBookmarks, classes.screenshot)}
-                        />
-                    </Container>
-                </Box>
-                <FeaturesBlock />
-            </div>
+            <Box className={classes.content}>
+                <ContentCard
+                    className={classes.card}
+                    title="title"
+                    subtitle="subtitle"
+                    actions={(
+                        <ContentButton>Перейти в Chrome Web Store</ContentButton>
+                    )}
+                />
+                <ContentCard
+                    className={classes.card}
+                    title="title"
+                    subtitle="subtitle"
+                />
+                <ContentCard
+                    className={clsx(classes.card, classes.fullWidthCard)}
+                    title="Full width card"
+                    subtitle="subtitle"
+                />
+                <ContentCard
+                    className={classes.card}
+                    title="title"
+                    subtitle="subtitle"
+                />
+                <ContentCard
+                    className={classes.card}
+                    title="title"
+                    subtitle="subtitle"
+                />
+            </Box>
             <Footer />
         </Fragment>
     );

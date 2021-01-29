@@ -1,17 +1,14 @@
 import { createMuiTheme } from '@material-ui/core/styles';
 
+const primaryFont = '"Red Hat Display", "Ubuntu", "Source Sans Pro", sans-serif';
+
 const theme = createMuiTheme({
     palette: {
         primary: { main: '#62B9FE' },
         secondary: { main: '#FFE16B' },
     },
 }, {
-    breakpoints: {
-        values: {
-            md: 1100,
-            lg: 1530,
-        },
-    },
+    breakpoints: { values: { lg: 1378 } },
     overrides: {
         MuiCssBaseline: {
             '@global': {
@@ -22,40 +19,41 @@ const theme = createMuiTheme({
                 },
             },
         },
-        MuiTypography: {
-            'h2': {
-                fontWeight: 600,
-                wordBreak: 'break-word',
-            },
-            'h3': { wordBreak: 'break-word' },
-            'h5': {
-                fontSize: 18,
-                fontWeight: 'bold',
-                fontFamily: 'Ubuntu',
-                wordBreak: 'break-word',
-            },
-            'h4': {
-                fontSize: 32,
-                fontFamily: 'Source Sans Pro',
-                wordBreak: 'break-word',
-            },
-            'body1': {
-                fontSize: 16,
-                fontFamily: 'Source Sans Pro',
-                wordBreak: 'break-word',
-            },
-        },
         MuiContainer: {
             root: {
+                paddingLeft: 64,
+                paddingRight: 64,
+                boxSizing: 'content-box',
                 '@media (min-width: 600px)': {
-                    paddingLeft: 32,
-                    paddingRight: 32,
+                    paddingLeft: 64,
+                    paddingRight: 64,
                 },
             },
         },
-        MuiButton: { label: { wordBreak: 'break-word' } },
+        MuiToolbar: {
+            gutters: {
+                paddingLeft: 64,
+                paddingRight: 64,
+                boxSizing: 'content-box',
+                '@media (min-width: 600px)': {
+                    paddingLeft: 64,
+                    paddingRight: 64,
+                },
+            },
+        },
+        MuiButton: {
+            root: { fontFamily: primaryFont },
+            label: { wordBreak: 'break-word' },
+        },
     },
-    typography: { fontFamily: '"Red Hat Display", "Ubuntu", "Source Sans Pro", sans-serif' },
+    typography: {
+        fontFamily: primaryFont,
+        h1: {
+            fontFamily: primaryFont,
+            fontSize: '2.3rem',
+            fontWeight: 600,
+        },
+    },
     props: { MuiButton: { disableElevation: true } },
     shape: {
         borderRadius: 4,
