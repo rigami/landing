@@ -1,9 +1,11 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useEffect, useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Box, Container } from '@material-ui/core';
 import ContentCard from '@/ui-components/ContentCard';
 import backgroundUrl from '@/resources/splashscreen-background.jpg';
 import DownloadButton from '@/ui-components/DownloadButton';
+import { decode } from 'blurhash';
+import clsx from 'clsx';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -40,10 +42,39 @@ const useStyles = makeStyles((theme) => ({
         lineHeight: 1.3,
         fontSize: '2.3rem',
     },
+    preloadStub: {
+        transition: theme.transitions.create(['opacity'], {
+            duration: theme.transitions.duration.complex,
+            easing: theme.transitions.easing.easeInOut,
+        }),
+    },
+    hidePreloadStub: { opacity: 0 },
 }));
 
 function SplashScreen() {
     const classes = useStyles();
+    const [bgLoaded, setBgLoaded] = useState(false);
+
+    useEffect(() => {
+        const pixels = decode('LB9tif~p9FIpo|x[-o%2aJt6%2s.', window.innerWidth, window.innerHeight);
+
+        const canvas = document.getElementById('preload-image');
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        const ctx = canvas.getContext('2d');
+        const imageData = ctx.createImageData(window.innerWidth, window.innerHeight);
+        imageData.data.set(pixels);
+        ctx.putImageData(imageData, 0, 0);
+
+        const imgPreload = new Image();
+        imgPreload.onload = () => {
+            setBgLoaded(true);
+        };
+        imgPreload.onerror = () => {
+
+        };
+        imgPreload.src = backgroundUrl;
+    }, []);
 
     return (
         <Box className={classes.root}>
@@ -72,7 +103,9 @@ function SplashScreen() {
                     )}
                 />
             </Container>
-            <Box className={classes.backdrop} />
+            <Box className={classes.backdrop}>
+                <canvas id="preload-image" className={clsx(classes.preloadStub, bgLoaded && classes.hidePreloadStub)} />
+            </Box>
         </Box>
     );
 }
