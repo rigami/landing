@@ -7,7 +7,7 @@ import React, {
 import { fade, makeStyles } from '@material-ui/core/styles';
 import {
     Box,
-    Container,
+    Container, Typography,
 } from '@material-ui/core';
 import LogoIcon from '@/resources/logo.svg';
 import clsx from 'clsx';
@@ -19,12 +19,14 @@ import CardLink, { BKMS_VARIANT } from '@/ui-components/Card';
 import ContentCard from '@/ui-components/ContentCard';
 import backgroundUrl from '@/resources/splashscreen-background.jpg';
 import ContentButton from '@/ui-components/ContentButton';
+import DownloadButton from '@/ui-components/DownloadButton';
 
 const useStyles = makeStyles((theme) => ({
     root: {
-        minHeight: 'calc(100vh - 134px)',
+        minHeight: 'calc(100vh - 180px)',
         position: 'relative',
         display: 'grid',
+        overflow: 'hidden',
     },
     backdrop: {
         backgroundImage: `url(${backgroundUrl})`,
@@ -46,7 +48,12 @@ const useStyles = makeStyles((theme) => ({
     card: {
         margin: 'auto',
         marginLeft: theme.spacing(-8),
+        marginRight: theme.spacing(8),
         maxWidth: 730,
+    },
+    title: {
+        lineHeight: 1.3,
+        fontSize: '2.3rem',
     },
 }));
 
@@ -57,7 +64,10 @@ function SplashScreen() {
         <Box className={classes.root}>
             <Container className={classes.content}>
                 <ContentCard
-                    className={classes.card}
+                    classes={{
+                        root: classes.card,
+                        title: classes.title,
+                    }}
                     title={(
                         <Fragment>
                             Для сохранения всего.
@@ -67,7 +77,7 @@ function SplashScreen() {
                     )}
                     subtitle="Rigami - это новая вкладка для браузера которая сочетает в себе минимализм и обширный функционал. Закладки, часы, дата и  текущяя погода, ничего лишнего"
                     actions={(
-                        <ContentButton>Перейти в Chrome Web Store</ContentButton>
+                        <DownloadButton />
                     )}
                 />
             </Container>

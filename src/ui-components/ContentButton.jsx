@@ -11,11 +11,17 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-function ContentButton({ children, className: externalClassName }) {
+function ContentButton({ children, className: externalClassName, ...other }) {
     const classes = useStyles();
 
     return (
-        <Button variant="outlined" className={clsx(classes.root, externalClassName)}>{children}</Button>
+        <Button
+            variant="outlined"
+            className={clsx(classes.root, externalClassName)}
+            {...other}
+        >
+            {children}
+        </Button>
     );
 }
 

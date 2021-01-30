@@ -1,13 +1,19 @@
 import React, { Fragment } from 'react';
 import App from 'next/app';
 import { ThemeProvider } from '@material-ui/core/styles';
-import { Box } from '@material-ui/core';
-import CssBaseline from '@material-ui/core/CssBaseline';
+import { Box, CssBaseline } from '@material-ui/core';
 import theme from '@/theme';
 import '@/fonts/inject.css';
 import Head from 'next/head';
 
 class MyApp extends App {
+    componentDidMount() {
+        const jssStyles = document.querySelector('#jss-server-side');
+        if (jssStyles) {
+            jssStyles.parentElement.removeChild(jssStyles);
+        }
+    }
+
     render() {
         const { Component, pageProps } = this.props;
 
@@ -38,6 +44,7 @@ class MyApp extends App {
                 </Head>
                 <CssBaseline />
                 <ThemeProvider theme={theme}>
+                    <CssBaseline />
                     <Box
                         style={{
                             minHeight: '100vh',

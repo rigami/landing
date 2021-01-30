@@ -13,7 +13,14 @@ const useStyles = makeStyles((theme) => ({
         borderRadius: 0,
         border: 'none',
     },
-    subtitle: { marginTop: theme.spacing(3) },
+    title: {
+        maxWidth: 560,
+        lineHeight: 0.9,
+    },
+    subtitle: {
+        maxWidth: 560,
+        marginTop: theme.spacing(3),
+    },
     actions: {
         padding: 0,
         paddingTop: theme.spacing(8),
@@ -23,6 +30,7 @@ const useStyles = makeStyles((theme) => ({
 function ContentCard(props) {
     const {
         className: externalClassName,
+        classes: externalClasses = {},
         title,
         subtitle,
         actions,
@@ -31,9 +39,27 @@ function ContentCard(props) {
     const classes = useStyles();
 
     return (
-        <Card elevation={0} variant="outlined" className={clsx(classes.root, externalClassName)}>
-            <Typography variant="h1">{title}</Typography>
-            <Typography variant="body1" className={classes.subtitle}>{subtitle}</Typography>
+        <Card
+            elevation={0}
+            variant="outlined"
+            className={clsx(classes.root, externalClassName, externalClasses.root)}
+        >
+            {title && (
+                <Typography
+                    variant="h1"
+                    className={clsx(classes.title, externalClasses.title)}
+                >
+                    {title}
+                </Typography>
+            )}
+            {subtitle && (
+                <Typography
+                    variant="body1"
+                    className={clsx(classes.subtitle, externalClasses.subtitle)}
+                >
+                    {subtitle}
+                </Typography>
+            )}
             {children}
             {actions && (
                 <CardActions className={classes.actions}>

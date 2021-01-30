@@ -10,13 +10,13 @@ import Image from './Image';
 
 const useStyles = makeStyles((theme) => ({
     root: {
-        width: 180,
+        width: 200,
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'flex-end',
         position: 'relative',
-        border: 'none',
+        // border: 'none',
         '&:hover $menuIcon': {
             opacity: 1,
             pointerEvents: 'auto',
@@ -25,7 +25,7 @@ const useStyles = makeStyles((theme) => ({
     icon: { margin: 'auto' },
     body: {
         width: '100%',
-        padding: theme.spacing(1, 2),
+        padding: theme.spacing(1.5, 2),
         boxSizing: 'border-box',
     },
     categoriesWrapper: {
@@ -37,7 +37,7 @@ const useStyles = makeStyles((theme) => ({
         height: theme.spacing(1),
         borderRadius: theme.spacing(0.5),
         marginRight: theme.spacing(0.6),
-        marginBottom: theme.spacing(0.5),
+        marginBottom: theme.spacing(0.75),
     },
     title: {
         display: '-webkit-box',
@@ -61,7 +61,6 @@ const useStyles = makeStyles((theme) => ({
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        marginBottom: theme.spacing(1),
     },
     description: {
         color: theme.palette.text.secondary,

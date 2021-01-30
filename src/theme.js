@@ -8,22 +8,18 @@ const theme = createMuiTheme({
         secondary: { main: '#FFE16B' },
     },
 }, {
-    breakpoints: { values: { lg: 1378 } },
+    breakpoints: { values: { lg: 1506 } },
     overrides: {
         MuiCssBaseline: {
             '@global': {
                 html: { WebkitFontSmoothing: 'auto' },
-                body: {
-                    backgroundColor: '#fff',
-                    overflow: 'hidden',
-                },
+                body: { backgroundColor: '#fff' },
             },
         },
         MuiContainer: {
             root: {
                 paddingLeft: 64,
                 paddingRight: 64,
-                boxSizing: 'content-box',
                 '@media (min-width: 600px)': {
                     paddingLeft: 64,
                     paddingRight: 64,
@@ -34,7 +30,6 @@ const theme = createMuiTheme({
             gutters: {
                 paddingLeft: 64,
                 paddingRight: 64,
-                boxSizing: 'content-box',
                 '@media (min-width: 600px)': {
                     paddingLeft: 64,
                     paddingRight: 64,
@@ -50,7 +45,7 @@ const theme = createMuiTheme({
         fontFamily: primaryFont,
         h1: {
             fontFamily: primaryFont,
-            fontSize: '2.3rem',
+            fontSize: '4rem',
             fontWeight: 600,
         },
     },
