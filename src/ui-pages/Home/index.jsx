@@ -8,13 +8,13 @@ import {
 import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
 import Header from '@/ui-components/Header';
-import ContentCard from '@/ui-components/ContentCard';
 import DownloadButton from '@/ui-components/DownloadButton';
 import SplashScreen from './SplashScreen';
 import BookmarksBlock from './BookmarksBlock';
 import HelpForTheProjectBlock from './HelpForTheProjectBlock';
 import DemoBlock from './DemoBlock';
 import BackgroundsBlock from './BackgroundsBlock';
+import ClearInterfaceBlock from './ClearInterfaceBlock';
 
 const useStyles = makeStyles((theme) => ({
     contentWrapper: { overflow: 'hidden' },
@@ -60,10 +60,7 @@ function Home() {
                     <HelpForTheProjectBlock className={classes.card} />
                     <BackgroundsBlock className={classes.card} />
                     <BookmarksBlock className={classes.card} />
-                    <ContentCard
-                        className={classes.card}
-                        title="Чистота при выше всего"
-                    />
+                    <ClearInterfaceBlock className={classes.card} />
                     <Container
                         className={clsx(classes.card, classes.fullWidthCard, classes.download)}
                         maxWidth={false}
