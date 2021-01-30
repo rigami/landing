@@ -7,10 +7,7 @@ import elementaryPosterSrc from '@/resources/elementary_poster.png';
 import mdnIconSrc from '@/resources/mdn_icon.png';
 
 const useStyles = makeStyles((theme) => ({
-    root: {
-        position: 'relative',
-        minHeight: 612,
-    },
+    root: { minHeight: 612 },
     title: { maxWidth: 650 },
     subtitle: { maxWidth: 400 },
     card: {

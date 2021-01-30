@@ -12,6 +12,7 @@ const useStyles = makeStyles((theme) => ({
         padding: theme.spacing(8),
         borderRadius: 0,
         border: 'none',
+        position: 'relative',
     },
     title: {
         maxWidth: 560,
@@ -62,7 +63,7 @@ function ContentCard(props) {
             )}
             {children}
             {actions && (
-                <CardActions className={classes.actions}>
+                <CardActions className={clsx(classes.actions, externalClasses.actions)}>
                     {actions}
                 </CardActions>
             )}

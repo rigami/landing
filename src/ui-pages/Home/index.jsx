@@ -1,17 +1,18 @@
 import React, { Fragment } from 'react';
 import Footer from '@/ui-components/Footer';
 import {
-    Box, Container, Link, Typography,
+    Box,
+    Container,
+    Typography,
 } from '@material-ui/core';
 import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
 import Header from '@/ui-components/Header';
 import ContentCard from '@/ui-components/ContentCard';
-import ContentButton from '@/ui-components/ContentButton';
-// import Link from 'next/link';
 import DownloadButton from '@/ui-components/DownloadButton';
 import SplashScreen from './SplashScreen';
 import BookmarksBlock from './BookmarksBlock';
+import HelpForTheProjectBlock from './HelpForTheProjectBlock';
 
 const useStyles = makeStyles((theme) => ({
     contentWrapper: { overflow: 'hidden' },
@@ -26,8 +27,8 @@ const useStyles = makeStyles((theme) => ({
         flexGrow: 1,
         margin: 0.5,
         flexBasis: 'calc(50% - 1px)',
-        // borderRight: `1px solid ${theme.palette.divider}`,
-        // '&:last-child': { borderRight: 'none' },
+        flexShrink: 0,
+        minWidth: 'min-content',
     },
     fullWidthCard: { flexBasis: '100%' },
     download: {
@@ -58,28 +59,16 @@ function Home() {
                         title="Всё самое важное и ничего больше"
                         subtitle="Чистота и минимум деталей, только то что нужно, отличная кастомизация и огромный функционал. "
                     />
-                    <ContentCard
-                        className={classes.card}
-                        title="Станьте частью проекта"
-                        subtitle="На текущий момент проект находится в активной разработке и недоступен для широкой публики, но вы можете присоединиться и помочь довести его до всего мира быстрее. Ваша помошь не останеться незамеченой."
-                        actions={(
-                            <ContentButton
-                                component={Link}
-                                href="/help-for-the-project"
-                            >
-                                Как я могу помочь?
-                            </ContentButton>
-                        )}
-                    />
+                    <HelpForTheProjectBlock className={classes.card} />
                     <ContentCard
                         className={classes.card}
                         title="Любой формат фона"
-                        subtitle="Поддержка огромного количества файлов для фона, а так же настраевыемые потоки фонов. "
+                        subtitle="Поддержка огромного количества файлов для фона, а так же настраиваемые потоки фонов. "
                     />
                     <BookmarksBlock className={classes.card} />
                     <ContentCard
                         className={classes.card}
-                        title="Чистота привыше всего"
+                        title="Чистота при выше всего"
                     />
                     <Container className={clsx(classes.card, classes.fullWidthCard, classes.download)} maxWidth={false}>
                         <Typography variant="h1">
