@@ -13,6 +13,7 @@ import DownloadButton from '@/ui-components/DownloadButton';
 import SplashScreen from './SplashScreen';
 import BookmarksBlock from './BookmarksBlock';
 import HelpForTheProjectBlock from './HelpForTheProjectBlock';
+import DemoBlock from './DemoBlock';
 
 const useStyles = makeStyles((theme) => ({
     contentWrapper: { overflow: 'hidden' },
@@ -54,11 +55,7 @@ function Home() {
             <SplashScreen />
             <Box className={classes.contentWrapper}>
                 <Box className={classes.content}>
-                    <ContentCard
-                        className={clsx(classes.card, classes.fullWidthCard)}
-                        title="Всё самое важное и ничего больше"
-                        subtitle="Чистота и минимум деталей, только то что нужно, отличная кастомизация и огромный функционал. "
-                    />
+                    <DemoBlock className={clsx(classes.card, classes.fullWidthCard)} />
                     <HelpForTheProjectBlock className={classes.card} />
                     <ContentCard
                         className={classes.card}
@@ -70,7 +67,10 @@ function Home() {
                         className={classes.card}
                         title="Чистота при выше всего"
                     />
-                    <Container className={clsx(classes.card, classes.fullWidthCard, classes.download)} maxWidth={false}>
+                    <Container
+                        className={clsx(classes.card, classes.fullWidthCard, classes.download)}
+                        maxWidth={false}
+                    >
                         <Typography variant="h1">
                             Установите.
                             <br />

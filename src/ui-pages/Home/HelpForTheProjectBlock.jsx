@@ -14,6 +14,7 @@ const useStyles = makeStyles((theme) => ({
         backgroundPosition: 'calc(100% - 20px) calc(100% - 25px)',
         minHeight: 612,
     },
+    subtitle: { maxWidth: 470 },
     actions: { paddingTop: theme.spacing(16) },
 }));
 
@@ -24,6 +25,7 @@ function HelpForTheProjectBlock({ className: externalClassname }) {
         <ContentCard
             classes={{
                 root: clsx(classes.root, externalClassname),
+                subtitle: classes.subtitle,
                 actions: classes.actions,
             }}
             title="Станьте частью проекта"

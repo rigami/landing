@@ -1,23 +1,9 @@
 import React from 'react';
-import { ButtonGroup, Link } from '@material-ui/core';
+import { Link } from '@material-ui/core';
 import ContentButton from '@/ui-components/ContentButton';
-import { makeStyles } from '@material-ui/core/styles';
-import {
-    GetAppRounded as InstallIcon,
-    ArrowForwardRounded as ArrowIcon,
-} from '@material-ui/icons';
-
-const useStyles = makeStyles((theme) => ({
-    install: { padding: theme.spacing(2.5) },
-    icon: {
-        width: 20,
-        height: 20,
-    },
-}));
+import { ArrowForwardRounded as ArrowIcon } from '@material-ui/icons';
 
 function DownloadButton({ className: externalClassName }) {
-    const classes = useStyles();
-
     return (
         <ContentButton
             className={externalClassName}
