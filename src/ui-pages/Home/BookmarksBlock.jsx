@@ -80,7 +80,7 @@ function BookmarksBlock({ className: externalClassname }) {
                     '#8DD5FF',
                     '#0000FF',
                     '#FF9153',
-                    '#FF9153',
+                    '#DC22FB',
                 ]}
                 icoVariant={BKMS_VARIANT.NOTE}
                 className={clsx(classes.card, classes.card3)}

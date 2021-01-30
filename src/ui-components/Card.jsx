@@ -125,7 +125,7 @@ function CardLink(props, ref) {
             <div className={classes.body}>
                 <div className={classes.categoriesWrapper}>
                     {categories && categories.map((color) => (
-                        <div className={classes.category} style={{ backgroundColor: color }} />
+                        <div className={classes.category} style={{ backgroundColor: color }} key={color} />
                     ))}
                 </div>
                 <Typography className={classes.title}>{name}</Typography>
@@ -145,5 +145,5 @@ function CardLink(props, ref) {
     );
 }
 
-export default forwardRef((props, ref) => CardLink(props, ref));
+export default forwardRef(CardLink);
 export { BKMS_VARIANT };

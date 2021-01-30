@@ -16,7 +16,7 @@ module.exports = withPlugins([withBundleAnalyzer({ enabled: process.env.ANALYZE 
                     options: { svgo: { plugins: [{ removeViewBox: false }] } },
                 },
                 {
-                    test: /\.(png|gif|jpg|ico)$/,
+                    test: /\.(png|gif|jpg|ico|mp4)$/,
                     loader: 'file-loader',
                     options: {
                         name: '[name]_[hash].[ext]',

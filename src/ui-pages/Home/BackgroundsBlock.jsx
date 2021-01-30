@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import ContentCard from '@/ui-components/ContentCard';
 import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
@@ -13,7 +13,21 @@ import SmallListItem from '@/ui-components/SmallListItem';
 import { useResizeDetector } from 'react-resize-detector';
 import { useLocalObservable, observer } from 'mobx-react';
 import { action, runInAction } from 'mobx';
-import { last } from 'lodash';
+import { last, shuffle, sample } from 'lodash';
+import bgPreviewPhoto1Src from '@/resources/bg-preview-3LTht2nxd34-unsplash.jpg';
+import bgPreviewPhoto2Src from '@/resources/bg-preview-DFIl2Kw6ulw-unsplash.jpg';
+import bgPreviewPhoto3Src from '@/resources/bg-preview-Ee0RQ_oC3BI-unsplash.jpg';
+import bgPreviewPhoto4Src from '@/resources/bg-preview-nL1pAWmRFYU-unsplash.jpg';
+import bgPreviewPhoto5Src from '@/resources/bg-preview-pb4HW4KghiM-unsplash.jpg';
+import bgPreviewPhoto6Src from '@/resources/bg-preview-WajET_vzPmI-unsplash.jpg';
+import bgPreviewVideo1Src from '@/resources/bg-preview-1182652-pexels.mp4';
+import bgPreviewVideo2Src from '@/resources/bg-preview-3078336-pexels.mp4';
+import bgPreviewVideo3Src from '@/resources/bg-preview-22555-pixabay.mp4';
+import bgPreviewVideo4Src from '@/resources/bg-preview-31377-pixabay.mp4';
+import bgPreviewGIF1Src from '@/resources/bg-preview-train-network.gif';
+import bgPreviewGIF2Src from '@/resources/bg-preview-bathroom-network.gif';
+import bgPreviewGIF3Src from '@/resources/bg-preview-station-network.gif';
+import bgPreviewGIF4Src from '@/resources/bg-preview-fish-network.gif';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -33,7 +47,9 @@ const useStyles = makeStyles((theme) => ({
         position: 'absolute',
         right: theme.spacing(4),
         bottom: 0,
+        objectFit: 'cover',
     },
+    pixelRender: { imageRendering: 'pixelated' },
 }));
 
 const BG_TYPE = {
@@ -42,24 +58,64 @@ const BG_TYPE = {
     VIDEO: 'VIDEO',
 };
 
-const backgrounds = [
+const backgrounds = shuffle([
     {
-        src: 'awd',
+        src: bgPreviewPhoto1Src,
         type: BG_TYPE.IMAGE,
     },
     {
-        src: 'wegw',
-        type: BG_TYPE.ANIMATION,
+        src: bgPreviewPhoto2Src,
+        type: BG_TYPE.IMAGE,
     },
     {
-        src: 'ejegh',
+        src: bgPreviewPhoto3Src,
+        type: BG_TYPE.IMAGE,
+    },
+    {
+        src: bgPreviewPhoto4Src,
+        type: BG_TYPE.IMAGE,
+    },
+    {
+        src: bgPreviewPhoto5Src,
+        type: BG_TYPE.IMAGE,
+    },
+    {
+        src: bgPreviewPhoto6Src,
+        type: BG_TYPE.IMAGE,
+    },
+    {
+        src: bgPreviewVideo1Src,
         type: BG_TYPE.VIDEO,
     },
     {
-        src: 'wegejegh',
-        type: BG_TYPE.IMAGE,
+        src: bgPreviewVideo2Src,
+        type: BG_TYPE.VIDEO,
     },
-];
+    {
+        src: bgPreviewVideo3Src,
+        type: BG_TYPE.VIDEO,
+    },
+    {
+        src: bgPreviewVideo4Src,
+        type: BG_TYPE.VIDEO,
+    },
+    {
+        src: bgPreviewGIF1Src,
+        type: BG_TYPE.ANIMATION,
+    },
+    {
+        src: bgPreviewGIF2Src,
+        type: BG_TYPE.ANIMATION,
+    },
+    {
+        src: bgPreviewGIF3Src,
+        type: BG_TYPE.ANIMATION,
+    },
+    {
+        src: bgPreviewGIF4Src,
+        type: BG_TYPE.ANIMATION,
+    },
+]);
 
 function BackgroundCard({ id, src, type }) {
     const classes = useStyles();
@@ -67,10 +123,21 @@ function BackgroundCard({ id, src, type }) {
     return (
         <CardMedia
             id={id}
-            className={classes.background}
+            className={clsx(
+                type === BG_TYPE.ANIMATION && classes.pixelRender,
+                classes.background,
+            )}
+            src={type === BG_TYPE.VIDEO ? src : undefined}
+            image={type !== BG_TYPE.VIDEO ? src : undefined}
+            component={type === BG_TYPE.VIDEO ? 'video' : 'div'}
+            autoPlay
+            loop
+            muted
         />
     );
 }
+
+console.log('bgPreviewVideo1Src', bgPreviewVideo1Src);
 
 function BackgroundsBlock({ className: externalClassname }) {
     const classes = useStyles();
@@ -103,9 +170,13 @@ function BackgroundsBlock({ className: externalClassname }) {
                         item.style.transform = `translateY(${offset}px)`;
 
                         if (index === 0 && offset <= cardHeight * 0.25) {
+                            const filterList = backgrounds.filter(
+                                ({ src: compareSrc }) => store.list.find(({ src }) => compareSrc !== src),
+                            );
+
                             store.list = [
                                 ({
-                                    ...backgrounds[0],
+                                    ...sample(filterList),
                                     offset: offset + cardHeight,
                                     id: `bg-${Math.random()}`,
                                 }),
