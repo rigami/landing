@@ -5,6 +5,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import ContentButton from '@/ui-components/ContentButton';
 import { Link } from '@material-ui/core';
 import testingImageUrl from '@/resources/testing.png';
+import { ArrowForwardRounded as ArrowIcon } from '@material-ui/icons';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -40,6 +41,7 @@ function HelpForTheProjectBlock({ className: externalClassname }) {
                 <ContentButton
                     component={Link}
                     href="/help-for-the-project"
+                    endIcon={<ArrowIcon />}
                 >
                     Как я могу помочь?
                 </ContentButton>
