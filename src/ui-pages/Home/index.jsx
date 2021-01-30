@@ -54,7 +54,7 @@ function Home() {
         <Fragment>
             <Header />
             <SplashScreen />
-            <Box className={classes.contentWrapper}>
+            <main className={classes.contentWrapper}>
                 <Box className={classes.content}>
                     <DemoBlock className={clsx(classes.card, classes.fullWidthCard)} />
                     <HelpForTheProjectBlock className={classes.card} />
@@ -62,6 +62,7 @@ function Home() {
                     <BookmarksBlock className={classes.card} />
                     <ClearInterfaceBlock className={classes.card} />
                     <Container
+                        component="section"
                         className={clsx(classes.card, classes.fullWidthCard, classes.download)}
                         maxWidth={false}
                     >
@@ -75,7 +76,7 @@ function Home() {
                         <DownloadButton className={classes.downloadButton} />
                     </Container>
                 </Box>
-            </Box>
+            </main>
             <Footer />
         </Fragment>
     );

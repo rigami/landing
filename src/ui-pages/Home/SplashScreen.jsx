@@ -77,7 +77,7 @@ function SplashScreen() {
     }, []);
 
     return (
-        <Box className={classes.root}>
+        <section className={classes.root}>
             <Container className={classes.content}>
                 <ContentCard
                     classes={{
@@ -106,7 +106,7 @@ function SplashScreen() {
             <Box className={classes.backdrop}>
                 <canvas id="preload-image" className={clsx(classes.preloadStub, bgLoaded && classes.hidePreloadStub)} />
             </Box>
-        </Box>
+        </section>
     );
 }
 

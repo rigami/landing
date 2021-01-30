@@ -93,7 +93,7 @@ function Block({ title, links }) {
     const classes = useStyles();
 
     return (
-        <Box className={classes.linksBlock}>
+        <nav className={classes.linksBlock}>
             <Typography variant="h5" className={classes.linksBlockTitle}>{title}</Typography>
             {links.map(({ label, url, ...other }) => (
                 <Link
@@ -106,7 +106,7 @@ function Block({ title, links }) {
                     {label}
                 </Link>
             ))}
-        </Box>
+        </nav>
     );
 }
 
@@ -115,7 +115,7 @@ function Footer() {
     const { t } = useTranslation();
 
     return (
-        <Box className={classes.root}>
+        <footer className={classes.root}>
             <Container className={classes.container}>
                 <Box className={classes.links}>
                     <Block
@@ -170,7 +170,7 @@ function Footer() {
                     </Typography>
                 </Box>
             </Container>
-        </Box>
+        </footer>
     );
 }
 

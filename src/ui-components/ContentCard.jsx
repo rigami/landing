@@ -41,6 +41,7 @@ function ContentCard(props, ref) {
 
     return (
         <Card
+            component="section"
             ref={ref}
             elevation={0}
             variant="outlined"

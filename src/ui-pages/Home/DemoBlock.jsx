@@ -42,7 +42,7 @@ function DemoBlock({ className: externalClassname }) {
     const classes = useStyles();
 
     return (
-        <Box className={clsx(classes.root, externalClassname)}>
+        <section className={clsx(classes.root, externalClassname)}>
             <ContentCard
                 classes={{
                     root: classes.info,
@@ -62,7 +62,7 @@ function DemoBlock({ className: externalClassname }) {
             <Box className={classes.demoWrapper}>
                 <CardMedia className={classes.demo} />
             </Box>
-        </Box>
+        </section>
     );
 }
 
