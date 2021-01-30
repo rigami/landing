@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { forwardRef } from 'react';
 import {
     Card,
     CardActions,
@@ -28,7 +28,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-function ContentCard(props) {
+function ContentCard(props, ref) {
     const {
         className: externalClassName,
         classes: externalClasses = {},
@@ -41,6 +41,7 @@ function ContentCard(props) {
 
     return (
         <Card
+            ref={ref}
             elevation={0}
             variant="outlined"
             className={clsx(classes.root, externalClassName, externalClasses.root)}
@@ -71,4 +72,4 @@ function ContentCard(props) {
     );
 }
 
-export default ContentCard;
+export default forwardRef(ContentCard);

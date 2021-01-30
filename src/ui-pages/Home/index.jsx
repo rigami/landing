@@ -14,6 +14,7 @@ import SplashScreen from './SplashScreen';
 import BookmarksBlock from './BookmarksBlock';
 import HelpForTheProjectBlock from './HelpForTheProjectBlock';
 import DemoBlock from './DemoBlock';
+import BackgroundsBlock from './BackgroundsBlock';
 
 const useStyles = makeStyles((theme) => ({
     contentWrapper: { overflow: 'hidden' },
@@ -57,11 +58,7 @@ function Home() {
                 <Box className={classes.content}>
                     <DemoBlock className={clsx(classes.card, classes.fullWidthCard)} />
                     <HelpForTheProjectBlock className={classes.card} />
-                    <ContentCard
-                        className={classes.card}
-                        title="Любой формат фона"
-                        subtitle="Поддержка огромного количества файлов для фона, а так же настраиваемые потоки фонов. "
-                    />
+                    <BackgroundsBlock className={classes.card} />
                     <BookmarksBlock className={classes.card} />
                     <ContentCard
                         className={classes.card}
