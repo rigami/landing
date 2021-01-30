@@ -1,24 +1,8 @@
-import React, {
-    useEffect,
-    useState,
-    Fragment,
-    useRef,
-} from 'react';
-import { fade, makeStyles } from '@material-ui/core/styles';
-import {
-    Box,
-    Container, Typography,
-} from '@material-ui/core';
-import LogoIcon from '@/resources/logo.svg';
-import clsx from 'clsx';
-import { useTranslation } from 'react-i18next';
-import { KeyboardArrowDownRounded as ArrowDownIcon, HomeRounded as HomeIcon } from '@material-ui/icons';
-import useMainStateStore from '@/utils/mainStateStore';
-import LangSwitcher from '@/ui-components/LangSwitcher';
-import CardLink, { BKMS_VARIANT } from '@/ui-components/Card';
+import React, { Fragment } from 'react';
+import { makeStyles } from '@material-ui/core/styles';
+import { Box, Container } from '@material-ui/core';
 import ContentCard from '@/ui-components/ContentCard';
 import backgroundUrl from '@/resources/splashscreen-background.jpg';
-import ContentButton from '@/ui-components/ContentButton';
 import DownloadButton from '@/ui-components/DownloadButton';
 
 const useStyles = makeStyles((theme) => ({
@@ -50,6 +34,7 @@ const useStyles = makeStyles((theme) => ({
         marginLeft: theme.spacing(-8),
         marginRight: theme.spacing(8),
         maxWidth: 730,
+        minWidth: 'min-content',
     },
     title: {
         lineHeight: 1.3,
@@ -75,7 +60,13 @@ function SplashScreen() {
                             Для доступа везде
                         </Fragment>
                     )}
-                    subtitle="Rigami - это новая вкладка для браузера которая сочетает в себе минимализм и обширный функционал. Закладки, часы, дата и  текущяя погода, ничего лишнего"
+                    subtitle={(
+                        <Fragment>
+                            Rigami - это новая вкладка для браузера
+                            которая сочетает в себе минимализм и обширный функционал.
+                            Закладки, часы, дата и  текущая погода, ничего лишнего
+                        </Fragment>
+                    )}
                     actions={(
                         <DownloadButton />
                     )}
