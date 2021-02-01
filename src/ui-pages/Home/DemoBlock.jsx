@@ -44,6 +44,7 @@ function DemoBlock({ className: externalClassname }) {
     return (
         <section className={clsx(classes.root, externalClassname)}>
             <ContentCard
+                titleVariant="h1"
                 classes={{
                     root: classes.info,
                     title: classes.title,

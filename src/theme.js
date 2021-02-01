@@ -48,6 +48,11 @@ const theme = createMuiTheme({
             fontSize: '4rem',
             fontWeight: 600,
         },
+        h2: {
+            fontFamily: primaryFont,
+            fontSize: '2.4rem',
+            fontWeight: 600,
+        },
     },
     props: { MuiButton: { disableElevation: true } },
     shape: {

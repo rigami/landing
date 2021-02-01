@@ -18,10 +18,8 @@ const useStyles = makeStyles((theme) => ({
         maxWidth: 560,
         lineHeight: 0.9,
     },
-    subtitle: {
-        maxWidth: 560,
-        marginTop: theme.spacing(3),
-    },
+    subtitle: { maxWidth: 560 },
+    subtitleOffset: { marginTop: theme.spacing(3) },
     actions: {
         padding: 0,
         paddingTop: theme.spacing(8),
@@ -30,11 +28,12 @@ const useStyles = makeStyles((theme) => ({
 
 function ContentCard(props, ref) {
     const {
-        className: externalClassName,
-        classes: externalClasses = {},
         title,
         subtitle,
         actions,
+        titleVariant = 'h2',
+        className: externalClassName,
+        classes: externalClasses = {},
         children,
     } = props;
     const classes = useStyles();
@@ -49,7 +48,7 @@ function ContentCard(props, ref) {
         >
             {title && (
                 <Typography
-                    variant="h1"
+                    variant={titleVariant}
                     className={clsx(classes.title, externalClasses.title)}
                 >
                     {title}
@@ -58,7 +57,11 @@ function ContentCard(props, ref) {
             {subtitle && (
                 <Typography
                     variant="body1"
-                    className={clsx(classes.subtitle, externalClasses.subtitle)}
+                    className={clsx(
+                        classes.subtitle,
+                        title && classes.subtitleOffset,
+                        externalClasses.subtitle,
+                    )}
                 >
                     {subtitle}
                 </Typography>

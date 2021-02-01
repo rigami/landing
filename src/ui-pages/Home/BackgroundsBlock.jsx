@@ -236,6 +236,7 @@ function BackgroundsBlock({ className: externalClassname }) {
 
     return (
         <ContentCard
+            titleVariant="h1"
             ref={ref}
             classes={{
                 root: clsx(classes.root, externalClassname),

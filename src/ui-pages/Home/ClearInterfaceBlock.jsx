@@ -19,6 +19,7 @@ function ClearInterfaceBlock({ className: externalClassname }) {
 
     return (
         <ContentCard
+            titleVariant="h1"
             className={clsx(classes.root, externalClassname)}
             title="Чистота при выше всего"
         />

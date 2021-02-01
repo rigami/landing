@@ -10,10 +10,10 @@ import { ArrowForwardRounded as ArrowIcon } from '@material-ui/icons';
 const useStyles = makeStyles((theme) => ({
     root: {
         backgroundImage: `url(${testingImageUrl})`,
-        backgroundSize: '500px',
+        backgroundSize: '430px',
         backgroundRepeat: 'no-repeat',
         backgroundPosition: 'calc(100% - 20px) calc(100% - 25px)',
-        minHeight: 612,
+        minHeight: 480,
     },
     subtitle: { maxWidth: 470 },
     actions: { paddingTop: theme.spacing(16) },
@@ -39,7 +39,8 @@ function FormBlock({ className: externalClassname }) {
             actions={(
                 <ContentButton
                     component={Link}
-                    href="/help-for-the-project"
+                    href="https://forms.gle/ZfEjCEFrjDY87riX6"
+                    target="_blank"
                     endIcon={<ArrowIcon />}
                 >
                     Заполнить анкету

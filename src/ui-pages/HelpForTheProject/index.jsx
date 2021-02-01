@@ -50,9 +50,8 @@ function HelpForTheProject() {
         <Fragment>
             <Header />
             <SplashScreen className={classes.splashScreen}>
-                <ContentCard title="Как я могу помочь проекту?" />
+                <ContentCard titleVariant="h1" title="Как я могу помочь проекту?" />
             </SplashScreen>
-            Никак
             <main className={classes.contentWrapper}>
                 <Box className={classes.content}>
                     <FormBlock className={classes.card} />

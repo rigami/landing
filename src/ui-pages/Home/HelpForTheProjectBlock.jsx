@@ -24,6 +24,7 @@ function HelpForTheProjectBlock({ className: externalClassname }) {
 
     return (
         <ContentCard
+            titleVariant="h1"
             classes={{
                 root: clsx(classes.root, externalClassname),
                 subtitle: classes.subtitle,

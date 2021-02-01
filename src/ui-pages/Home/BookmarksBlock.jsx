@@ -34,6 +34,7 @@ function BookmarksBlock({ className: externalClassname }) {
 
     return (
         <ContentCard
+            titleVariant="h1"
             classes={{
                 root: clsx(classes.root, externalClassname),
                 title: classes.title,
