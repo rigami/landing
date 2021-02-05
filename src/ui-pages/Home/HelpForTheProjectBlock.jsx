@@ -17,6 +17,7 @@ const useStyles = makeStyles((theme) => ({
     },
     subtitle: { maxWidth: 470 },
     actions: { paddingTop: theme.spacing(16) },
+    button: { backgroundColor: theme.palette.background.paper },
 }));
 
 function HelpForTheProjectBlock({ className: externalClassname }) {
@@ -27,6 +28,7 @@ function HelpForTheProjectBlock({ className: externalClassname }) {
             titleVariant="h1"
             classes={{
                 root: clsx(classes.root, externalClassname),
+                title: classes.text,
                 subtitle: classes.subtitle,
                 actions: classes.actions,
             }}
@@ -43,6 +45,7 @@ function HelpForTheProjectBlock({ className: externalClassname }) {
                     component={Link}
                     href="/help-for-the-project"
                     endIcon={<ArrowIcon />}
+                    className={classes.button}
                 >
                     Как я могу помочь?
                 </ContentButton>

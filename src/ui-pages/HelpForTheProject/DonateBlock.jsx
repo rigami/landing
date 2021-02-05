@@ -51,6 +51,7 @@ function DonateBlock({ className: externalClassname }) {
             }}
             title="Купите мне кофе"
             subtitle="Вы можете пожертвовать небольшую сумму на разработку, мне будет приятно"
+            disableTextBackdrop
         >
             <List dense className={classes.list} disablePadding>
                 {[

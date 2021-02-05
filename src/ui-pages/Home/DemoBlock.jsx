@@ -18,15 +18,24 @@ import SmallListItem from '@/ui-components/SmallListItem';
 const useStyles = makeStyles((theme) => ({
     root: {
         minHeight: 612,
-        display: 'grid',
-        gridTemplateColumns: 'auto 1fr',
+        display: 'flex',
         backgroundColor: theme.palette.background.paper,
+        '@media (max-width: 900px)': { flexWrap: 'wrap' },
     },
-    info: { minWidth: 'min-content' },
+    info: {
+        minWidth: 'min-content',
+        flexShrink: 1,
+    },
     title: { maxWidth: 650 },
     subtitle: { maxWidth: 400 },
     list: { marginTop: theme.spacing(8) },
-    demoWrapper: { padding: theme.spacing(8) },
+    demoWrapper: {
+        padding: theme.spacing(8),
+        flexShrink: 1,
+        flexGrow: 1,
+        alignItems: 'center',
+        display: 'flex',
+    },
     demo: {
         height: 570,
         width: 934,

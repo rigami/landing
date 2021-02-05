@@ -1,5 +1,10 @@
 import React from 'react';
-import { AppBar, Container, Toolbar } from '@material-ui/core';
+import {
+    AppBar,
+    Link,
+    Toolbar,
+    Tooltip,
+} from '@material-ui/core';
 import LogoIcon from '@/resources/logo.svg';
 import { fade, makeStyles } from '@material-ui/core/styles';
 
@@ -17,6 +22,13 @@ const useStyles = makeStyles((theme) => ({
         width: '100%',
         margin: 'auto',
     },
+    homeLink: {
+        height: 64,
+        display: 'flex',
+        alignItems: 'center',
+        marginLeft: theme.spacing(-1),
+        padding: theme.spacing(1),
+    },
 }));
 
 function Header() {
@@ -28,7 +40,11 @@ function Header() {
             className={classes.root}
         >
             <Toolbar className={classes.toolbar}>
-                <LogoIcon className={classes.logo} />
+                <Tooltip title="Вернуться домой">
+                    <Link className={classes.homeLink} href="/">
+                        <LogoIcon className={classes.logo} />
+                    </Link>
+                </Tooltip>
             </Toolbar>
         </AppBar>
     );
