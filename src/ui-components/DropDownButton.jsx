@@ -1,17 +1,47 @@
-import React, { Fragment } from 'react';
+import React, { useRef, useState } from 'react';
 import {
     Button,
     Link,
-    Menu,
     MenuItem,
+    Box,
+    Card,
+    Collapse,
+    ClickAwayListener,
 } from '@material-ui/core';
+import { makeStyles } from '@material-ui/core/styles';
+import theme from '@/theme';
+import clsx from 'clsx';
+
+const useStyles = makeStyles(() => ({
+    root: {
+        height: 64,
+        display: 'flex',
+        alignItems: 'center',
+        position: 'relative',
+    },
+    link: { whiteSpace: 'normal' },
+    menuWrapper: {
+        position: 'absolute',
+        height: 0,
+        bottom: theme.spacing(-1),
+        left: 0,
+    },
+    menu: {
+        maxWidth: 300,
+        width: 'max-content',
+    },
+}));
 
 function LinkDropDownItem({ title, href, target, handleClose }) {
+    const classes = useStyles();
+
     return (
         <MenuItem
             component={Link}
             href={href}
             target={target}
+            color="textPrimary"
+            className={classes.link}
             onClick={handleClose}
         >
             {title}
@@ -20,32 +50,39 @@ function LinkDropDownItem({ title, href, target, handleClose }) {
 }
 
 function DropDownButton({ label, children, className: externalClassName }) {
-    const [anchorEl, setAnchorEl] = React.useState(null);
+    const classes = useStyles();
+    const [isOpen, setIsOpen] = useState(false);
+    const ref = useRef();
 
     const handleClick = (event) => {
-        setAnchorEl(event.currentTarget);
+        setIsOpen(!isOpen);
     };
 
     const handleClose = () => {
-        setAnchorEl(null);
+        setIsOpen(false);
     };
 
     const Content = children;
 
     return (
-        <Fragment>
-            <Button onClick={handleClick} className={externalClassName}>
+        <Box className={clsx(classes.root, externalClassName)}>
+            <Button onClick={handleClick} ref={ref}>
                 {label}
             </Button>
-            <Menu
-                anchorEl={anchorEl}
-                keepMounted
-                open={Boolean(anchorEl)}
-                onClose={handleClose}
-            >
-                {children && (<Content handleClose={handleClose} />)}
-            </Menu>
-        </Fragment>
+            <Box className={classes.menuWrapper}>
+                <Collapse in={isOpen}>
+                    <ClickAwayListener
+                        onClickAway={(e) => {
+                            if (e.path.indexOf(ref.current) === -1) setIsOpen(false);
+                        }}
+                    >
+                        <Card className={classes.menu}>
+                            {children && (<Content handleClose={handleClose} />)}
+                        </Card>
+                    </ClickAwayListener>
+                </Collapse>
+            </Box>
+        </Box>
     );
 }
 
