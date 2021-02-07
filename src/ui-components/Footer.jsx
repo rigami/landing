@@ -119,33 +119,47 @@ function Footer() {
             <Container className={classes.container}>
                 <Box className={classes.links}>
                     <Block
-                        title={t('footer.links.review.title')}
+                        title="Отзыв о продукте"
                         links={[
                             {
-                                label: t('footer.links.review.writeReview'),
-                                url: '/review',
-                            },
-                            {
-                                label: t('footer.links.review.reportBug'),
-                                url: '/bug-report',
-                            },
-                            {
-                                label: t('footer.links.review.githubIssue'),
-                                url: 'https://github.com/rigami/readme/issues',
+                                label: 'В магазине Chrome Web Store',
+                                url: '/https://chrome.google.com/webstore/detail/hdpjmahlkfndaejogipnepcgdmjiamhd',
                                 target: '_blank',
+                            },
+                            {
+                                label: 'На почтовый ящик разработчика',
+                                url: 'mailto:danilkinkin@gmail.com',
                             },
                         ]}
                     />
                     <Block
-                        title={t('footer.links.other.title')}
+                        title="Сообщить о проблеме"
                         links={[
                             {
-                                label: t('footer.links.other.privacyPolicy'),
+                                label: 'На GitHub',
+                                url: 'https://github.com/rigami/readme/issues',
+                                target: '_blank',
+                            },
+                            {
+                                label: 'На почтовый ящик разработчика',
+                                url: 'mailto:danilkinkin@gmail.com',
+                            },
+                            {
+                                label: 'Через Google Forms',
+                                url: 'https://forms.gle/qdt3Pofio3242Qe46',
+                            },
+                        ]}
+                    />
+                    <Block
+                        title="Другое"
+                        links={[
+                            {
+                                label: 'Политика конфиденциальности',
                                 url: 'https://github.com/rigami/readme/blob/main/POLICY.md',
                                 target: '_blank',
                             },
                             {
-                                label: t('footer.links.other.github'),
+                                label: 'Проект на GitHub',
                                 url: 'https://github.com/rigami/readme',
                                 target: '_blank',
                             },
