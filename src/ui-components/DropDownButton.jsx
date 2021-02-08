@@ -7,12 +7,12 @@ import {
     Card,
     Collapse,
     ClickAwayListener,
+    IconButton,
 } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-import theme from '@/theme';
 import clsx from 'clsx';
 
-const useStyles = makeStyles(() => ({
+const useStyles = makeStyles((theme) => ({
     root: {
         height: 64,
         display: 'flex',
@@ -25,10 +25,21 @@ const useStyles = makeStyles(() => ({
         height: 0,
         bottom: theme.spacing(-1),
         left: 0,
+        [theme.breakpoints.down('xs')]: {
+            position: 'fixed',
+            left: theme.spacing(1),
+            right: theme.spacing(1),
+        },
     },
     menu: {
         maxWidth: 300,
         width: 'max-content',
+        paddingTop: theme.spacing(1),
+        paddingBottom: theme.spacing(1),
+        [theme.breakpoints.down('xs')]: {
+            maxWidth: 'none',
+            width: '100%',
+        },
     },
 }));
 
@@ -49,7 +60,7 @@ function LinkDropDownItem({ title, href, target, handleClose }) {
     );
 }
 
-function DropDownButton({ label, children, className: externalClassName }) {
+function DropDownButton({ icon, label, children, className: externalClassName }) {
     const classes = useStyles();
     const [isOpen, setIsOpen] = useState(false);
     const ref = useRef();
@@ -66,9 +77,16 @@ function DropDownButton({ label, children, className: externalClassName }) {
 
     return (
         <Box className={clsx(classes.root, externalClassName)}>
-            <Button onClick={handleClick} ref={ref}>
-                {label}
-            </Button>
+            {label && (
+                <Button onClick={handleClick} ref={ref} startIcon={icon}>
+                    {label}
+                </Button>
+            )}
+            {!label && (
+                <IconButton onClick={handleClick} ref={ref}>
+                    {icon}
+                </IconButton>
+            )}
             <Box className={classes.menuWrapper}>
                 <Collapse in={isOpen}>
                     <ClickAwayListener

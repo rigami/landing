@@ -14,13 +14,15 @@ import {
     QueryBuilderRounded as DateTimeIcon,
 } from '@material-ui/icons';
 import SmallListItem from '@/ui-components/SmallListItem';
+import demoVideoUrl from '@/resources/demo.mkv';
+import demoVideoPreviewUrl from '@/resources/demo-preview.jpg';
 
 const useStyles = makeStyles((theme) => ({
     root: {
         minHeight: 612,
         display: 'flex',
         backgroundColor: theme.palette.background.paper,
-        '@media (max-width: 900px)': { flexWrap: 'wrap' },
+        [theme.breakpoints.down('sm')]: { flexWrap: 'wrap-reverse' },
     },
     info: {
         minWidth: 'min-content',
@@ -31,14 +33,18 @@ const useStyles = makeStyles((theme) => ({
     list: { marginTop: theme.spacing(8) },
     demoWrapper: {
         padding: theme.spacing(8),
+        [theme.breakpoints.down('xs')]: { padding: theme.spacing(2) },
         flexShrink: 1,
         flexGrow: 1,
         alignItems: 'center',
         display: 'flex',
+        [theme.breakpoints.up('md')]: { paddingLeft: 0 },
+        [theme.breakpoints.down('sm')]: { paddingBottom: 0 },
     },
     demo: {
-        height: 570,
-        width: 934,
+        height: 'auto',
+        width: '100%',
+        maxWidth: 954,
         boxShadow: theme.shadows[6],
         borderRadius: theme.shape.borderRadius,
         zIndex: 1,
@@ -70,7 +76,15 @@ function DemoBlock({ className: externalClassname }) {
                 </List>
             </ContentCard>
             <Box className={classes.demoWrapper}>
-                <CardMedia className={classes.demo} />
+                <CardMedia
+                    className={classes.demo}
+                    src={demoVideoUrl}
+                    component="video"
+                    poster={demoVideoPreviewUrl}
+                    autoPlay
+                    loop
+                    muted
+                />
             </Box>
         </section>
     );

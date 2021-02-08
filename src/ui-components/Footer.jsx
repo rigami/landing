@@ -10,7 +10,7 @@ import { OpenInNewRounded as OpenInNewIcon } from '@material-ui/icons';
 const useStyles = makeStyles((theme) => ({
     root: {
         display: 'flex',
-        height: 320,
+        minHeight: 320,
         width: '100%',
         backgroundColor: theme.palette.background.default,
         marginTop: 'auto',
@@ -24,6 +24,8 @@ const useStyles = makeStyles((theme) => ({
         width: '100%',
         flexGrow: 1,
         display: 'flex',
+        flexWrap: 'wrap',
+        marginBottom: theme.spacing(8),
     },
     designedByBlock: {
         marginLeft: 'auto',
@@ -85,7 +87,7 @@ const useStyles = makeStyles((theme) => ({
         paddingTop: theme.spacing(4),
         paddingRight: theme.spacing(4),
     },
-    linksBlockTitle: { marginBottom: theme.spacing(2) },
+    linksBlockTitle: { },
     linksBlockLink: { marginTop: theme.spacing(1) },
 }));
 

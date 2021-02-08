@@ -33,12 +33,25 @@ const useStyles = makeStyles((theme) => ({
     root: {
         minHeight: 612,
         paddingRight: 335 + theme.spacing(8),
+        [theme.breakpoints.down('xs')]: {
+            paddingRight: theme.spacing(2),
+            flexBasis: '100% !important',
+        },
     },
     title: { maxWidth: 480 },
     subtitle: { maxWidth: 480 },
     list: {
         marginTop: theme.spacing(4),
         maxWidth: 450,
+        zIndex: 1,
+    },
+    listItem: {
+        backgroundColor: theme.palette.background.paper,
+        width: 'fit-content',
+        [theme.breakpoints.down('xs')]: {
+            paddingLeft: theme.spacing(1),
+            paddingRight: theme.spacing(1),
+        },
     },
     background: {
         width: 335,
@@ -48,6 +61,11 @@ const useStyles = makeStyles((theme) => ({
         right: theme.spacing(4),
         bottom: 0,
         objectFit: 'cover',
+        [theme.breakpoints.down('xs')]: {
+            width: '100%',
+            height: 300,
+            right: 0,
+        },
     },
     pixelRender: { imageRendering: 'pixelated' },
 }));
@@ -247,12 +265,13 @@ function BackgroundsBlock({ className: externalClassname }) {
             subtitle="Поддержка огромного количества файлов для фона, а так же настраиваемые потоки фонов."
         >
             <List dense className={classes.list} disablePadding>
-                <SmallListItem icon={(<GIFIcon />)} title="GIF-анимация" />
-                <SmallListItem icon={(<VideoIcon />)} title="Видео" />
-                <SmallListItem icon={(<ImageIcon />)} title="Изображения " />
+                <SmallListItem className={classes.listItem} icon={(<GIFIcon />)} title="GIF-анимация" />
+                <SmallListItem className={classes.listItem} icon={(<VideoIcon />)} title="Видео" />
+                <SmallListItem className={classes.listItem} icon={(<ImageIcon />)} title="Изображения " />
             </List>
             <List dense className={classes.list} disablePadding>
                 <SmallListItem
+                    className={classes.listItem}
                     icon={(<StreamIcon />)}
                     title="Потоки бесконечных фонов"
                     subtitle="Можно использовать заготовленные потоки, либо создавать свои по ключевым словам"

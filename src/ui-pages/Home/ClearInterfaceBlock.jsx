@@ -4,13 +4,17 @@ import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
 import backgroundImageUrl from '@/resources/clear-interface-background.png';
 
-const useStyles = makeStyles(() => ({
+const useStyles = makeStyles((theme) => ({
     root: {
         background: `url(${backgroundImageUrl}), linear-gradient(205.57deg, #EDF6FF 7.56%, #DDEFFF 94.44%)`,
         backgroundSize: '500px, 100%',
         backgroundRepeat: 'no-repeat',
         backgroundPosition: '100% 100%',
         minHeight: 612,
+        [theme.breakpoints.down('xs')]: {
+            backgroundSize: '300px, 100%',
+            minHeight: 400,
+        },
     },
 }));
 

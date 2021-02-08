@@ -1,4 +1,4 @@
-import React, { forwardRef, Fragment } from 'react';
+import React, { forwardRef } from 'react';
 import {
     Card,
     CardActions,
@@ -10,6 +10,7 @@ import { makeStyles } from '@material-ui/core/styles';
 const useStyles = makeStyles((theme) => ({
     root: {
         padding: theme.spacing(8),
+        [theme.breakpoints.down('xs')]: { padding: theme.spacing(2) },
         borderRadius: 0,
         border: 'none',
         position: 'relative',

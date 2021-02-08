@@ -4,10 +4,15 @@ import {
     Link,
     Toolbar,
     Tooltip,
+    useMediaQuery,
 } from '@material-ui/core';
 import LogoIcon from '@/resources/logo.svg';
-import { fade, makeStyles } from '@material-ui/core/styles';
+import { fade, makeStyles, useTheme } from '@material-ui/core/styles';
 import DropDownButton, { LinkDropDownItem } from '@/ui-components/DropDownButton';
+import {
+    BugReportRounded as BugReportIcon,
+    RateReviewRounded as ReviewIcon,
+} from '@material-ui/icons';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -36,6 +41,8 @@ const useStyles = makeStyles((theme) => ({
 
 function Header() {
     const classes = useStyles();
+    const theme = useTheme();
+    const isMobile = useMediaQuery(theme.breakpoints.down('xs'));
 
     return (
         <AppBar
@@ -48,7 +55,11 @@ function Header() {
                         <LogoIcon className={classes.logo} />
                     </Link>
                 </Tooltip>
-                <DropDownButton label="Написать отзыв" className={classes.alignRight}>
+                <DropDownButton
+                    label={!isMobile && 'Написать отзыв'}
+                    icon={isMobile && <ReviewIcon />}
+                    className={classes.alignRight}
+                >
                     {(props) => (
                         <Fragment>
                             <LinkDropDownItem
@@ -65,7 +76,11 @@ function Header() {
                         </Fragment>
                     )}
                 </DropDownButton>
-                <DropDownButton label="Сообщить о проблеме" className={classes.offsetRight}>
+                <DropDownButton
+                    label={!isMobile && 'Сообщить о проблеме'}
+                    icon={isMobile && <BugReportIcon />}
+                    className={classes.offsetRight}
+                >
                     {(props) => (
                         <Fragment>
                             <LinkDropDownItem

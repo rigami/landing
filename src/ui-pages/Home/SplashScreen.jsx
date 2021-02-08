@@ -9,6 +9,10 @@ const useStyles = makeStyles((theme) => ({
         margin: 'auto',
         marginLeft: theme.spacing(-8),
         marginRight: theme.spacing(8),
+        [theme.breakpoints.down('xs')]: {
+            marginLeft: theme.spacing(-2),
+            marginRight: theme.spacing(2),
+        },
         maxWidth: 730,
         minWidth: 'min-content',
     },

@@ -13,11 +13,21 @@ const useStyles = makeStyles((theme) => ({
         backgroundSize: '500px',
         backgroundRepeat: 'no-repeat',
         backgroundPosition: 'calc(100% - 20px) calc(100% - 25px)',
+        [theme.breakpoints.down('xs')]: {
+            backgroundSize: '300px',
+            backgroundPosition: 'calc(50%) calc(100% - 110px)',
+        },
         minHeight: 612,
     },
     subtitle: { maxWidth: 470 },
-    actions: { paddingTop: theme.spacing(16) },
-    button: { backgroundColor: theme.palette.background.paper },
+    actions: {
+        paddingTop: theme.spacing(16),
+        [theme.breakpoints.down('xs')]: { paddingTop: 300 + theme.spacing(4) },
+    },
+    button: {
+        backgroundColor: theme.palette.background.paper,
+        [theme.breakpoints.down('xs')]: { width: '100%' },
+    },
 }));
 
 function HelpForTheProjectBlock({ className: externalClassname }) {

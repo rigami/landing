@@ -17,11 +17,11 @@ const useStyles = makeStyles((theme) => ({
     secondaryText: { marginTop: theme.spacing(0.5) },
 }));
 
-function ItemList({ icon, title, subtitle }) {
+function ItemList({ icon, title, subtitle, className: externalClassName }) {
     const classes = useStyles();
 
     return (
-        <ListItem disableGutters>
+        <ListItem disableGutters className={externalClassName}>
             <ListItemIcon className={classes.listItemIcon}>{icon}</ListItemIcon>
             <ListItemText
                 classes={{ secondary: classes.secondaryText }}

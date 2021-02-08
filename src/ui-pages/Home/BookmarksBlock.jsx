@@ -10,6 +10,11 @@ const useStyles = makeStyles((theme) => ({
     root: {
         minHeight: 612,
         paddingRight: theme.spacing(27),
+        [theme.breakpoints.down('xs')]: {
+            paddingRight: theme.spacing(2),
+            minHeight: 550,
+            flexBasis: '100% !important',
+        },
     },
     title: { maxWidth: 650 },
     subtitle: { maxWidth: 400 },
@@ -21,14 +26,17 @@ const useStyles = makeStyles((theme) => ({
     card1: {
         transform: 'translate(-60px, -140px)',
         boxShadow: theme.shadows[3],
+        [theme.breakpoints.down('xs')]: { transform: 'translate(-10px, -70px) scale(0.8)' },
     },
     card2: {
         transform: 'translate(-130px, 25px)',
         boxShadow: theme.shadows[15],
+        [theme.breakpoints.down('xs')]: { transform: 'translate(-70px, 25px) scale(0.8)' },
     },
     card3: {
         transform: 'translate(-235px, -55px)',
         boxShadow: theme.shadows[20],
+        [theme.breakpoints.down('xs')]: { transform: 'translate(-155px, -25px) scale(0.8)' },
     },
 }));
 

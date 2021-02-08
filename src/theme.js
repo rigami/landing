@@ -18,8 +18,8 @@ const theme = createMuiTheme({
         },
         MuiContainer: {
             root: {
-                paddingLeft: 64,
-                paddingRight: 64,
+                paddingLeft: 16,
+                paddingRight: 16,
                 '@media (min-width: 600px)': {
                     paddingLeft: 64,
                     paddingRight: 64,
@@ -28,17 +28,21 @@ const theme = createMuiTheme({
         },
         MuiToolbar: {
             gutters: {
-                paddingLeft: 64,
-                paddingRight: 64,
+                paddingLeft: 16,
+                paddingRight: 16,
                 '@media (min-width: 600px)': {
                     paddingLeft: 64,
-                    paddingRight: 64,
+                    paddingRight: 46,
                 },
             },
         },
         MuiButton: {
             root: { fontFamily: primaryFont },
             label: { wordBreak: 'break-word' },
+        },
+        MuiTypography: {
+            h1: { '@media (max-width: 600px)': { fontSize: '2.6rem' } },
+            h2: { '@media (max-width: 600px)': { fontSize: '1.4rem' } },
         },
     },
     typography: {
