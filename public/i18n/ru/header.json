@@ -1,0 +1,9 @@
+{
+  "writeReview": "Написать отзыв",
+  "bugReport": "Сообщить о проблеме",
+  "reviewInChromeWebStore": "В магазине Chrome Web Store",
+  "reviewToEmail": "На почтовый ящик разработчика",
+  "bugReportOnGitHub": "На GitHub",
+  "bugReportToEmail": "На почтовый ящик разработчика",
+  "bugReportViaGoogleForms": "Через Google Forms"
+}

@@ -1,0 +1,9 @@
+{
+  "writeReview": "Write review",
+  "bugReport": "Bug report",
+  "reviewInChromeWebStore": "In the Chrome Web Store",
+  "reviewToEmail": "To developer's mailbox",
+  "bugReportOnGitHub": "On GitHub",
+  "bugReportToEmail": "To developer's mailbox",
+  "bugReportViaGoogleForms": "Via Google Forms"
+}

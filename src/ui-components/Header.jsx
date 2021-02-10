@@ -13,6 +13,8 @@ import {
     BugReportRounded as BugReportIcon,
     RateReviewRounded as ReviewIcon,
 } from '@material-ui/icons';
+import { withTranslation } from '@/i18n';
+import LangSwitcher from '@/ui-components/LangSwitcher';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -39,7 +41,7 @@ const useStyles = makeStyles((theme) => ({
     offsetRight: { marginLeft: theme.spacing(2) },
 }));
 
-function Header() {
+function Header({ t }) {
     const classes = useStyles();
     const theme = useTheme();
     const isMobile = useMediaQuery(theme.breakpoints.down('xs'));
@@ -56,20 +58,20 @@ function Header() {
                     </Link>
                 </Tooltip>
                 <DropDownButton
-                    label={!isMobile && 'Написать отзыв'}
+                    label={!isMobile && t('writeReview')}
                     icon={isMobile && <ReviewIcon />}
                     className={classes.alignRight}
                 >
                     {(props) => (
                         <Fragment>
                             <LinkDropDownItem
-                                title="В магазине Chrome Web Store"
+                                title={t('reviewInChromeWebStore')}
                                 href="https://chrome.google.com/webstore/detail/hdpjmahlkfndaejogipnepcgdmjiamhd"
                                 target="_blank"
                                 {...props}
                             />
                             <LinkDropDownItem
-                                title="На почтовый ящик разработчика"
+                                title={t('reviewToEmail')}
                                 href="mailto:danilkinkin@gmail.com"
                                 {...props}
                             />
@@ -77,25 +79,25 @@ function Header() {
                     )}
                 </DropDownButton>
                 <DropDownButton
-                    label={!isMobile && 'Сообщить о проблеме'}
+                    label={!isMobile && t('bugReport')}
                     icon={isMobile && <BugReportIcon />}
                     className={classes.offsetRight}
                 >
                     {(props) => (
                         <Fragment>
                             <LinkDropDownItem
-                                title="На GitHub"
+                                title={t('bugReportOnGitHub')}
                                 href="https://github.com/rigami/readme/issues"
                                 target="_blank"
                                 {...props}
                             />
                             <LinkDropDownItem
-                                title="На почтовый ящик разработчика"
+                                title={t('bugReportToEmail')}
                                 href="mailto:danilkinkin@gmail.com"
                                 {...props}
                             />
                             <LinkDropDownItem
-                                title="Через Google Forms"
+                                title={t('bugReportViaGoogleForms')}
                                 href="https://forms.gle/qdt3Pofio3242Qe46"
                                 target="_blank"
                                 {...props}
@@ -103,9 +105,10 @@ function Header() {
                         </Fragment>
                     )}
                 </DropDownButton>
+                <LangSwitcher className={classes.offsetRight} />
             </Toolbar>
         </AppBar>
     );
 }
 
-export default Header;
+export default withTranslation('header')(Header);
