@@ -21,6 +21,10 @@ const useStyles = makeStyles((theme) => ({
         backgroundRepeat: 'no-repeat',
         backgroundPosition: '100% 100%',
         minHeight: 480,
+        [theme.breakpoints.down('xs')]: {
+            backgroundSize: '300px, 100%',
+            minHeight: 360,
+        },
     },
     subtitle: { maxWidth: 470 },
     actions: { paddingTop: theme.spacing(16) },

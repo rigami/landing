@@ -14,9 +14,21 @@ const useStyles = makeStyles((theme) => ({
         backgroundRepeat: 'no-repeat',
         backgroundPosition: 'calc(100% - 20px) calc(100% - 25px)',
         minHeight: 480,
+        [theme.breakpoints.down('xs')]: {
+            flexBasis: '100% !important',
+            backgroundSize: '300px',
+            backgroundPosition: 'calc(50%) calc(100% - 110px)',
+        },
     },
     subtitle: { maxWidth: 470 },
-    actions: { paddingTop: theme.spacing(16) },
+    actions: {
+        paddingTop: theme.spacing(16),
+        [theme.breakpoints.down('xs')]: { paddingTop: 300 + theme.spacing(4) },
+    },
+    button: {
+        backgroundColor: theme.palette.background.paper,
+        [theme.breakpoints.down('xs')]: { width: '100%' },
+    },
 }));
 
 function FormBlock({ className: externalClassname }) {
@@ -42,6 +54,7 @@ function FormBlock({ className: externalClassname }) {
                     href="https://forms.gle/ZfEjCEFrjDY87riX6"
                     target="_blank"
                     endIcon={<ArrowIcon />}
+                    className={classes.button}
                 >
                     Заполнить анкету
                 </ContentButton>
