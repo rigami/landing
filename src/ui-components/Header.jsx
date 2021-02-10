@@ -52,7 +52,7 @@ function Header({ t }) {
             className={classes.root}
         >
             <Toolbar className={classes.toolbar}>
-                <Tooltip title="Вернуться домой">
+                <Tooltip title={t('backHomeTooltip')}>
                     <Link className={classes.homeLink} href="/">
                         <LogoIcon className={classes.logo} />
                     </Link>
