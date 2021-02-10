@@ -1,6 +1,6 @@
 import React, { Fragment, useState } from 'react';
 import { Button, Menu, MenuItem } from '@material-ui/core';
-import i18next from 'i18next';
+import { i18n, Link, withTranslation } from '@/i18n';
 
 const i18ns = [
     {
@@ -15,7 +15,7 @@ const i18ns = [
 
 function LangSwitcher({ ...other }) {
     const [anchorEl, setAnchorEl] = useState(null);
-    const [activeLang, setActiveLang] = useState(i18ns.find(({ code }) => code === i18next.language));
+    const [activeLang, setActiveLang] = useState(i18ns.find(({ code }) => code === i18n.language));
 
     const handleClick = (event) => {
         setAnchorEl(event.currentTarget);
@@ -23,7 +23,7 @@ function LangSwitcher({ ...other }) {
 
     const handleSetLang = (newCode) => {
         if (newCode) {
-            i18next
+            i18n
                 .changeLanguage(newCode)
                 .then(() => {
                     setActiveLang(i18ns.find(({ code }) => code === newCode));

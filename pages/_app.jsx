@@ -5,6 +5,7 @@ import { Box, CssBaseline } from '@material-ui/core';
 import theme from '@/theme';
 import '@/fonts/inject.css';
 import Head from 'next/head';
+import { appWithTranslation } from '@/i18n';
 
 class MyApp extends App {
     componentDidMount() {
@@ -60,4 +61,6 @@ class MyApp extends App {
     }
 }
 
-export default MyApp;
+MyApp.getInitialProps = async (appContext) => ({ ...await App.getInitialProps(appContext) });
+
+export default appWithTranslation(MyApp);
