@@ -1,17 +1,9 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import ContentCard from '@/ui-components/ContentCard';
 import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
-import ContentButton from '@/ui-components/ContentButton';
 import { Link, List, ListItem } from '@material-ui/core';
-import testingImageUrl from '@/resources/testing.png';
-import {
-    ArrowForwardRounded as ArrowIcon,
-    BookmarkRounded as ImageIcon,
-    GifRounded as GIFIcon,
-    MovieRounded as VideoIcon,
-} from '@material-ui/icons';
-import SmallListItem from '@/ui-components/SmallListItem';
+import { ArrowForwardRounded as ArrowIcon } from '@material-ui/icons';
 import donateImageUrl from '@/resources/clear-donate-background.png';
 
 const useStyles = makeStyles((theme) => ({
@@ -64,13 +56,17 @@ function DonateBlock({ className: externalClassname }) {
                         title: 'Через Tinkoff',
                     },
                     {
+                        url: 'paypal.me/danilkinkin',
+                        title: 'Через PayPal',
+                    },
+                    {
                         url: 'https://boosty.to/danilkinkin',
                         title: 'Поддержать в Bootsy',
                     },
-                    /* {
+                    {
                         url: 'https://ko-fi.com/danilkinkin',
                         title: 'Поддержать в Ko-Fi',
-                    }, */
+                    },
                 ].map(({ url, title }) => (
                     <ListItem key={url} disableGutters>
                         <Link href={url} target="_blank" className={classes.link}>
