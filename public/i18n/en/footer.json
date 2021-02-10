@@ -1,0 +1,22 @@
+{
+  "review": {
+    "title": "Product Feedback",
+    "chromeWebStore": "In the Chrome Web Store",
+    "email": "To developer's mailbox"
+  },
+  "bugReport": {
+    "title": "Report a problem",
+    "gitHub": "On GitHub",
+    "email": "To developer's mailbox",
+    "googleForms": "Via Google Forms"
+  },
+  "other": {
+    "title": "Other",
+    "privacyPolicy": "Privacy Policy",
+    "projectOnGitHub": "Project on GitHub"
+  },
+  "designer": {
+    "tooltip": "Go to developer site",
+    "design&development": "Design & Development"
+  }
+}

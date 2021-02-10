@@ -1,0 +1,22 @@
+{
+  "review": {
+    "title": "Отзыв о продукте",
+    "chromeWebStore": "В магазине Chrome Web Store",
+    "email": "На почтовый ящик разработчика"
+  },
+  "bugReport": {
+    "title": "Сообщить о проблеме",
+    "gitHub": "На GitHub",
+    "email": "На почтовый ящик разработчика",
+    "googleForms": "Через Google Forms"
+  },
+  "other": {
+    "title": "Другое",
+    "privacyPolicy": "Политика конфиденциальности",
+    "projectOnGitHub": "Проект на GitHub"
+  },
+  "designer": {
+    "tooltip": "Перейти на сайт разработчика",
+    "design&development": "Дизайн и Разработка"
+  }
+}

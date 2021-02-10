@@ -1,11 +1,15 @@
 import React from 'react';
 import { fade, makeStyles } from '@material-ui/core/styles';
 import {
-    Box, Container, Link, Tooltip, Typography,
+    Box,
+    Container,
+    Link,
+    Tooltip,
+    Typography,
 } from '@material-ui/core';
 import LogoIcon from '@/resources/logo_studio.svg';
-import { useTranslation } from 'react-i18next';
 import { OpenInNewRounded as OpenInNewIcon } from '@material-ui/icons';
+import { withTranslation } from '@/i18n';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -112,56 +116,55 @@ function Block({ title, links }) {
     );
 }
 
-function Footer() {
+function Footer({ t }) {
     const classes = useStyles();
-    const { t } = useTranslation();
 
     return (
         <footer className={classes.root}>
             <Container className={classes.container}>
                 <Box className={classes.links}>
                     <Block
-                        title="Отзыв о продукте"
+                        title={t('review.title')}
                         links={[
                             {
-                                label: 'В магазине Chrome Web Store',
+                                label: t('review.chromeWebStore'),
                                 url: '/https://chrome.google.com/webstore/detail/hdpjmahlkfndaejogipnepcgdmjiamhd',
                                 target: '_blank',
                             },
                             {
-                                label: 'На почтовый ящик разработчика',
+                                label: t('review.email'),
                                 url: 'mailto:danilkinkin@gmail.com',
                             },
                         ]}
                     />
                     <Block
-                        title="Сообщить о проблеме"
+                        title={t('bugReport.title')}
                         links={[
                             {
-                                label: 'На GitHub',
+                                label: t('bugReport.gitHub'),
                                 url: 'https://github.com/rigami/readme/issues',
                                 target: '_blank',
                             },
                             {
-                                label: 'На почтовый ящик разработчика',
+                                label: t('bugReport.email'),
                                 url: 'mailto:danilkinkin@gmail.com',
                             },
                             {
-                                label: 'Через Google Forms',
+                                label: t('bugReport.googleForms'),
                                 url: 'https://forms.gle/qdt3Pofio3242Qe46',
                             },
                         ]}
                     />
                     <Block
-                        title="Другое"
+                        title={t('other.title')}
                         links={[
                             {
-                                label: 'Политика конфиденциальности',
+                                label: t('other.privacyPolicy'),
                                 url: 'https://github.com/rigami/readme/blob/main/POLICY.md',
                                 target: '_blank',
                             },
                             {
-                                label: 'Проект на GitHub',
+                                label: t('other.projectOnGitHub'),
                                 url: 'https://github.com/rigami/readme',
                                 target: '_blank',
                             },
@@ -170,7 +173,7 @@ function Footer() {
                 </Box>
                 <Box className={classes.designedByBlock}>
                     <Tooltip
-                        title={t('footer.linkDesignerTooltip')}
+                        title={t('designer.tooltip')}
                         enterDelay={400}
                         enterNextDelay={400}
                     >
@@ -182,7 +185,7 @@ function Footer() {
                         </a>
                     </Tooltip>
                     <Typography variant="body2" className={classes.designedByLabel}>
-                        {t('footer.design&development')}
+                        {t('designer.design&development')}
                     </Typography>
                 </Box>
             </Container>
@@ -190,4 +193,4 @@ function Footer() {
     );
 }
 
-export default Footer;
+export default withTranslation('footer')(Footer);

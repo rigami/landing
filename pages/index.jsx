@@ -3,6 +3,6 @@ import Page from '@/ui-pages/Home';
 
 const Index = () => <Page />;
 
-Index.getInitialProps = async () => ({ namespacesRequired: ['common', 'header'] });
+Index.getInitialProps = async () => ({ namespacesRequired: ['common', 'header', 'footer'] });
 
 export default Index;
