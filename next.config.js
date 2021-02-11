@@ -32,4 +32,18 @@ module.exports = withPlugins([withBundleAnalyzer({ enabled: process.env.ANALYZE 
     }),
     rewrites: async () => nextI18NextRewrites(localeSubpaths),
     publicRuntimeConfig: { localeSubpaths },
+    async redirects() {
+        return [
+            {
+                source: '/review',
+                destination: 'https://github.com/rigami/readme/blob/main/REVIEW.md',
+                permanent: true,
+            },
+            {
+                source: '/bug-report',
+                destination: 'https://github.com/rigami/readme/blob/main/BUG_REPORT.md',
+                permanent: true,
+            },
+        ];
+    },
 });
