@@ -14,4 +14,4 @@ services:
           - "traefik.http.routers.landing.entrypoints=web-http,web-https"
           - "traefik.http.routers.landing.tls=true"
           - "traefik.http.routers.landing.tls.certresolver=letsEncrypt"
-          - "traefik.http.services.landing-service.loadbalancer.server.port=80"
+          - "traefik.http.services.landing-service.loadbalancer.server.port=3000"
