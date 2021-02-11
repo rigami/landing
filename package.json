@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "description": "Landing page for rigami project",
   "main": "index.js",
-  "repository": "https://github.com/rigami-org/landing",
+  "repository": "https://github.com/rigami/landing",
   "author": "Danilkinkin",
   "license": "MIT",
   "scripts": {
@@ -23,9 +23,7 @@
     "blurhash": "^1.1.3",
     "clsx": "^1.1.1",
     "html-to-react": "^1.4.5",
-    "i18next": "^19.8.7",
     "i18next-browser-languagedetector": "^6.0.1",
-    "i18next-http-backend": "^1.1.0",
     "lodash": "^4.17.20",
     "mobx": "^6.1.6",
     "mobx-react": "^7.1.0",

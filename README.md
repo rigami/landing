@@ -1,4 +1,4 @@
-![Logo](docs/GitHub_readme_header.jpg)
+![Logo](docs/readme-header.png)
 
 Landing pages for rigami project
 
