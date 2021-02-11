@@ -6,6 +6,7 @@ import ContentCard from '@/ui-components/ContentCard';
 import { Link } from '@material-ui/core';
 import { ArrowBackRounded as ArrowIcon } from '@material-ui/icons';
 import ContentButton from '@/ui-components/ContentButton';
+import { withTranslation } from '@/i18n';
 
 const useStyles = makeStyles((theme) => ({
     root: { minHeight: 'calc(100vh - 64px)' },
@@ -28,7 +29,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-function HelpForTheProject() {
+function Page404({ t }) {
     const classes = useStyles();
 
     return (
@@ -42,14 +43,14 @@ function HelpForTheProject() {
                         subtitle: classes.subtitle,
                     }}
                     title="404"
-                    subtitle="К сожалению такой страницы не существует("
+                    subtitle={t('404')}
                     actions={(
                         <ContentButton
                             component={Link}
                             href="/"
                             startIcon={<ArrowIcon />}
                         >
-                            Вернуться домой
+                            {t('backHome')}
                         </ContentButton>
                     )}
                 />
@@ -58,4 +59,4 @@ function HelpForTheProject() {
     );
 }
 
-export default HelpForTheProject;
+export default withTranslation('errors')(Page404);
