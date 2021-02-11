@@ -1,2 +1,52 @@
 {
+  "splashScreen": {
+    "slogan": "To keep everything. <br/> For access everywhere",
+    "description": "Rigami is a new browser tab that combines minimalism and extensive functionality. Bookmarks, clock, date and current weather, nothing more"
+  },
+  "demo": {
+    "title": "All the most important and nothing else",
+    "description": "Cleanliness and a minimum of details, just what you need, excellent customization and huge functionality.",
+    "features": {
+      "backgrounds": "Backgrounds of any format",
+      "bookmarks": "Bookmarks are always at hand",
+      "weather": "Current temperature outside the window",
+      "date&time": "Date & time"
+    }
+  },
+  "helpForTheProject": {
+    "title": "Become part of the project",
+    "description": "The project is currently in active development and is not available to the general public, but you can join and help bring it to the world faster. Your help will not go unnoticed.",
+    "action": "How can I help?"
+  },
+  "backgrounds": {
+    "title": "Any background format",
+    "description": "Support for a huge number of background files, as well as customizable background streams.",
+    "supportFormats": {
+      "gif": "GIF animation",
+      "video": "Video",
+      "image": "Image"
+    },
+    "streamFeature": {
+      "title": "Streams of endless backgrounds",
+      "description": "You can use prepared streams, or create your own by keywords"
+    }
+  },
+  "bookmarks": {
+    "title": "Convenient and beautiful bookmarks",
+    "description": "Folders, tags - everything for quick and easy access to the desired bookmarks",
+    "cards": {
+      "mdn": {
+        "name": "MDN Web Documentation",
+        "description": "Web Documentation on MDN provides information on open web technologists ..."
+      },
+      "toDo": {
+        "name": "Pre-release task list",
+        "description": "Things to remember to do before release: <br/> <br/> - Write a changelog <br/> - Specify the new version number <br/> - Check migration"
+      }
+    }
+  },
+  "clearInterface": {
+    "title": "Cleanliness comes first"
+  },
+  "offerToInstall": "Install. <br/> Try it. <br/> You will like it."
 }
