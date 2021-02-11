@@ -1,0 +1,19 @@
+{
+  "title": "How can I help the project?",
+  "form": {
+    "title": "Tell us about your experience",
+    "description": "Your feedback is very useful for the development of the project, tell us what problems you faced and what you would like to see",
+    "action": "Fill in the form"
+  },
+  "donate": {
+    "title": "Buy me coffee",
+    "description": "You can donate a small amount for development, I will be pleased",
+    "list": {
+      "tinkoff": "Via Tinkoff",
+      "paypal": "Via PayPal",
+      "bootsy": "Donate at Bootsy",
+      "koFi": "Donate at Ko-Fi"
+    }
+  },
+  "offerToInstall": "Or just install Rigami and enjoy"
+}

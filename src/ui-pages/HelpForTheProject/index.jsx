@@ -1,7 +1,6 @@
 import React, { Fragment } from 'react';
 import Footer from '@/ui-components/Footer';
 import { makeStyles } from '@material-ui/core/styles';
-import { useTranslation } from 'react-i18next';
 import Header from '@/ui-components/Header';
 import SplashScreen from '@/ui-components/SplashScreen';
 import clsx from 'clsx';
@@ -9,6 +8,7 @@ import { Box, Container, Typography } from '@material-ui/core';
 import DownloadButton from '@/ui-components/DownloadButton';
 import DonateBlock from '@/ui-pages/HelpForTheProject/DonateBlock';
 import ContentCard from '@/ui-components/ContentCard';
+import { withTranslation } from '@/i18n';
 import FormBlock from './FormBlock';
 
 const useStyles = makeStyles((theme) => ({
@@ -43,14 +43,14 @@ const useStyles = makeStyles((theme) => ({
     downloadButton: { marginTop: theme.spacing(4) },
 }));
 
-function HelpForTheProject() {
+function HelpForTheProject({ t }) {
     const classes = useStyles();
 
     return (
         <Fragment>
             <Header />
             <SplashScreen className={classes.splashScreen}>
-                <ContentCard titleVariant="h1" title="Как я могу помочь проекту?" />
+                <ContentCard titleVariant="h1" title={t('title')} />
             </SplashScreen>
             <main className={classes.contentWrapper}>
                 <Box className={classes.content}>
@@ -62,7 +62,7 @@ function HelpForTheProject() {
                         maxWidth={false}
                     >
                         <Typography variant="h1">
-                            Или просто установите Rigami и наслаждайтесь
+                            {t('offerToInstall')}
                         </Typography>
                         <DownloadButton className={classes.downloadButton} />
                     </Container>
@@ -73,4 +73,4 @@ function HelpForTheProject() {
     );
 }
 
-export default HelpForTheProject;
+export default withTranslation('helpForTheProjectPage')(HelpForTheProject);

@@ -5,6 +5,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import { Link, List, ListItem } from '@material-ui/core';
 import { ArrowForwardRounded as ArrowIcon } from '@material-ui/icons';
 import donateImageUrl from '@/resources/clear-donate-background.png';
+import { withTranslation } from '@/i18n';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -35,7 +36,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-function DonateBlock({ className: externalClassname }) {
+function DonateBlock({ t, className: externalClassname }) {
     const classes = useStyles();
 
     return (
@@ -45,27 +46,27 @@ function DonateBlock({ className: externalClassname }) {
                 subtitle: classes.subtitle,
                 actions: classes.actions,
             }}
-            title="Купите мне кофе"
-            subtitle="Вы можете пожертвовать небольшую сумму на разработку, мне будет приятно"
+            title={t('donate.title')}
+            subtitle={t('donate.description')}
             disableTextBackdrop
         >
             <List dense className={classes.list} disablePadding>
                 {[
                     {
                         url: 'https://www.tinkoff.ru/sl/1zAH3HyZ54Q',
-                        title: 'Через Tinkoff',
+                        title: t('donate.list.tinkoff'),
                     },
                     {
                         url: 'paypal.me/danilkinkin',
-                        title: 'Через PayPal',
+                        title: t('donate.list.paypal'),
                     },
                     {
                         url: 'https://boosty.to/danilkinkin',
-                        title: 'Поддержать в Bootsy',
+                        title: t('donate.list.bootsy'),
                     },
                     {
                         url: 'https://ko-fi.com/danilkinkin',
-                        title: 'Поддержать в Ko-Fi',
+                        title: t('donate.list.koFi'),
                     },
                 ].map(({ url, title }) => (
                     <ListItem key={url} disableGutters>
@@ -80,4 +81,4 @@ function DonateBlock({ className: externalClassname }) {
     );
 }
 
-export default DonateBlock;
+export default withTranslation('helpForTheProjectPage')(DonateBlock);

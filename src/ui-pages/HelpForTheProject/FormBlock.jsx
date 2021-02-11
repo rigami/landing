@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import ContentCard from '@/ui-components/ContentCard';
 import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
@@ -6,6 +6,7 @@ import ContentButton from '@/ui-components/ContentButton';
 import { Link } from '@material-ui/core';
 import testingImageUrl from '@/resources/testing.png';
 import { ArrowForwardRounded as ArrowIcon } from '@material-ui/icons';
+import { withTranslation } from '@/i18n';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -31,7 +32,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-function FormBlock({ className: externalClassname }) {
+function FormBlock({ t, className: externalClassname }) {
     const classes = useStyles();
 
     return (
@@ -41,13 +42,8 @@ function FormBlock({ className: externalClassname }) {
                 subtitle: classes.subtitle,
                 actions: classes.actions,
             }}
-            title="Расскажите об вашем опыте использования"
-            subtitle={(
-                <Fragment>
-                    Ваш отзыв очень полезен для развития проекта,
-                    расскажите с какими проблемами вы столкнулись и что бы вы хотели видеть
-                </Fragment>
-            )}
+            title={t('form.title')}
+            subtitle={t('form.description')}
             actions={(
                 <ContentButton
                     component={Link}
@@ -56,11 +52,11 @@ function FormBlock({ className: externalClassname }) {
                     endIcon={<ArrowIcon />}
                     className={classes.button}
                 >
-                    Заполнить анкету
+                    {t('form.action')}
                 </ContentButton>
             )}
         />
     );
 }
 
-export default FormBlock;
+export default withTranslation('helpForTheProjectPage')(FormBlock);
