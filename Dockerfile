@@ -14,18 +14,6 @@ COPY . .
 # Build the project and copy the files
 RUN yarn build
 
-# stage 2 webserver
-FROM nginx:alpine
+EXPOSE 3000
 
-#!/bin/sh
-COPY ./.nginx/nginx.conf /etc/nginx/nginx.conf
-
-## Remove default nginx index page
-RUN rm -rf /usr/share/nginx/html/*
-
-# Copy from the stage 1
-COPY --from=builder /app/out /usr/share/nginx/html
-
-EXPOSE 80
-
-ENTRYPOINT ["nginx", "-g", "daemon off;"]
+ENTRYPOINT ["yarn", "start"]
