@@ -6,4 +6,5 @@ module.exports = new NextI18Next({
     otherLanguages: ['ru'],
     localeSubpaths,
     localePath: path.resolve('./public/i18n'),
+    interpolation: { escapeValue: false },
 });

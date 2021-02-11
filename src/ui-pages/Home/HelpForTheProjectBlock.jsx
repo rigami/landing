@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import ContentCard from '@/ui-components/ContentCard';
 import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
@@ -6,6 +6,7 @@ import ContentButton from '@/ui-components/ContentButton';
 import { Link } from '@material-ui/core';
 import testingImageUrl from '@/resources/testing.png';
 import { ArrowForwardRounded as ArrowIcon } from '@material-ui/icons';
+import { withTranslation } from '@/i18n';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -30,7 +31,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-function HelpForTheProjectBlock({ className: externalClassname }) {
+function HelpForTheProjectBlock({ t, className: externalClassname }) {
     const classes = useStyles();
 
     return (
@@ -42,14 +43,8 @@ function HelpForTheProjectBlock({ className: externalClassname }) {
                 subtitle: classes.subtitle,
                 actions: classes.actions,
             }}
-            title="Станьте частью проекта"
-            subtitle={(
-                <Fragment>
-                    На текущий момент проект находится в активной разработке и недоступен для широкой публики,
-                    но вы можете присоединиться и помочь довести его до всего мира быстрее.
-                    Ваша помощь не останется незамеченной.
-                </Fragment>
-            )}
+            title={t('helpForTheProject.title')}
+            subtitle={t('helpForTheProject.description')}
             actions={(
                 <ContentButton
                     component={Link}
@@ -57,11 +52,11 @@ function HelpForTheProjectBlock({ className: externalClassname }) {
                     endIcon={<ArrowIcon />}
                     className={classes.button}
                 >
-                    Как я могу помочь?
+                    {t('helpForTheProject.action')}
                 </ContentButton>
             )}
         />
     );
 }
 
-export default HelpForTheProjectBlock;
+export default withTranslation('indexPage')(HelpForTheProjectBlock);

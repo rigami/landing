@@ -1,8 +1,10 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import DownloadButton from '@/ui-components/DownloadButton';
 import SplashScreenComponent from '@/ui-components/SplashScreen';
 import ContentCard from '@/ui-components/ContentCard';
 import { makeStyles } from '@material-ui/core/styles';
+import { withTranslation } from '@/i18n';
+import HTML from '@/ui-components/HTML';
 
 const useStyles = makeStyles((theme) => ({
     card: {
@@ -22,7 +24,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-function SplashScreen() {
+function SplashScreen({ t }) {
     const classes = useStyles();
 
     return (
@@ -32,26 +34,12 @@ function SplashScreen() {
                     root: classes.card,
                     title: classes.title,
                 }}
-                title={(
-                    <Fragment>
-                        Для сохранения всего.
-                        <br />
-                        Для доступа везде
-                    </Fragment>
-                )}
-                subtitle={(
-                    <Fragment>
-                        Rigami - это новая вкладка для браузера
-                        которая сочетает в себе минимализм и обширный функционал.
-                        Закладки, часы, дата и  текущая погода, ничего лишнего
-                    </Fragment>
-                )}
-                actions={(
-                    <DownloadButton />
-                )}
+                title={(<HTML>{t('splashScreen.slogan')}</HTML>)}
+                subtitle={(<HTML>{t('splashScreen.description')}</HTML>)}
+                actions={(<DownloadButton />)}
             />
         </SplashScreenComponent>
     );
 }
 
-export default SplashScreen;
+export default withTranslation('indexPage')(SplashScreen);

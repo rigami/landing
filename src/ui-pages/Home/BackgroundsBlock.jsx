@@ -28,6 +28,7 @@ import bgPreviewGIF1Src from '@/resources/bg-preview-train-network.gif';
 import bgPreviewGIF2Src from '@/resources/bg-preview-bathroom-network.gif';
 import bgPreviewGIF3Src from '@/resources/bg-preview-station-network.gif';
 import bgPreviewGIF4Src from '@/resources/bg-preview-fish-network.gif';
+import { withTranslation } from '@/i18n';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -155,9 +156,7 @@ function BackgroundCard({ id, src, type }) {
     );
 }
 
-console.log('bgPreviewVideo1Src', bgPreviewVideo1Src);
-
-function BackgroundsBlock({ className: externalClassname }) {
+function BackgroundsBlock({ t, className: externalClassname }) {
     const classes = useStyles();
     const theme = useTheme();
     const { height, ref } = useResizeDetector();
@@ -261,20 +260,32 @@ function BackgroundsBlock({ className: externalClassname }) {
                 title: classes.title,
                 subtitle: classes.subtitle,
             }}
-            title="Любой формат фона"
-            subtitle="Поддержка огромного количества файлов для фона, а так же настраиваемые потоки фонов."
+            title={t('backgrounds.title')}
+            subtitle={t('backgrounds.description')}
         >
             <List dense className={classes.list} disablePadding>
-                <SmallListItem className={classes.listItem} icon={(<GIFIcon />)} title="GIF-анимация" />
-                <SmallListItem className={classes.listItem} icon={(<VideoIcon />)} title="Видео" />
-                <SmallListItem className={classes.listItem} icon={(<ImageIcon />)} title="Изображения " />
+                <SmallListItem
+                    className={classes.listItem}
+                    icon={(<GIFIcon />)}
+                    title={t('backgrounds.supportFormats.gif')}
+                />
+                <SmallListItem
+                    className={classes.listItem}
+                    icon={(<VideoIcon />)}
+                    title={t('backgrounds.supportFormats.video')}
+                />
+                <SmallListItem
+                    className={classes.listItem}
+                    icon={(<ImageIcon />)}
+                    title={t('backgrounds.supportFormats.image')}
+                />
             </List>
             <List dense className={classes.list} disablePadding>
                 <SmallListItem
                     className={classes.listItem}
                     icon={(<StreamIcon />)}
-                    title="Потоки бесконечных фонов"
-                    subtitle="Можно использовать заготовленные потоки, либо создавать свои по ключевым словам"
+                    title={t('backgrounds.streamFeature.title')}
+                    subtitle={t('backgrounds.streamFeature.description')}
                 />
             </List>
             {store.list.map(({ id, src, type }) => (
@@ -289,4 +300,4 @@ function BackgroundsBlock({ className: externalClassname }) {
     );
 }
 
-export default observer(BackgroundsBlock);
+export default withTranslation('indexPage')(observer(BackgroundsBlock));

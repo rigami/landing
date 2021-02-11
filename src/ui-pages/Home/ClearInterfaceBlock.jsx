@@ -3,6 +3,7 @@ import ContentCard from '@/ui-components/ContentCard';
 import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
 import backgroundImageUrl from '@/resources/clear-interface-background.png';
+import { withTranslation } from '@/i18n';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -18,17 +19,17 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-function ClearInterfaceBlock({ className: externalClassname }) {
+function ClearInterfaceBlock({ t, className: externalClassname }) {
     const classes = useStyles();
 
     return (
         <ContentCard
             titleVariant="h1"
             className={clsx(classes.root, externalClassname)}
-            title="Чистота при выше всего"
+            title={t('clearInterface.title')}
             disableTextBackdrop
         />
     );
 }
 
-export default ClearInterfaceBlock;
+export default withTranslation('indexPage')(ClearInterfaceBlock);

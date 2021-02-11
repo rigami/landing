@@ -16,6 +16,7 @@ import {
 import SmallListItem from '@/ui-components/SmallListItem';
 import demoVideoUrl from '@/resources/demo.mkv';
 import demoVideoPreviewUrl from '@/resources/demo-preview.jpg';
+import { withTranslation } from '@/i18n';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -53,7 +54,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-function DemoBlock({ className: externalClassname }) {
+function DemoBlock({ t, className: externalClassname }) {
     const classes = useStyles();
 
     return (
@@ -65,14 +66,14 @@ function DemoBlock({ className: externalClassname }) {
                     title: classes.title,
                     subtitle: classes.subtitle,
                 }}
-                title="Всё самое важное и ничего больше"
-                subtitle="Чистота и минимум деталей, только то что нужно, отличная кастомизация и огромный функционал."
+                title={t('demo.title')}
+                subtitle={t('demo.description')}
             >
                 <List dense className={classes.list} disablePadding>
-                    <SmallListItem icon={(<BackgroundsIcon />)} title="Фоны любых форматов" />
-                    <SmallListItem icon={(<BookmarksIcon />)} title="Закладки всегда под рукой" />
-                    <SmallListItem icon={(<WeatherIcon />)} title="Текущая температура за окном" />
-                    <SmallListItem icon={(<DateTimeIcon />)} title="Дата и время" />
+                    <SmallListItem icon={(<BackgroundsIcon />)} title={t('demo.features.backgrounds')} />
+                    <SmallListItem icon={(<BookmarksIcon />)} title={t('demo.features.bookmarks')} />
+                    <SmallListItem icon={(<WeatherIcon />)} title={t('demo.features.weather')} />
+                    <SmallListItem icon={(<DateTimeIcon />)} title={t('demo.features.date&time')} />
                 </List>
             </ContentCard>
             <Box className={classes.demoWrapper}>
@@ -90,4 +91,4 @@ function DemoBlock({ className: externalClassname }) {
     );
 }
 
-export default DemoBlock;
+export default withTranslation('indexPage')(DemoBlock);

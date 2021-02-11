@@ -1,10 +1,12 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import ContentCard from '@/ui-components/ContentCard';
 import clsx from 'clsx';
 import CardLink, { BKMS_VARIANT } from '@/ui-components/Card';
 import { makeStyles } from '@material-ui/core/styles';
 import elementaryPosterSrc from '@/resources/elementary_poster.png';
 import mdnIconSrc from '@/resources/mdn_icon.png';
+import { withTranslation } from '@/i18n';
+import HTML from '@/ui-components/HTML';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -40,7 +42,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-function BookmarksBlock({ className: externalClassname }) {
+function BookmarksBlock({ t, className: externalClassname }) {
     const classes = useStyles();
 
     return (
@@ -51,8 +53,8 @@ function BookmarksBlock({ className: externalClassname }) {
                 title: classes.title,
                 subtitle: classes.subtitle,
             }}
-            title="Удобные и красивые закладки"
-            subtitle="Папки, теги - всё для быстрого и удобного доступа к нужным закладкам"
+            title={t('bookmarks.title')}
+            subtitle={t('bookmarks.description')}
         >
             <CardLink
                 name="How to Revitalize Your Mac or Windows PC ⋅ elementary Blog"
@@ -68,26 +70,15 @@ function BookmarksBlock({ className: externalClassname }) {
                 className={clsx(classes.card, classes.card1)}
             />
             <CardLink
-                name="Веб-документация MDN"
-                description="Веб-документация на MDN предоставляет собой информацию об открытых веб-технолог..."
+                name={t('bookmarks.cards.mdn.name')}
+                description={t('bookmarks.cards.mdn.description')}
                 icoVariant={BKMS_VARIANT.SMALL}
                 imageUrl={mdnIconSrc}
                 className={clsx(classes.card, classes.card2)}
             />
             <CardLink
-                name="Список задач перед релизом"
-                description={(
-                    <Fragment>
-                        Вещи которые нужно незабыть сделать перед релизом:
-                        <br />
-                        <br />
-                        - Написать changelog
-                        <br />
-                        - Указать номер  новой версии
-                        <br />
-                        - Проверить миграцию
-                    </Fragment>
-                )}
+                name={t('bookmarks.cards.toDo.name')}
+                description={(<HTML>{t('bookmarks.cards.toDo.description')}</HTML>)}
                 categories={[
                     '#8DD5FF',
                     '#0000FF',
@@ -101,4 +92,4 @@ function BookmarksBlock({ className: externalClassname }) {
     );
 }
 
-export default BookmarksBlock;
+export default withTranslation('indexPage')(BookmarksBlock);

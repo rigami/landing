@@ -9,6 +9,8 @@ import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
 import Header from '@/ui-components/Header';
 import DownloadButton from '@/ui-components/DownloadButton';
+import { withTranslation } from '@/i18n';
+import HTML from '@/ui-components/HTML';
 import SplashScreen from './SplashScreen';
 import BookmarksBlock from './BookmarksBlock';
 import HelpForTheProjectBlock from './HelpForTheProjectBlock';
@@ -47,7 +49,7 @@ const useStyles = makeStyles((theme) => ({
     downloadButton: { marginTop: theme.spacing(4) },
 }));
 
-function Home() {
+function Home({ t }) {
     const classes = useStyles();
 
     return (
@@ -67,11 +69,7 @@ function Home() {
                         maxWidth={false}
                     >
                         <Typography variant="h1">
-                            Установите.
-                            <br />
-                            Попробуйте.
-                            <br />
-                            Вам понравится.
+                            <HTML>{t('offerToInstall')}</HTML>
                         </Typography>
                         <DownloadButton className={classes.downloadButton} />
                     </Container>
@@ -82,4 +80,4 @@ function Home() {
     );
 }
 
-export default Home;
+export default withTranslation('indexPage')(Home);

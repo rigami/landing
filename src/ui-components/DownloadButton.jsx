@@ -2,8 +2,9 @@ import React from 'react';
 import { Link } from '@material-ui/core';
 import ContentButton from '@/ui-components/ContentButton';
 import { ArrowForwardRounded as ArrowIcon } from '@material-ui/icons';
+import { withTranslation } from '@/i18n';
 
-function DownloadButton({ className: externalClassName }) {
+function DownloadButton({ t, className: externalClassName }) {
     return (
         <ContentButton
             className={externalClassName}
@@ -12,9 +13,9 @@ function DownloadButton({ className: externalClassName }) {
             target="_blank"
             endIcon={<ArrowIcon />}
         >
-            Перейти в Chrome Web Store
+            {t('goToChromeWebStore')}
         </ContentButton>
     );
 }
 
-export default DownloadButton;
+export default withTranslation()(DownloadButton);
