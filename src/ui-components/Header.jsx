@@ -38,7 +38,10 @@ const useStyles = makeStyles((theme) => ({
         padding: theme.spacing(1),
     },
     alignRight: { marginLeft: 'auto' },
-    offsetRight: { marginLeft: theme.spacing(2) },
+    offsetRight: {
+        marginLeft: theme.spacing(2),
+        [theme.breakpoints.down('xs')]: { marginLeft: theme.spacing(1) },
+    },
 }));
 
 function Header({ t }) {

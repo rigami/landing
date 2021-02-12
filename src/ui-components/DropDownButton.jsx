@@ -83,7 +83,7 @@ function DropDownButton({ icon, label, children, className: externalClassName })
                 </Button>
             )}
             {!label && (
-                <IconButton onClick={handleClick} ref={ref}>
+                <IconButton onClick={handleClick} ref={ref} size="small">
                     {icon}
                 </IconButton>
             )}
