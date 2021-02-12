@@ -19,7 +19,29 @@ module.exports = withPlugins([withBundleAnalyzer({ enabled: process.env.ANALYZE 
                     options: { svgo: { plugins: [{ removeViewBox: false }] } },
                 },
                 {
-                    test: /\.(png|gif|jpg|ico|mp4|mkv|webm)$/,
+                    test: /\.(png|jpe?g|webp|gif|)$/i,
+                    use: [
+                        {
+                            loader: 'img-optimize-loader',
+                            options: {
+                                esModule: true,
+                                compress: {
+                                    mode: 'low',
+                                    webp: true,
+                                    disableOnDevelopment: true,
+                                    svgo: true,
+                                    gifsicle: { optimizationLevel: 3 },
+                                },
+                                name: '[name]_[hash].[ext]',
+                                publicPath: '/_next/static/files',
+                                outputPath: 'static/files',
+                                inline: { symbol: '__inline' },
+                            },
+                        },
+                    ],
+                },
+                {
+                    test: /\.(ico|mp4|mkv|webm)$/,
                     loader: 'file-loader',
                     options: {
                         name: '[name]_[hash].[ext]',

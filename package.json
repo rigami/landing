@@ -58,6 +58,7 @@
     "eslint-import-resolver-webpack": "^0.13.0",
     "eslint-plugin-flowtype": "^5.2.0",
     "file-loader": "^6.2.0",
+    "img-optimize-loader": "^1.0.7",
     "next-compose-plugins": "^2.2.0",
     "react-svg-loader": "^3.0.3",
     "webpack-bundle-analyzer": "^4.4.0"
