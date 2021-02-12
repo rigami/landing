@@ -17,6 +17,7 @@ import SmallListItem from '@/ui-components/SmallListItem';
 import demoVideoUrl from '@/resources/demo.mkv';
 import demoVideoPreviewUrl from '@/resources/demo-preview.jpg';
 import { withTranslation } from '@/i18n';
+import AutoPlayVideo from '@/ui-components/AutoPlayVideo';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -77,14 +78,10 @@ function DemoBlock({ t, className: externalClassname }) {
                 </List>
             </ContentCard>
             <Box className={classes.demoWrapper}>
-                <CardMedia
+                <AutoPlayVideo
                     className={classes.demo}
                     src={demoVideoUrl}
-                    component="video"
                     poster={demoVideoPreviewUrl}
-                    autoPlay
-                    loop
-                    muted
                 />
             </Box>
         </section>

@@ -29,6 +29,7 @@ import bgPreviewGIF2Src from '@/resources/bg-preview-bathroom-network.gif';
 import bgPreviewGIF3Src from '@/resources/bg-preview-station-network.gif';
 import bgPreviewGIF4Src from '@/resources/bg-preview-fish-network.gif';
 import { withTranslation } from '@/i18n';
+import AutoPlayVideo from '@/ui-components/AutoPlayVideo';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -139,6 +140,19 @@ const backgrounds = shuffle([
 function BackgroundCard({ id, src, type }) {
     const classes = useStyles();
 
+    if (type === BG_TYPE.VIDEO) {
+        return (
+            <AutoPlayVideo
+                id={id}
+                className={clsx(
+                    type === BG_TYPE.ANIMATION && classes.pixelRender,
+                    classes.background,
+                )}
+                src={src}
+            />
+        );
+    }
+
     return (
         <CardMedia
             id={id}
@@ -146,12 +160,8 @@ function BackgroundCard({ id, src, type }) {
                 type === BG_TYPE.ANIMATION && classes.pixelRender,
                 classes.background,
             )}
-            src={type === BG_TYPE.VIDEO ? src : undefined}
-            image={type !== BG_TYPE.VIDEO ? src : undefined}
-            component={type === BG_TYPE.VIDEO ? 'video' : 'div'}
-            autoPlay
-            loop
-            muted
+            image={src}
+            component="div"
         />
     );
 }
