@@ -1,6 +1,6 @@
 import { createMuiTheme } from '@material-ui/core/styles';
 
-const primaryFont = '"Red Hat Display", "Ubuntu", "Source Sans Pro", sans-serif';
+const primaryFont = '"Red Hat Display", "Ubuntu", "Source Sans Pro", "Noto Color Emoji", sans-serif';
 
 const theme = createMuiTheme({
     palette: {
