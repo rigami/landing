@@ -5,6 +5,7 @@ Landing pages for rigami project
 ## Development
 
 Subset fonts
+The tool is used for trimming [fonttools (pyftsubset)](https://github.com/fonttools/fonttools)
 ```bash
 $ cd ./src/fonts
 $ nano codes.txt # Added glyphs
