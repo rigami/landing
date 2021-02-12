@@ -7,7 +7,7 @@ import {
     Card,
     Collapse,
     ClickAwayListener,
-    IconButton,
+    IconButton, ListSubheader,
 } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import clsx from 'clsx';
@@ -60,12 +60,14 @@ function LinkDropDownItem({ title, href, target, handleClose }) {
     );
 }
 
-function DropDownButton({ icon, label, children, className: externalClassName }) {
+function DropDownButton({
+    isSmall, icon, label, children, className: externalClassName,
+}) {
     const classes = useStyles();
     const [isOpen, setIsOpen] = useState(false);
     const ref = useRef();
 
-    const handleClick = (event) => {
+    const handleClick = () => {
         setIsOpen(!isOpen);
     };
 
@@ -77,12 +79,12 @@ function DropDownButton({ icon, label, children, className: externalClassName })
 
     return (
         <Box className={clsx(classes.root, externalClassName)}>
-            {label && (
-                <Button onClick={handleClick} ref={ref} startIcon={icon}>
+            {!isSmall && (
+                <Button onClick={handleClick} ref={ref}>
                     {label}
                 </Button>
             )}
-            {!label && (
+            {isSmall && (
                 <IconButton onClick={handleClick} ref={ref} size="small">
                     {icon}
                 </IconButton>
@@ -94,7 +96,10 @@ function DropDownButton({ icon, label, children, className: externalClassName })
                             if (e.path.indexOf(ref.current) === -1) setIsOpen(false);
                         }}
                     >
-                        <Card className={classes.menu}>
+                        <Card className={classes.menu} elevation={18}>
+                            {isSmall && (
+                                <ListSubheader>{label}</ListSubheader>
+                            )}
                             {children && (<Content handleClose={handleClose} />)}
                         </Card>
                     </ClickAwayListener>

@@ -235,7 +235,7 @@ function BackgroundsBlock({ t, className: externalClassname }) {
 
     useEffect(() => {
         store.isAnimate = true;
-        // animate();
+        animate();
 
         return action(() => { store.isAnimate = false; });
     }, []);

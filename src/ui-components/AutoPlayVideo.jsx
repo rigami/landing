@@ -8,7 +8,7 @@ function AutoPlayVideo({ src, poster, className: externalClassName, ...other }) 
         if (!ref.current) return;
         ref.current.onloadeddata = () => {
             console.log('video loaded');
-            ref.current.play();
+            if (ref.current.play) ref.current.play();
         };
         ref.current.load();
         console.log('start load video');

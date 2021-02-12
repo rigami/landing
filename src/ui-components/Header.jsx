@@ -61,8 +61,9 @@ function Header({ t }) {
                     </Link>
                 </Tooltip>
                 <DropDownButton
-                    label={!isMobile && t('writeReview')}
-                    icon={isMobile && <ReviewIcon />}
+                    label={t('writeReview')}
+                    icon={<ReviewIcon />}
+                    isSmall={isMobile}
                     className={classes.alignRight}
                 >
                     {(props) => (
@@ -82,8 +83,9 @@ function Header({ t }) {
                     )}
                 </DropDownButton>
                 <DropDownButton
-                    label={!isMobile && t('bugReport')}
-                    icon={isMobile && <BugReportIcon />}
+                    label={t('bugReport')}
+                    icon={<BugReportIcon />}
+                    isSmall={isMobile}
                     className={classes.offsetRight}
                 >
                     {(props) => (
