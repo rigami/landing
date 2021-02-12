@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import ContentCard from '@/ui-components/ContentCard';
 import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
@@ -170,14 +170,15 @@ function BackgroundsBlock({ t, className: externalClassname }) {
     const classes = useStyles();
     const theme = useTheme();
     const { height, ref } = useResizeDetector();
+    const cardHeight = theme.spacing(0.5) + 215;
     const store = useLocalObservable(() => ({
+        show: false,
         isAnimate: false,
         translateOffset: 0,
         list: [],
         oldTime: 0,
-        rootHeight: height + theme.spacing(16),
+        rootHeight: (height || 600) + theme.spacing(16),
     }));
-    const cardHeight = theme.spacing(0.5) + 215;
 
     const animate = () => {
         const start = performance.now();
@@ -187,6 +188,7 @@ function BackgroundsBlock({ t, className: externalClassname }) {
             const timeFraction = time - start;
             const delta = timeFraction - store.oldTime;
 
+            // FIXME very long execute
             runInAction(() => {
                 store.oldTime = timeFraction;
 
@@ -233,7 +235,7 @@ function BackgroundsBlock({ t, className: externalClassname }) {
 
     useEffect(() => {
         store.isAnimate = true;
-        animate();
+        // animate();
 
         return action(() => { store.isAnimate = false; });
     }, []);

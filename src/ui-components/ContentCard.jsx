@@ -60,7 +60,8 @@ function ContentCard(props, ref) {
                     className={clsx(classes.title, externalClasses.title)}
                 >
                     <Typography
-                        variant="span"
+                        component="span"
+                        variant="inherit"
                         className={clsx(classes.backdropText, !disableTextBackdrop && classes.fillBackdrop)}
                     >
                         {title}
@@ -77,7 +78,8 @@ function ContentCard(props, ref) {
                     )}
                 >
                     <Typography
-                        variant="span"
+                        component="span"
+                        variant="inherit"
                         className={clsx(classes.backdropText, !disableTextBackdrop && classes.fillBackdrop)}
                     >
                         {subtitle}

@@ -5,6 +5,9 @@ import backgroundUrl from '@/resources/splashscreen-background.jpg';
 import { decode } from 'blurhash';
 import clsx from 'clsx';
 
+const RENDER_SIZE = 32;
+const PIXELS = decode('LB9tif~p9FIpo|x[-o%2aJt6%2s.', RENDER_SIZE, RENDER_SIZE);
+
 const useStyles = makeStyles((theme) => ({
     root: {
         minHeight: 'calc(100vh - 180px)',
@@ -34,6 +37,8 @@ const useStyles = makeStyles((theme) => ({
             duration: theme.transitions.duration.complex,
             easing: theme.transitions.easing.easeInOut,
         }),
+        width: '100%',
+        height: '100%',
     },
     hidePreloadStub: { opacity: 0 },
 }));
@@ -43,14 +48,12 @@ function SplashScreen({ children, className: externalClassName }) {
     const [bgLoaded, setBgLoaded] = useState(false);
 
     useEffect(() => {
-        const pixels = decode('LB9tif~p9FIpo|x[-o%2aJt6%2s.', window.innerWidth, window.innerHeight);
-
         const canvas = document.getElementById('preload-image');
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
+        canvas.width = RENDER_SIZE;
+        canvas.height = RENDER_SIZE;
         const ctx = canvas.getContext('2d');
-        const imageData = ctx.createImageData(window.innerWidth, window.innerHeight);
-        imageData.data.set(pixels);
+        const imageData = ctx.createImageData(RENDER_SIZE, RENDER_SIZE);
+        imageData.data.set(PIXELS);
         ctx.putImageData(imageData, 0, 0);
 
         const imgPreload = new Image();
