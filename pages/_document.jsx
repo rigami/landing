@@ -7,8 +7,8 @@ import Document, {
 } from 'next/document';
 import { ServerStyleSheets } from '@material-ui/core/styles';
 import { lngFromReq } from 'next-i18next/dist/commonjs/utils';
-import shareEnImageUrl from '@/resources/share_en.jpg';
-import shareRuImageUrl from '@/resources/share_ru.jpg';
+import shareEnImageUrl from '@/../public/share_en.jpg';
+import shareRuImageUrl from '@/../public/share_ru.jpg';
 import theme from '../src/theme';
 import locRU from '../public/i18n/ru/common.json';
 import locEN from '../public/i18n/en/common.json';
