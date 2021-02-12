@@ -7,11 +7,9 @@ function AutoPlayVideo({ src, poster, className: externalClassName, ...other }) 
     useEffect(() => {
         if (!ref.current) return;
         ref.current.onloadeddata = () => {
-            console.log('video loaded');
             if (ref.current?.play) ref.current.play();
         };
         ref.current.load();
-        console.log('start load video');
     }, [ref.current]);
 
     return (
