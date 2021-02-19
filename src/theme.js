@@ -44,6 +44,9 @@ const theme = createMuiTheme({
             h1: { '@media (max-width: 600px)': { fontSize: '2.6rem' } },
             h2: { '@media (max-width: 600px)': { fontSize: '1.4rem' } },
         },
+        MuiMenuItem: {
+            root: { fontFamily: primaryFont },
+        },
     },
     typography: {
         fontFamily: primaryFont,

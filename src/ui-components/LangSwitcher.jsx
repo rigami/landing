@@ -7,7 +7,7 @@ import {
     useMediaQuery,
 } from '@material-ui/core';
 import { i18n } from '@/i18n';
-import { fade, makeStyles, useTheme } from '@material-ui/core/styles';
+import { makeStyles, useTheme } from '@material-ui/core/styles';
 import clsx from 'clsx';
 
 const useStyles = makeStyles((theme) => ({ iconButton: { color: theme.palette.text.primary } }));
