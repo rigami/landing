@@ -66,6 +66,11 @@ module.exports = withPlugins([withBundleAnalyzer({ enabled: process.env.ANALYZE 
                 destination: 'https://github.com/rigami/readme/blob/main/BUG_REPORT.md',
                 permanent: true,
             },
+            {
+                source: '/migrate-from-clock-tab',
+                destination: '/',
+                permanent: true,
+            },
         ];
     },
 });
