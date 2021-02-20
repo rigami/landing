@@ -100,7 +100,7 @@ function Block({ title, links }) {
 
     return (
         <nav className={classes.linksBlock}>
-            <Typography variant="h5" className={classes.linksBlockTitle}>{title}</Typography>
+            <Typography variant="h6" className={classes.linksBlockTitle}>{title}</Typography>
             {links.map(({ label, url, ...other }) => (
                 <Link
                     href={url}

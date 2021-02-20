@@ -25,12 +25,6 @@ const useStyles = makeStyles((theme) => ({
         padding: 0,
         paddingTop: theme.spacing(8),
     },
-    backdropText: {
-        zIndex: 1,
-        position: 'relative',
-        verticalAlign: 'text-top',
-    },
-    fillBackdrop: { backgroundColor: theme.palette.background.paper },
 }));
 
 function ContentCard(props, ref) {
@@ -41,7 +35,6 @@ function ContentCard(props, ref) {
         titleVariant = 'h2',
         className: externalClassName,
         classes: externalClasses = {},
-        disableTextBackdrop = false,
         children,
     } = props;
     const classes = useStyles();
@@ -59,13 +52,7 @@ function ContentCard(props, ref) {
                     variant={titleVariant}
                     className={clsx(classes.title, externalClasses.title)}
                 >
-                    <Typography
-                        component="span"
-                        variant="inherit"
-                        className={clsx(classes.backdropText, !disableTextBackdrop && classes.fillBackdrop)}
-                    >
-                        {title}
-                    </Typography>
+                    {title}
                 </Typography>
             )}
             {subtitle && (
@@ -77,13 +64,7 @@ function ContentCard(props, ref) {
                         externalClasses.subtitle,
                     )}
                 >
-                    <Typography
-                        component="span"
-                        variant="inherit"
-                        className={clsx(classes.backdropText, !disableTextBackdrop && classes.fillBackdrop)}
-                    >
-                        {subtitle}
-                    </Typography>
+                    {subtitle}
                 </Typography>
             )}
             {children}

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Box, Container } from '@material-ui/core';
-import backgroundUrl from '@/resources/splashscreen-background.jpg';
+import backgroundUrl from '@/resources/splashscreen-background.png';
 import { decode } from 'blurhash';
 import clsx from 'clsx';
 

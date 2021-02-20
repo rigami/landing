@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import ContentCard from '@/ui-components/ContentCard';
 import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
@@ -30,6 +30,7 @@ import bgPreviewGIF3Src from '@/resources/bg-preview-station-network.gif';
 import bgPreviewGIF4Src from '@/resources/bg-preview-fish-network.gif';
 import { withTranslation } from '@/i18n';
 import AutoPlayVideo from '@/ui-components/AutoPlayVideo';
+import HTML from '@/ui-components/HTML';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -272,7 +273,7 @@ function BackgroundsBlock({ t, className: externalClassname }) {
                 title: classes.title,
                 subtitle: classes.subtitle,
             }}
-            title={t('backgrounds.title')}
+            title={(<HTML>{t('backgrounds.title')}</HTML>)}
             subtitle={t('backgrounds.description')}
         >
             <List dense className={classes.list} disablePadding>

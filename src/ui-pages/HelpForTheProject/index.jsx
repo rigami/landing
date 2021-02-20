@@ -2,17 +2,26 @@ import React, { Fragment } from 'react';
 import Footer from '@/ui-components/Footer';
 import { makeStyles } from '@material-ui/core/styles';
 import Header from '@/ui-components/Header';
-import SplashScreen from '@/ui-components/SplashScreen';
 import clsx from 'clsx';
-import { Box, Container, Typography } from '@material-ui/core';
+import {
+    Box,
+    Container,
+    Divider,
+    Typography,
+} from '@material-ui/core';
 import DownloadButton from '@/ui-components/DownloadButton';
 import DonateBlock from '@/ui-pages/HelpForTheProject/DonateBlock';
 import ContentCard from '@/ui-components/ContentCard';
 import { withTranslation } from '@/i18n';
+import HTML from '@/ui-components/HTML';
 import FormBlock from './FormBlock';
 
 const useStyles = makeStyles((theme) => ({
-    splashScreen: { minHeight: 400 },
+    splashScreen: {
+        minHeight: 470,
+        display: 'flex',
+        alignItems: 'center',
+    },
     contentWrapper: { overflow: 'hidden' },
     content: {
         display: 'flex',
@@ -49,9 +58,10 @@ function HelpForTheProject({ t }) {
     return (
         <Fragment>
             <Header />
-            <SplashScreen className={classes.splashScreen}>
-                <ContentCard titleVariant="h1" title={t('title')} />
-            </SplashScreen>
+            <Container className={classes.splashScreen}>
+                <ContentCard titleVariant="h1" title={(<HTML>{t('title')}</HTML>)} />
+            </Container>
+            <Divider />
             <main className={classes.contentWrapper}>
                 <Box className={classes.content}>
                     <FormBlock className={classes.card} />
@@ -62,7 +72,7 @@ function HelpForTheProject({ t }) {
                         maxWidth={false}
                     >
                         <Typography variant="h1">
-                            {t('offerToInstall')}
+                            <HTML>{t('offerToInstall')}</HTML>
                         </Typography>
                         <DownloadButton className={classes.downloadButton} />
                     </Container>

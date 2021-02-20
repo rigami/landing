@@ -53,7 +53,7 @@ function BookmarksBlock({ t, className: externalClassname }) {
                 title: classes.title,
                 subtitle: classes.subtitle,
             }}
-            title={t('bookmarks.title')}
+            title={(<HTML>{t('bookmarks.title')}</HTML>)}
             subtitle={t('bookmarks.description')}
         >
             <CardLink

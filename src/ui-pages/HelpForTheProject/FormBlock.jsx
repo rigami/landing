@@ -7,6 +7,7 @@ import { Link } from '@material-ui/core';
 import testingImageUrl from '@/resources/testing.png';
 import { ArrowForwardRounded as ArrowIcon } from '@material-ui/icons';
 import { withTranslation } from '@/i18n';
+import HTML from '@/ui-components/HTML';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -42,7 +43,7 @@ function FormBlock({ t, className: externalClassname }) {
                 subtitle: classes.subtitle,
                 actions: classes.actions,
             }}
-            title={t('form.title')}
+            title={(<HTML>{t('form.title')}</HTML>)}
             subtitle={t('form.description')}
             actions={(
                 <ContentButton

@@ -1,7 +1,7 @@
 {
-  "title": "How can I help the project?",
+  "title": "How can I <span class='secondaryHighlighter'>help</span> the project?",
   "form": {
-    "title": "Tell us about your experience",
+    "title": "<span class='secondaryHighlighter'>Tell</span> us about your experience",
     "description": "Your feedback is very useful for the development of the project, tell us what problems you faced and what you would like to see",
     "action": "Fill in the form"
   },
@@ -15,5 +15,5 @@
       "koFi": "Donate at Ko-Fi"
     }
   },
-  "offerToInstall": "Or just install Rigami and enjoy"
+  "offerToInstall": "Or just <span class='secondaryHighlighter'>install Rigami</span> and enjoy"
 }

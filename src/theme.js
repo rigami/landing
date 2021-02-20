@@ -1,11 +1,11 @@
 import { createMuiTheme } from '@material-ui/core/styles';
 
-const primaryFont = '"Red Hat Display", "Ubuntu", "Source Sans Pro", "Noto Color Emoji", sans-serif';
+const primaryFont = '"Inter", "Noto Color Emoji", sans-serif';
 
 const theme = createMuiTheme({
     palette: {
         primary: { main: '#62B9FE' },
-        secondary: { main: '#FFE16B' },
+        secondary: { main: '#49C5B6' },
     },
 }, {
     breakpoints: { values: { lg: 1506 } },
@@ -14,6 +14,8 @@ const theme = createMuiTheme({
             '@global': {
                 html: { WebkitFontSmoothing: 'auto' },
                 body: { backgroundColor: '#fff' },
+                '.primaryHighlighter': { color: '#62B9FE' },
+                '.secondaryHighlighter': { color: '#49C5B6' },
             },
         },
         MuiContainer: {
@@ -37,28 +39,29 @@ const theme = createMuiTheme({
             },
         },
         MuiButton: {
-            root: { fontFamily: primaryFont },
+            root: {
+                fontFamily: primaryFont,
+                fontWeight: 700,
+            },
             label: { wordBreak: 'break-word' },
         },
         MuiTypography: {
             h1: { '@media (max-width: 600px)': { fontSize: '2.6rem' } },
             h2: { '@media (max-width: 600px)': { fontSize: '1.4rem' } },
         },
-        MuiMenuItem: {
-            root: { fontFamily: primaryFont },
-        },
+        MuiMenuItem: { root: { fontFamily: primaryFont } },
     },
     typography: {
         fontFamily: primaryFont,
         h1: {
             fontFamily: primaryFont,
             fontSize: '4rem',
-            fontWeight: 600,
+            fontWeight: 800,
         },
         h2: {
             fontFamily: primaryFont,
             fontSize: '2.4rem',
-            fontWeight: 600,
+            fontWeight: 700,
         },
     },
     props: { MuiButton: { disableElevation: true } },

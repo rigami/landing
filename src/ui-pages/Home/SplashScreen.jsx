@@ -19,7 +19,7 @@ const useStyles = makeStyles((theme) => ({
         minWidth: 'min-content',
     },
     title: {
-        lineHeight: 1.3,
+        lineHeight: '1.3 !important',
         fontSize: '2.3rem',
     },
 }));

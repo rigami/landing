@@ -2,11 +2,7 @@ import React from 'react';
 import ContentCard from '@/ui-components/ContentCard';
 import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
-import {
-    CardMedia,
-    List,
-    Box,
-} from '@material-ui/core';
+import { List, Box } from '@material-ui/core';
 import {
     PhotoRounded as BackgroundsIcon,
     BookmarkRounded as BookmarksIcon,
@@ -18,6 +14,7 @@ import demoVideoUrl from '@/resources/demo.mkv';
 import demoVideoPreviewUrl from '@/resources/demo-preview.jpg';
 import { withTranslation } from '@/i18n';
 import AutoPlayVideo from '@/ui-components/AutoPlayVideo';
+import HTML from '@/ui-components/HTML';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -67,7 +64,7 @@ function DemoBlock({ t, className: externalClassname }) {
                     title: classes.title,
                     subtitle: classes.subtitle,
                 }}
-                title={t('demo.title')}
+                title={(<HTML>{t('demo.title')}</HTML>)}
                 subtitle={t('demo.description')}
             >
                 <List dense className={classes.list} disablePadding>

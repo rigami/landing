@@ -1,10 +1,10 @@
 {
   "splashScreen": {
-    "slogan": "To keep everything. <br/> For access everywhere",
+    "slogan": "To <span class='secondaryHighlighter'>keep everything</span> <br/> For access everywhere",
     "description": "Rigami is a new browser tab that combines minimalism and extensive functionality. Bookmarks, clock, date and current weather, nothing more"
   },
   "demo": {
-    "title": "All the most important and nothing else",
+    "title": "<span class='secondaryHighlighter'>All the most important</span> and nothing else",
     "description": "Cleanliness and a minimum of details, just what you need, excellent customization and huge functionality.",
     "features": {
       "backgrounds": "Backgrounds of any format",
@@ -19,7 +19,7 @@
     "action": "How can I help?"
   },
   "backgrounds": {
-    "title": "Any background format",
+    "title": "<span class='secondaryHighlighter'>Any</span> background format",
     "description": "Support for a huge number of background files, as well as customizable background streams.",
     "supportFormats": {
       "gif": "GIF animation",
@@ -32,7 +32,7 @@
     }
   },
   "bookmarks": {
-    "title": "Convenient and beautiful bookmarks",
+    "title": "Convenient and beautiful <span class='secondaryHighlighter'>bookmarks</span>",
     "description": "Folders, tags - everything for quick and easy access to the desired bookmarks",
     "cards": {
       "mdn": {
