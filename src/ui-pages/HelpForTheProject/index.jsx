@@ -21,7 +21,9 @@ const useStyles = makeStyles((theme) => ({
         minHeight: 470,
         display: 'flex',
         alignItems: 'center',
+        [theme.breakpoints.down('xs')]: { minHeight: 300 },
     },
+    splashScreenCard: { paddingLeft: 0 },
     contentWrapper: { overflow: 'hidden' },
     content: {
         display: 'flex',
@@ -59,7 +61,11 @@ function HelpForTheProject({ t }) {
         <Fragment>
             <Header />
             <Container className={classes.splashScreen}>
-                <ContentCard titleVariant="h1" title={(<HTML>{t('title')}</HTML>)} />
+                <ContentCard
+                    className={classes.splashScreenCard}
+                    titleVariant="h1"
+                    title={(<HTML>{t('title')}</HTML>)}
+                />
             </Container>
             <Divider />
             <main className={classes.contentWrapper}>

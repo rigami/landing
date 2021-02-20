@@ -1,8 +1,13 @@
 import React, { useEffect } from 'react';
-import ContentCard from '@/ui-components/ContentCard';
+import ContentCard, { ContentTitle, ContentSubTitle } from '@/ui-components/ContentCard';
 import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
-import { CardMedia, List, useTheme } from '@material-ui/core';
+import {
+    CardMedia,
+    List,
+    useTheme,
+    Box,
+} from '@material-ui/core';
 import {
     GifRounded as GIFIcon,
     MovieRounded as VideoIcon,
@@ -48,14 +53,6 @@ const useStyles = makeStyles((theme) => ({
         maxWidth: 450,
         zIndex: 1,
     },
-    listItem: {
-        backgroundColor: theme.palette.background.paper,
-        width: 'fit-content',
-        [theme.breakpoints.down('xs')]: {
-            paddingLeft: theme.spacing(1),
-            paddingRight: theme.spacing(1),
-        },
-    },
     background: {
         width: 335,
         height: 215,
@@ -71,6 +68,13 @@ const useStyles = makeStyles((theme) => ({
         },
     },
     pixelRender: { imageRendering: 'pixelated' },
+    contentWrapper: {
+        backgroundColor: theme.palette.background.paper,
+        position: 'relative',
+        zIndex: 1,
+        margin: theme.spacing(-1),
+        padding: theme.spacing(1),
+    },
 }));
 
 const BG_TYPE = {
@@ -266,41 +270,40 @@ function BackgroundsBlock({ t, className: externalClassname }) {
 
     return (
         <ContentCard
-            titleVariant="h1"
             ref={ref}
-            classes={{
-                root: clsx(classes.root, externalClassname),
-                title: classes.title,
-                subtitle: classes.subtitle,
-            }}
-            title={(<HTML>{t('backgrounds.title')}</HTML>)}
-            subtitle={t('backgrounds.description')}
+            className={clsx(classes.root, externalClassname)}
         >
-            <List dense className={classes.list} disablePadding>
-                <SmallListItem
-                    className={classes.listItem}
-                    icon={(<GIFIcon />)}
-                    title={t('backgrounds.supportFormats.gif')}
-                />
-                <SmallListItem
-                    className={classes.listItem}
-                    icon={(<VideoIcon />)}
-                    title={t('backgrounds.supportFormats.video')}
-                />
-                <SmallListItem
-                    className={classes.listItem}
-                    icon={(<ImageIcon />)}
-                    title={t('backgrounds.supportFormats.image')}
-                />
-            </List>
-            <List dense className={classes.list} disablePadding>
-                <SmallListItem
-                    className={classes.listItem}
-                    icon={(<StreamIcon />)}
-                    title={t('backgrounds.streamFeature.title')}
-                    subtitle={t('backgrounds.streamFeature.description')}
-                />
-            </List>
+            <Box className={classes.contentWrapper}>
+                <ContentTitle
+                    className={classes.title}
+                    variant="h1"
+                    bottomOffset
+                >
+                    <HTML>{t('backgrounds.title')}</HTML>
+                </ContentTitle>
+                <ContentSubTitle className={classes.subtitle}>{t('backgrounds.description')}</ContentSubTitle>
+                <List dense className={classes.list} disablePadding>
+                    <SmallListItem
+                        icon={(<GIFIcon />)}
+                        title={t('backgrounds.supportFormats.gif')}
+                    />
+                    <SmallListItem
+                        icon={(<VideoIcon />)}
+                        title={t('backgrounds.supportFormats.video')}
+                    />
+                    <SmallListItem
+                        icon={(<ImageIcon />)}
+                        title={t('backgrounds.supportFormats.image')}
+                    />
+                </List>
+                <List dense className={classes.list} disablePadding>
+                    <SmallListItem
+                        icon={(<StreamIcon />)}
+                        title={t('backgrounds.streamFeature.title')}
+                        subtitle={t('backgrounds.streamFeature.description')}
+                    />
+                </List>
+            </Box>
             {store.list.map(({ id, src, type }) => (
                 <BackgroundCard
                     key={id}

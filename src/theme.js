@@ -46,8 +46,14 @@ const theme = createMuiTheme({
             label: { wordBreak: 'break-word' },
         },
         MuiTypography: {
-            h1: { '@media (max-width: 600px)': { fontSize: '2.6rem' } },
-            h2: { '@media (max-width: 600px)': { fontSize: '1.4rem' } },
+            h1: {
+                '@media (max-width: 600px)': { fontSize: '2.6rem' },
+                wordBreak: 'break-word',
+            },
+            h2: {
+                '@media (max-width: 600px)': { fontSize: '1.4rem' },
+                wordBreak: 'break-word',
+            },
         },
         MuiMenuItem: { root: { fontFamily: primaryFont } },
     },

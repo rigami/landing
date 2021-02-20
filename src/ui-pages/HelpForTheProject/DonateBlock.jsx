@@ -27,6 +27,7 @@ const useStyles = makeStyles((theme) => ({
     },
     link: {
         display: 'inline-block',
+        backdropFilter: 'blur(30px)',
         '& > *': { verticalAlign: 'middle' },
     },
     linkIcon: {

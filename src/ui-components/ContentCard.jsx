@@ -18,14 +18,50 @@ const useStyles = makeStyles((theme) => ({
     title: {
         maxWidth: 560,
         lineHeight: 0.9,
+        position: 'relative',
+        zIndex: 1,
     },
-    subtitle: { maxWidth: 560 },
-    subtitleOffset: { marginTop: theme.spacing(3) },
+    subtitle: {
+        maxWidth: 560,
+        position: 'relative',
+        zIndex: 1,
+    },
+    bottomOffset: { marginBottom: theme.spacing(3) },
     actions: {
         padding: 0,
         paddingTop: theme.spacing(8),
     },
 }));
+
+function ContentTitle({ children, variant = 'h2', className: externalClassName, bottomOffset = false }) {
+    const classes = useStyles();
+
+    return (
+        <Typography
+            variant={variant}
+            className={clsx(classes.title, bottomOffset && classes.bottomOffset, externalClassName)}
+        >
+            {children}
+        </Typography>
+    );
+}
+
+function ContentSubTitle({ children, variant = 'body1', className: externalClassName, bottomOffset = false }) {
+    const classes = useStyles();
+
+    return (
+        <Typography
+            variant={variant}
+            className={clsx(
+                classes.subtitle,
+                bottomOffset && classes.bottomOffset,
+                externalClassName,
+            )}
+        >
+            {children}
+        </Typography>
+    );
+}
 
 function ContentCard(props, ref) {
     const {
@@ -48,24 +84,21 @@ function ContentCard(props, ref) {
             className={clsx(classes.root, externalClassName, externalClasses.root)}
         >
             {title && (
-                <Typography
+                <ContentTitle
                     variant={titleVariant}
-                    className={clsx(classes.title, externalClasses.title)}
+                    className={externalClasses.title}
+                    bottomOffset={subtitle}
                 >
                     {title}
-                </Typography>
+                </ContentTitle>
             )}
             {subtitle && (
-                <Typography
-                    variant="body1"
-                    className={clsx(
-                        classes.subtitle,
-                        title && classes.subtitleOffset,
-                        externalClasses.subtitle,
-                    )}
+                <ContentSubTitle
+                    className={externalClasses.subtitle}
+                    bottomOffset={children}
                 >
                     {subtitle}
-                </Typography>
+                </ContentSubTitle>
             )}
             {children}
             {actions && (
@@ -78,3 +111,4 @@ function ContentCard(props, ref) {
 }
 
 export default forwardRef(ContentCard);
+export { ContentTitle, ContentSubTitle };
