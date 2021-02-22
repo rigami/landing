@@ -48,7 +48,7 @@ function FormBlock({ t, className: externalClassname }) {
             actions={(
                 <ContentButton
                     component={Link}
-                    href="https://forms.gle/ZfEjCEFrjDY87riX6"
+                    href="https://forms.gle/9bQM8THSzhxRJVMt8"
                     target="_blank"
                     endIcon={<ArrowIcon />}
                     className={classes.button}
