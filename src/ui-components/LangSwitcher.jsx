@@ -6,7 +6,7 @@ import {
     MenuItem,
     useMediaQuery,
 } from '@material-ui/core';
-import { i18n } from '@/i18n';
+import { useRouter } from 'next/router';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import clsx from 'clsx';
 
@@ -27,8 +27,9 @@ const i18ns = [
 
 function LangSwitcher({ className: externalClassName, ...other }) {
     const classes = useStyles();
+    const router = useRouter();
     const [anchorEl, setAnchorEl] = useState(null);
-    const [activeLang, setActiveLang] = useState(i18ns.find(({ code }) => code === (i18n.language || 'en')));
+    const activeLang = i18ns.find(({ code }) => code === (router.locale || 'en'));
     const theme = useTheme();
     const isMobile = useMediaQuery(theme.breakpoints.down('xs'));
 
@@ -38,11 +39,7 @@ function LangSwitcher({ className: externalClassName, ...other }) {
 
     const handleSetLang = (newCode) => {
         if (newCode) {
-            i18n
-                .changeLanguage(newCode)
-                .then(() => {
-                    setActiveLang(i18ns.find(({ code }) => code === newCode));
-                });
+            router.push(router.basePath, router.basePath, { locale: newCode });
         }
         setAnchorEl(null);
     };

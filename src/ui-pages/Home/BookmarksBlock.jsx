@@ -5,7 +5,7 @@ import CardLink, { BKMS_VARIANT } from '@/ui-components/Card';
 import { makeStyles } from '@material-ui/core/styles';
 import elementaryPosterSrc from '@/resources/elementary_poster.jpg';
 import mdnIconSrc from '@/resources/mdn_icon.png';
-import { withTranslation } from '@/i18n';
+import { withTranslation } from 'next-i18next';
 import HTML from '@/ui-components/HTML';
 
 const useStyles = makeStyles((theme) => ({

@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from '@material-ui/core';
 import ContentButton from '@/ui-components/ContentButton';
 import { ArrowForwardRounded as ArrowIcon } from '@material-ui/icons';
-import { withTranslation } from '@/i18n';
+import { withTranslation } from 'next-i18next';
 
 function DownloadButton({ t, className: externalClassName }) {
     return (

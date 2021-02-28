@@ -3,7 +3,7 @@ import ContentCard from '@/ui-components/ContentCard';
 import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
 import backgroundImageUrl from '@/resources/clear-interface-background.png';
-import { withTranslation } from '@/i18n';
+import { withTranslation } from 'next-i18next';
 
 const useStyles = makeStyles((theme) => ({
     root: {

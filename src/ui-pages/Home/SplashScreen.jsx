@@ -3,7 +3,7 @@ import DownloadButton from '@/ui-components/DownloadButton';
 import SplashScreenComponent from '@/ui-components/SplashScreen';
 import ContentCard from '@/ui-components/ContentCard';
 import { makeStyles } from '@material-ui/core/styles';
-import { withTranslation } from '@/i18n';
+import { withTranslation } from 'next-i18next';
 import HTML from '@/ui-components/HTML';
 
 const useStyles = makeStyles((theme) => ({

@@ -9,7 +9,7 @@ import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
 import Header from '@/ui-components/Header';
 import DownloadButton from '@/ui-components/DownloadButton';
-import { withTranslation } from '@/i18n';
+import { withTranslation } from 'next-i18next';
 import HTML from '@/ui-components/HTML';
 import SplashScreen from './SplashScreen';
 import BookmarksBlock from './BookmarksBlock';

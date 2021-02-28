@@ -1,8 +1,14 @@
 import React from 'react';
 import Page from '@/ui-pages/HelpForTheProject';
+import addedLocale from '@/utils/addedLocale';
 
 const HelpForTheProject = () => <Page />;
 
-HelpForTheProject.getInitialProps = async () => ({ namespacesRequired: ['common', 'header', 'footer'] });
+export const getStaticProps = addedLocale([
+    'common',
+    'header',
+    'footer',
+    'helpForTheProjectPage',
+]);
 
 export default HelpForTheProject;

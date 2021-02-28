@@ -6,7 +6,7 @@ import ContentButton from '@/ui-components/ContentButton';
 import { Link } from '@material-ui/core';
 import testingImageUrl from '@/resources/testing.png';
 import { ArrowForwardRounded as ArrowIcon } from '@material-ui/icons';
-import { withTranslation } from '@/i18n';
+import { withTranslation } from 'next-i18next';
 import HTML from '@/ui-components/HTML';
 
 const useStyles = makeStyles((theme) => ({

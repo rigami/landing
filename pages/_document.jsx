@@ -6,7 +6,6 @@ import Document, {
     NextScript,
 } from 'next/document';
 import { ServerStyleSheets } from '@material-ui/core/styles';
-import { lngFromReq } from 'next-i18next/dist/commonjs/utils';
 import shareEnImageUrl from '@/../public/share_en.jpg';
 import shareRuImageUrl from '@/../public/share_ru.jpg';
 import theme from '../src/theme';
@@ -15,14 +14,12 @@ import locEN from '../public/i18n/en/common.json';
 
 export default class MyDocument extends Document {
     render() {
-        const { lng } = this.props;
-
-        const img = lng === 'en' ? shareEnImageUrl : shareRuImageUrl;
-        const title = lng === 'en' ? locEN.title : locRU.title;
-        const description = lng === 'en' ? locEN.description : locRU.description;
+        const img = this.props.locale === 'ru' ? shareRuImageUrl : shareEnImageUrl;
+        const { title } = this.props.locale === 'ru' ? locRU : locEN;
+        const { description } = this.props.locale === 'ru' ? locRU : locEN;
 
         return (
-            <Html lang={lng}>
+            <Html>
                 <Head>
                     <meta name="theme-color" content={theme.palette.primary.main} />
                     {/* Primary Meta Tags */}
@@ -53,7 +50,6 @@ export default class MyDocument extends Document {
 }
 
 MyDocument.getInitialProps = async (ctx) => {
-    const lng = lngFromReq(ctx.req);
     const sheets = new ServerStyleSheets();
     const originalRenderPage = ctx.renderPage;
 
@@ -64,6 +60,5 @@ MyDocument.getInitialProps = async (ctx) => {
     return {
         ...initialProps,
         styles: [...React.Children.toArray(initialProps.styles), sheets.getStyleElement()],
-        lng,
     };
 };

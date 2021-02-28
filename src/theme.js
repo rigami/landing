@@ -16,6 +16,17 @@ const theme = createMuiTheme({
                 body: { backgroundColor: '#fff' },
                 '.primaryHighlighter': { color: '#62B9FE' },
                 '.secondaryHighlighter': { color: '#49C5B6' },
+                '#nprogress': {
+                    '& .bar': {
+                        zIndex: 10000,
+                        background: '#49C5B6',
+                    },
+                    '& .peg': { boxShadow: '0 0 10px #49C5B6, 0 0 5px #49C5B6' },
+                    '& .spinner-icon': {
+                        borderTopColor: '#49C5B6',
+                        borderLeftColor: '#49C5B6',
+                    },
+                },
             },
         },
         MuiContainer: {

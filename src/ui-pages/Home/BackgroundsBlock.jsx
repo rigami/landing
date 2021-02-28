@@ -33,7 +33,7 @@ import bgPreviewGIF1Src from '@/resources/bg-preview-train-network.gif';
 import bgPreviewGIF2Src from '@/resources/bg-preview-bathroom-network.gif';
 import bgPreviewGIF3Src from '@/resources/bg-preview-station-network.gif';
 import bgPreviewGIF4Src from '@/resources/bg-preview-fish-network.gif';
-import { withTranslation } from '@/i18n';
+import { withTranslation } from 'next-i18next';
 import AutoPlayVideo from '@/ui-components/AutoPlayVideo';
 import HTML from '@/ui-components/HTML';
 

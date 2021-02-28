@@ -3,10 +3,10 @@ import { makeStyles } from '@material-ui/core/styles';
 import Header from '@/ui-components/Header';
 import SplashScreenComponent from '@/ui-components/SplashScreen';
 import ContentCard from '@/ui-components/ContentCard';
-import { Link } from '@material-ui/core';
+import Link from 'next/link';
 import { ArrowBackRounded as ArrowIcon } from '@material-ui/icons';
 import ContentButton from '@/ui-components/ContentButton';
-import { withTranslation } from '@/i18n';
+import { withTranslation } from 'next-i18next';
 
 const useStyles = makeStyles((theme) => ({
     root: { minHeight: 'calc(100vh - 64px)' },
@@ -45,13 +45,11 @@ function Page404({ t }) {
                     title="404"
                     subtitle={t('404')}
                     actions={(
-                        <ContentButton
-                            component={Link}
-                            href="/"
-                            startIcon={<ArrowIcon />}
-                        >
-                            {t('backHome')}
-                        </ContentButton>
+                        <Link href="/">
+                            <ContentButton startIcon={<ArrowIcon />}>
+                                {t('backHome')}
+                            </ContentButton>
+                        </Link>
                     )}
                 />
             </SplashScreenComponent>

@@ -12,7 +12,7 @@ import {
 import DownloadButton from '@/ui-components/DownloadButton';
 import DonateBlock from '@/ui-pages/HelpForTheProject/DonateBlock';
 import ContentCard from '@/ui-components/ContentCard';
-import { withTranslation } from '@/i18n';
+import { withTranslation } from 'next-i18next';
 import HTML from '@/ui-components/HTML';
 import FormBlock from './FormBlock';
 

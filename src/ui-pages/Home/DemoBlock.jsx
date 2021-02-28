@@ -12,7 +12,7 @@ import {
 import SmallListItem from '@/ui-components/SmallListItem';
 import demoVideoUrl from '@/resources/demo.mkv';
 import demoVideoPreviewUrl from '@/resources/demo-preview.jpg';
-import { withTranslation } from '@/i18n';
+import { withTranslation } from 'next-i18next';
 import AutoPlayVideo from '@/ui-components/AutoPlayVideo';
 import HTML from '@/ui-components/HTML';
 

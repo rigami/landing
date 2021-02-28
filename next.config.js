@@ -1,8 +1,6 @@
 const withPlugins = require('next-compose-plugins');
 const withBundleAnalyzer = require('@next/bundle-analyzer');
-const { nextI18NextRewrites } = require('next-i18next/rewrites');
-
-const localeSubpaths = {};
+const { i18n } = require('./next-i18next.config');
 
 module.exports = withPlugins([withBundleAnalyzer({ enabled: process.env.ANALYZE === 'true' })], {
     webpack: (config, { dev, webpack }) => ({
@@ -52,8 +50,7 @@ module.exports = withPlugins([withBundleAnalyzer({ enabled: process.env.ANALYZE 
             ],
         },
     }),
-    rewrites: async () => nextI18NextRewrites(localeSubpaths),
-    publicRuntimeConfig: { localeSubpaths },
+    i18n,
     async redirects() {
         return [
             {

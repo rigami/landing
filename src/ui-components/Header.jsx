@@ -1,11 +1,11 @@
 import React, { Fragment } from 'react';
 import {
     AppBar,
-    Link,
     Toolbar,
     Tooltip,
     useMediaQuery,
 } from '@material-ui/core';
+import Link from 'next/link';
 import LogoIcon from '@/resources/logo.svg';
 import { fade, makeStyles, useTheme } from '@material-ui/core/styles';
 import DropDownButton, { LinkDropDownItem } from '@/ui-components/DropDownButton';
@@ -13,7 +13,7 @@ import {
     BugReportRounded as BugReportIcon,
     RateReviewRounded as ReviewIcon,
 } from '@material-ui/icons';
-import { withTranslation } from '@/i18n';
+import { withTranslation } from 'next-i18next';
 import LangSwitcher from '@/ui-components/LangSwitcher';
 
 const useStyles = makeStyles((theme) => ({
@@ -56,8 +56,10 @@ function Header({ t }) {
         >
             <Toolbar className={classes.toolbar}>
                 <Tooltip title={t('backHomeTooltip')}>
-                    <Link className={classes.homeLink} href="/">
-                        <LogoIcon className={classes.logo} />
+                    <Link href="/">
+                        <a className={classes.homeLink}>
+                            <LogoIcon className={classes.logo} />
+                        </a>
                     </Link>
                 </Tooltip>
                 <DropDownButton

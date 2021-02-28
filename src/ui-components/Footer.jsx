@@ -9,7 +9,7 @@ import {
 } from '@material-ui/core';
 import LogoIcon from '@/resources/logo_studio.svg';
 import { OpenInNewRounded as OpenInNewIcon } from '@material-ui/icons';
-import { withTranslation } from '@/i18n';
+import { withTranslation } from 'next-i18next';
 
 const useStyles = makeStyles((theme) => ({
     root: {
