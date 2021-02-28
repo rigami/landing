@@ -16,6 +16,7 @@ const useStyles = makeStyles((theme) => ({
             width: '64px',
             backgroundSize: '64px 64px',
         },
+        '& .ya-share2__container_size_l .ya-share2__badge': { borderRadius: 0 },
         '& .ya-share2__item_copy .ya-share2__icon': {
             backgroundSize: '36px !important',
             width: '62px !important',
