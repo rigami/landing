@@ -88,7 +88,7 @@ function DonateBlock({ t, className: externalClassname }) {
                             image: tinkoffImageSrc,
                         },
                         {
-                            url: 'paypal.me/danilkinkin',
+                            url: 'https://paypal.me/danilkinkin',
                             title: t('donate.list.paypal'),
                             image: paypalImageSrc,
                         },
