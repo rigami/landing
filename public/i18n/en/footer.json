@@ -18,5 +18,8 @@
   "designer": {
     "tooltip": "Go to developer site",
     "design&development": "Design & Development"
+  },
+  "share": {
+    "title": "Share"
   }
 }

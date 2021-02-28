@@ -24,6 +24,7 @@ const useStyles = makeStyles((theme) => ({
     },
     subtitle: { maxWidth: 470 },
     actions: {
+        marginTop: 'auto',
         paddingTop: theme.spacing(16),
         [theme.breakpoints.down('xs')]: { paddingTop: 300 + theme.spacing(4) },
     },

@@ -12,6 +12,7 @@ module.exports = {
         'sourceType': 'module',
         babelOptions: { configFile: './.babelrc.js' },
     },
+    globals: { 'Ya': true },
     'settings': {
         'import/resolver': {
             alias: {

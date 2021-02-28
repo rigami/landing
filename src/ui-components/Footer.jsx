@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { fade, makeStyles } from '@material-ui/core/styles';
 import {
     Box,
@@ -10,6 +10,7 @@ import {
 import LogoIcon from '@/resources/logo_studio.svg';
 import { OpenInNewRounded as OpenInNewIcon } from '@material-ui/icons';
 import { withTranslation } from 'next-i18next';
+import { useRouter } from 'next/router';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -91,17 +92,17 @@ const useStyles = makeStyles((theme) => ({
         paddingTop: theme.spacing(4),
         paddingRight: theme.spacing(4),
     },
-    linksBlockTitle: { },
-    linksBlockLink: { marginTop: theme.spacing(1) },
+    linksBlockTitle: { marginBottom: theme.spacing(1) },
+    linksBlockLink: { marginBottom: theme.spacing(1) },
 }));
 
-function Block({ title, links }) {
+function Block({ title, links, children }) {
     const classes = useStyles();
 
     return (
         <nav className={classes.linksBlock}>
             <Typography variant="h6" className={classes.linksBlockTitle}>{title}</Typography>
-            {links.map(({ label, url, ...other }) => (
+            {links && links.map(({ label, url, ...other }) => (
                 <Link
                     href={url}
                     key={url}
@@ -112,12 +113,39 @@ function Block({ title, links }) {
                     {label}
                 </Link>
             ))}
+            {children}
         </nav>
     );
 }
 
 function Footer({ t }) {
     const classes = useStyles();
+    const router = useRouter();
+    const el = useRef();
+
+    useEffect(() => {
+        const share = Ya.share2(el.current, {
+            content: { url: location.origin },
+            theme: {
+                services: [
+                    'vkontakte',
+                    'facebook',
+                    'odnoklassniki',
+                    'telegram',
+                    'twitter',
+                    'viber',
+                    'whatsapp',
+                    'reddit',
+                ].join(','),
+                lang: router.locale,
+                size: 'm',
+                curtain: true,
+                shape: 'normal',
+            },
+        });
+
+        return () => share.destroy();
+    }, []);
 
     return (
         <footer className={classes.root}>
@@ -170,6 +198,9 @@ function Footer({ t }) {
                             },
                         ]}
                     />
+                    <Block title={t('share.title')}>
+                        <div ref={el} />
+                    </Block>
                 </Box>
                 <Box className={classes.designedByBlock}>
                     <Tooltip

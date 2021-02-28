@@ -14,6 +14,7 @@ import DonateBlock from '@/ui-pages/HelpForTheProject/DonateBlock';
 import ContentCard from '@/ui-components/ContentCard';
 import { withTranslation } from 'next-i18next';
 import HTML from '@/ui-components/HTML';
+import ShareBlock from '@/ui-pages/HelpForTheProject/ShareBlock';
 import FormBlock from './FormBlock';
 
 const useStyles = makeStyles((theme) => ({
@@ -70,6 +71,7 @@ function HelpForTheProject({ t }) {
             <Divider />
             <main className={classes.contentWrapper}>
                 <Box className={classes.content}>
+                    <ShareBlock className={classes.card} />
                     <FormBlock className={classes.card} />
                     <DonateBlock className={classes.card} />
                     <Container

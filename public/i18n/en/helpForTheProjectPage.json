@@ -1,5 +1,9 @@
 {
   "title": "How can I <span class='secondaryHighlighter'>help</span> the project?",
+  "share": {
+    "title": "<span class='secondaryHighlighter'>Share</span> with the world",
+    "description": "Do you like Rigami? Tell the world about this project, let as many people as possible learn about it"
+  },
   "form": {
     "title": "<span class='secondaryHighlighter'>Tell</span> us about your experience",
     "description": "Your feedback is very useful for the development of the project, tell us what problems you faced and what you would like to see",
