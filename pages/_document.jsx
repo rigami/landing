@@ -6,15 +6,13 @@ import Document, {
     NextScript,
 } from 'next/document';
 import { ServerStyleSheets } from '@material-ui/core/styles';
-import shareEnImageUrl from '@/../public/share_en.jpg';
-import shareRuImageUrl from '@/../public/share_ru.jpg';
 import theme from '../src/theme';
 import locRU from '../public/i18n/ru/common.json';
 import locEN from '../public/i18n/en/common.json';
 
 export default class MyDocument extends Document {
     render() {
-        const img = this.props.locale === 'ru' ? shareRuImageUrl : shareEnImageUrl;
+        const img = `https://rigami.io/share-${this.props.locale}.jpg`;
         const { title } = this.props.locale === 'ru' ? locRU : locEN;
         const { description } = this.props.locale === 'ru' ? locRU : locEN;
 
