@@ -55,7 +55,7 @@ class MyApp extends App {
                                 j.async=true;
                                 j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;
                                 f.parentNode.insertBefore(j,f);
-                            })(window,document,'script','dataLayer','${config.gAnalyticsId}');`,
+                            })(window,document,'script','dataLayer','${config.gTagManagerId}');`,
                         }}
                     />
                 </Head>
@@ -65,7 +65,7 @@ class MyApp extends App {
                     <noscript>
                         <iframe
                             title="googletagmanager"
-                            src={`https://www.googletagmanager.com/ns.html?id=${config.gAnalyticsId}`}
+                            src={`https://www.googletagmanager.com/ns.html?id=${config.gTagManagerId}`}
                             height="0"
                             width="0"
                             style={{
