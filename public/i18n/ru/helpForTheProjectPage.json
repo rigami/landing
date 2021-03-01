@@ -16,7 +16,7 @@
       "tinkoff": "Через Tinkoff",
       "paypal": "Через PayPal",
       "bootsy": "Поддержать в Bootsy",
-      "koFi": "Поддержать в Ko-Fi"
+      "buymeacoffee": "Купит мне кофе"
     }
   },
   "offerToInstall": "Или просто <span class='secondaryHighlighter'>установите Rigami</span> и наслаждайтесь"

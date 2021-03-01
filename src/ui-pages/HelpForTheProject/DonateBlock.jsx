@@ -14,7 +14,7 @@ import { withTranslation } from 'next-i18next';
 import tinkoffImageSrc from '@/resources/tinkoff-icon.png';
 import paypalImageSrc from '@/resources/paypal-icon.png';
 import bootsyImageSrc from '@/resources/bootsy-icon.png';
-import kofiImageSrc from '@/resources/kofi-icon.png';
+import buymeacoffeeImageSrc from '@/resources/buymeacofee-icon.png';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -98,9 +98,9 @@ function DonateBlock({ t, className: externalClassname }) {
                             image: bootsyImageSrc,
                         },
                         {
-                            url: 'https://ko-fi.com/danilkinkin',
-                            title: t('donate.list.koFi'),
-                            image: kofiImageSrc,
+                            url: 'https://www.buymeacoffee.com/danilkinkin',
+                            title: t('donate.list.buymeacoffee'),
+                            image: buymeacoffeeImageSrc,
                         },
                     ].map(({ title, url, image }) => (
                         <GridListTile key={url} classes={{ tile: classes.gridItem }} style={{ height: 'auto' }}>

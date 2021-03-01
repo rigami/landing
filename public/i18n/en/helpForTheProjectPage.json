@@ -16,7 +16,7 @@
       "tinkoff": "Via Tinkoff",
       "paypal": "Via PayPal",
       "bootsy": "Donate at Bootsy",
-      "koFi": "Donate at Ko-Fi"
+      "buymeacoffee": "Buy me a coffee"
     }
   },
   "offerToInstall": "Or just <span class='secondaryHighlighter'>install Rigami</span> and enjoy"
