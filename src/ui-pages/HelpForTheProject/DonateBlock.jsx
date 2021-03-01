@@ -55,10 +55,7 @@ const useStyles = makeStyles((theme) => ({
         fontWeight: 700,
         marginTop: theme.spacing(2),
     },
-    image: {
-        height: 70,
-        width: 'auto',
-    },
+    image: { width: 'auto' },
     gridItem: {
         background: 'none',
         padding: `${theme.spacing(2)}px 0`,
@@ -106,7 +103,13 @@ function DonateBlock({ t, className: externalClassname }) {
                         <GridListTile key={url} classes={{ tile: classes.gridItem }} style={{ height: 'auto' }}>
                             <Link href={url} target="_blank" color="textPrimary">
                                 <Box className={classes.block}>
-                                    <CardMedia className={classes.image} image={image} component="img" />
+                                    <CardMedia
+                                        height={70}
+                                        width="auto"
+                                        className={classes.image}
+                                        image={image}
+                                        component="img"
+                                    />
                                     <span className={classes.text}>
                                         {title}
                                         <ArrowIcon className={classes.linkIcon} />

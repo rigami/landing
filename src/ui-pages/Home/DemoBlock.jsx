@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import ContentCard from '@/ui-components/ContentCard';
 import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
@@ -15,6 +15,8 @@ import demoVideoPreviewUrl from '@/resources/demo-preview.jpg';
 import { withTranslation } from 'next-i18next';
 import AutoPlayVideo from '@/ui-components/AutoPlayVideo';
 import HTML from '@/ui-components/HTML';
+import onReadyPage from '@/utils/useOnReadyPage';
+import useOnReadyPage from '@/utils/useOnReadyPage';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -54,6 +56,9 @@ const useStyles = makeStyles((theme) => ({
 
 function DemoBlock({ t, className: externalClassname }) {
     const classes = useStyles();
+    const [ready, setReady] = useState(false);
+
+    useOnReadyPage(() => setReady(true));
 
     return (
         <section className={clsx(classes.root, externalClassname)}>
@@ -77,7 +82,7 @@ function DemoBlock({ t, className: externalClassname }) {
             <Box className={classes.demoWrapper}>
                 <AutoPlayVideo
                     className={classes.demo}
-                    src={demoVideoUrl}
+                    src={ready && demoVideoUrl}
                     poster={demoVideoPreviewUrl}
                 />
             </Box>

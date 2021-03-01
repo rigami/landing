@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import ContentCard, { ContentTitle, ContentSubTitle } from '@/ui-components/ContentCard';
 import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
@@ -36,6 +36,7 @@ import bgPreviewGIF4Src from '@/resources/bg-preview-fish-network.gif';
 import { withTranslation } from 'next-i18next';
 import AutoPlayVideo from '@/ui-components/AutoPlayVideo';
 import HTML from '@/ui-components/HTML';
+import useOnReadyPage from '@/utils/useOnReadyPage';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -144,6 +145,9 @@ const backgrounds = shuffle([
 
 function BackgroundCard({ id, src, type }) {
     const classes = useStyles();
+    const [ready, setReady] = useState(false);
+
+    useOnReadyPage(() => setReady(true));
 
     if (type === BG_TYPE.VIDEO) {
         return (
@@ -153,7 +157,7 @@ function BackgroundCard({ id, src, type }) {
                     type === BG_TYPE.ANIMATION && classes.pixelRender,
                     classes.background,
                 )}
-                src={src}
+                src={ready && src}
             />
         );
     }
@@ -165,7 +169,7 @@ function BackgroundCard({ id, src, type }) {
                 type === BG_TYPE.ANIMATION && classes.pixelRender,
                 classes.background,
             )}
-            image={src}
+            image={ready && src}
             component="div"
         />
     );

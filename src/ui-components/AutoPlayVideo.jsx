@@ -5,12 +5,13 @@ function AutoPlayVideo({ src, poster, className: externalClassName, ...other }) 
     const ref = useRef();
 
     useEffect(() => {
-        if (!ref.current) return;
+        if (!src) return;
+
         ref.current.onloadeddata = () => {
             if (ref.current?.play) ref.current.play();
         };
         ref.current.load();
-    }, [ref.current]);
+    }, [src]);
 
     return (
         <CardMedia
@@ -19,7 +20,6 @@ function AutoPlayVideo({ src, poster, className: externalClassName, ...other }) 
             src={src}
             component="video"
             poster={poster}
-            autoPlay={false}
             preload="none"
             loop
             muted
