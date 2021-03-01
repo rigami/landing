@@ -9,6 +9,7 @@ import Head from 'next/head';
 import { appWithTranslation } from 'next-i18next';
 import NProgress from 'nprogress';
 import 'nprogress/nprogress.css';
+import config from '@/config';
 
 Router.events.on('routeChangeStart', () => NProgress.start());
 Router.events.on('routeChangeComplete', () => NProgress.done());
@@ -38,21 +39,41 @@ class MyApp extends App {
                         rel="icon" type="image/png" sizes="16x16"
                         href="16x16.png"
                     />
-                    {/* <script async src="https://www.googletagmanager.com/gtag/js?id=G-RLN7C8YBGE" />
+                    <script src="https://yastatic.net/share2/share.js" />
+                    {/* Global site tag (gtag.js) - Google Analytics */}
                     <script
-                        type="application/ld+json"
                         dangerouslySetInnerHTML={{
-                            __html: `window.dataLayer = window.dataLayer || [];
-                            function gtag(){dataLayer.push(arguments);}
-                            gtag('js', new Date());
-
-                            gtag('config', 'G-RLN7C8YBGE');`,
+                            __html: `(function(w,d,s,l,i){
+                                w[l]=w[l]||[];
+                                w[l].push({
+                                'gtm.start': new Date().getTime(),
+                                event:'gtm.js'
+                                });
+                                var f=d.getElementsByTagName(s)[0],
+                                j=d.createElement(s),
+                                dl=l!='dataLayer'?'&l='+l:'';
+                                j.async=true;
+                                j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;
+                                f.parentNode.insertBefore(j,f);
+                            })(window,document,'script','dataLayer','${config.gAnalyticsId}');`,
                         }}
-                    /> */}
+                    />
                 </Head>
                 <CssBaseline />
                 <ThemeProvider theme={theme}>
                     <CssBaseline />
+                    <noscript>
+                        <iframe
+                            title="googletagmanager"
+                            src={`https://www.googletagmanager.com/ns.html?id=${config.gAnalyticsId}`}
+                            height="0"
+                            width="0"
+                            style={{
+                                display: 'none',
+                                visibility: 'hidden',
+                            }}
+                        />
+                    </noscript>
                     <Box
                         style={{
                             minHeight: '100vh',

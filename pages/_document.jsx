@@ -37,8 +37,6 @@ export default class MyDocument extends Document {
                     <meta property="twitter:title" content={title} />
                     <meta property="twitter:description" content={description} />
                     <meta property="twitter:image" content={img} />
-
-                    <script src="https://yastatic.net/share2/share.js" />
                 </Head>
                 <body>
                     <Main />
