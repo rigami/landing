@@ -46,7 +46,7 @@ function ShareBlock({ t, className: externalClassname }) {
 
     useEffect(() => {
         const share = Ya.share2(el.current, {
-            content: { url: location.origin },
+            content: { url: `${location.origin}/${router.locale}` },
             theme: {
                 services: [
                     'vkontakte',
