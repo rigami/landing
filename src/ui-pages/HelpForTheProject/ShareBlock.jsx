@@ -1,10 +1,11 @@
-import React, { Fragment, useEffect, useRef } from 'react';
+import React, { Fragment } from 'react';
 import ContentCard from '@/ui-components/ContentCard';
 import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
 import { withTranslation } from 'next-i18next';
 import HTML from '@/ui-components/HTML';
 import { useRouter } from 'next/router';
+import Share from '@/ui-components/ShareBlock';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -42,42 +43,6 @@ const useStyles = makeStyles((theme) => ({
 function ShareBlock({ t, className: externalClassname }) {
     const classes = useStyles();
     const router = useRouter();
-    const el = useRef();
-
-    useEffect(() => {
-        const share = Ya.share2(el.current, {
-            content: { url: `${location.origin}/${router.locale}` },
-            theme: {
-                services: [
-                    'vkontakte',
-                    'facebook',
-                    'odnoklassniki',
-                    'telegram',
-                    'twitter',
-                    'viber',
-                    'whatsapp',
-                    'skype',
-                    'tumblr',
-                    'lj',
-                    'blogger',
-                    'digg',
-                    'reddit',
-                    'qzone',
-                    'renren',
-                    'sinaWeibo',
-                    'surfingbird',
-                    'tencentWeibo',
-                ].join(','),
-                lang: router.locale,
-                size: 'l',
-                curtain: true,
-                copy: 'extraItem',
-                shape: 'normal',
-            },
-        });
-
-        return () => share.destroy();
-    }, []);
 
     return (
         <Fragment>
@@ -89,7 +54,7 @@ function ShareBlock({ t, className: externalClassname }) {
                 }}
                 title={(<HTML>{t('share.title')}</HTML>)}
                 subtitle={t('share.description')}
-                actions={(<div ref={el} />)}
+                actions={(<Share url={`https://rigami.io/${router.locale}`} />)}
             />
         </Fragment>
     );

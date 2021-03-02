@@ -39,11 +39,11 @@ class MyApp extends App {
                         rel="icon" type="image/png" sizes="16x16"
                         href="16x16.png"
                     />
-                    <script src="https://yastatic.net/share2/share.js" />
                     {/* Global site tag (gtag.js) - Google Analytics */}
-                    <script
-                        dangerouslySetInnerHTML={{
-                            __html: `(function(w,d,s,l,i){
+                    {PRODUCTION_MODE && (
+                        <script
+                            dangerouslySetInnerHTML={{
+                                __html: `(function(w,d,s,l,i){
                                 w[l]=w[l]||[];
                                 w[l].push({
                                 'gtm.start': new Date().getTime(),
@@ -56,24 +56,27 @@ class MyApp extends App {
                                 j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;
                                 f.parentNode.insertBefore(j,f);
                             })(window,document,'script','dataLayer','${config.gTagManagerId}');`,
-                        }}
-                    />
+                            }}
+                        />
+                    )}
                 </Head>
                 <CssBaseline />
                 <ThemeProvider theme={theme}>
                     <CssBaseline />
-                    <noscript>
-                        <iframe
-                            title="googletagmanager"
-                            src={`https://www.googletagmanager.com/ns.html?id=${config.gTagManagerId}`}
-                            height="0"
-                            width="0"
-                            style={{
-                                display: 'none',
-                                visibility: 'hidden',
-                            }}
-                        />
-                    </noscript>
+                    {PRODUCTION_MODE && (
+                        <noscript>
+                            <iframe
+                                title="googletagmanager"
+                                src={`https://www.googletagmanager.com/ns.html?id=${config.gTagManagerId}`}
+                                height="0"
+                                width="0"
+                                style={{
+                                    display: 'none',
+                                    visibility: 'hidden',
+                                }}
+                            />
+                        </noscript>
+                    )}
                     <Box
                         style={{
                             minHeight: '100vh',

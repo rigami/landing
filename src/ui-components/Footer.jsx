@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React from 'react';
 import { fade, makeStyles } from '@material-ui/core/styles';
 import {
     Box,
@@ -11,6 +11,7 @@ import LogoIcon from '@/resources/logo_studio.svg';
 import { OpenInNewRounded as OpenInNewIcon } from '@material-ui/icons';
 import { withTranslation } from 'next-i18next';
 import { useRouter } from 'next/router';
+import Share from '@/ui-components/ShareBlock';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -121,31 +122,6 @@ function Block({ title, links, children }) {
 function Footer({ t }) {
     const classes = useStyles();
     const router = useRouter();
-    const el = useRef();
-
-    useEffect(() => {
-        const share = Ya.share2(el.current, {
-            content: { url: `${location.origin}/${router.locale}` },
-            theme: {
-                services: [
-                    'vkontakte',
-                    'facebook',
-                    'odnoklassniki',
-                    'telegram',
-                    'twitter',
-                    'viber',
-                    'whatsapp',
-                    'reddit',
-                ].join(','),
-                lang: router.locale,
-                size: 'm',
-                curtain: true,
-                shape: 'normal',
-            },
-        });
-
-        return () => share.destroy();
-    }, []);
 
     return (
         <footer className={classes.root}>
@@ -199,7 +175,7 @@ function Footer({ t }) {
                         ]}
                     />
                     <Block title={t('share.title')}>
-                        <div ref={el} />
+                        <Share url={`https://rigami.io/${router.locale}`} onlyMain small />
                     </Block>
                 </Box>
                 <Box className={classes.designedByBlock}>
