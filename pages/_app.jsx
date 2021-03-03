@@ -30,7 +30,7 @@ class MyApp extends App {
             <Fragment>
                 <Head>
                     <title>Rigami</title>
-                    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+                    <meta name="viewport" content="width=device-width, initial-scale=1" />
                     <link
                         rel="icon" type="image/png" sizes="32x32"
                         href="32x32.png"

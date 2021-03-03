@@ -1,16 +1,20 @@
 import React, { Fragment } from 'react';
 import ContentCard from '@/ui-components/ContentCard';
 import clsx from 'clsx';
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles, useTheme } from '@material-ui/core/styles';
 import { withTranslation } from 'next-i18next';
 import HTML from '@/ui-components/HTML';
 import { useRouter } from 'next/router';
 import Share from '@/ui-components/ShareBlock';
+import { useMediaQuery } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
     root: {
         minHeight: 480,
-        [theme.breakpoints.down('xs')]: { flexBasis: '100% !important' },
+        [theme.breakpoints.down('xs')]: {
+            flexBasis: '100% !important',
+            minHeight: 300,
+        },
         '& .ya-share2__list.ya-share2__list_direction_horizontal > .ya-share2__item': { margin: '8px 8px 0 0' },
         '& .ya-share2__container_size_l .ya-share2__badge .ya-share2__icon': {
             height: '64px',
@@ -32,7 +36,7 @@ const useStyles = makeStyles((theme) => ({
     actions: {
         marginTop: 'auto',
         paddingTop: theme.spacing(6),
-        [theme.breakpoints.down('xs')]: { paddingTop: 300 + theme.spacing(4) },
+        [theme.breakpoints.down('xs')]: { paddingTop: theme.spacing(2) },
     },
     button: {
         backgroundColor: theme.palette.background.paper,

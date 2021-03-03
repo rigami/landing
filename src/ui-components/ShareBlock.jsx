@@ -35,8 +35,8 @@ import {
     LinkedinIcon,
     MailruIcon,
 } from 'react-share';
-import { Box, Tooltip } from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
+import { Box, Tooltip, useMediaQuery } from '@material-ui/core';
+import { makeStyles, useTheme } from '@material-ui/core/styles';
 import clsx from 'clsx';
 
 const useStyles = makeStyles((theme) => ({
@@ -70,11 +70,19 @@ function Button(props) {
     const classes = useStyles();
     const ShareButton = button;
     const Icon = icon;
+    const theme = useTheme();
+    const isMobile = useMediaQuery(theme.breakpoints.down('xs'));
+
+    let size;
+
+    if (small) size = 32;
+    else if (isMobile) size = 48;
+    else size = 64;
 
     return (
         <Tooltip title={name}>
             <ShareButton className={clsx(classes.button, small && classes.rounded)} {...other}>
-                <Icon size={small ? 32 : 64} className={classes.icon} />
+                <Icon size={size} className={classes.icon} />
             </ShareButton>
         </Tooltip>
     );

@@ -96,7 +96,7 @@ function DropDownButton({
                             if (e.path.indexOf(ref.current) === -1) setIsOpen(false);
                         }}
                     >
-                        <Card className={classes.menu} elevation={18}>
+                        <Card className={classes.menu} elevation={18} role="menu">
                             {isSmall && (
                                 <ListSubheader>{label}</ListSubheader>
                             )}

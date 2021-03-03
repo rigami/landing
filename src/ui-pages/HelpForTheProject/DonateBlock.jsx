@@ -1,13 +1,13 @@
 import React from 'react';
 import ContentCard from '@/ui-components/ContentCard';
 import clsx from 'clsx';
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles, useTheme } from '@material-ui/core/styles';
 import {
     Link,
     Box,
     GridList,
     GridListTile,
-    CardMedia,
+    CardMedia, useMediaQuery,
 } from '@material-ui/core';
 import { ArrowForwardRounded as ArrowIcon } from '@material-ui/icons';
 import { withTranslation } from 'next-i18next';
@@ -64,6 +64,8 @@ const useStyles = makeStyles((theme) => ({
 
 function DonateBlock({ t, className: externalClassname }) {
     const classes = useStyles();
+    const theme = useTheme();
+    const isMobile = useMediaQuery(theme.breakpoints.down('xs'));
 
     return (
         <ContentCard
@@ -77,7 +79,7 @@ function DonateBlock({ t, className: externalClassname }) {
             disableTextBackdrop
         >
             <Box className={classes.wrapper}>
-                <GridList cols={2} spacing={1}>
+                <GridList cols={isMobile ? 1 : 2} spacing={1}>
                     {[
                         {
                             url: 'https://www.tinkoff.ru/sl/1zAH3HyZ54Q',

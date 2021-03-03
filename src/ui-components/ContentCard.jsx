@@ -70,7 +70,7 @@ function ContentCard(props, ref) {
         title,
         subtitle,
         actions,
-        titleVariant = 'h2',
+        titleVariant = 'h1',
         className: externalClassName,
         classes: externalClasses = {},
         children,
