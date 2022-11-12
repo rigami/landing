@@ -64,5 +64,6 @@
     "next-compose-plugins": "^2.2.0",
     "react-svg-loader": "^3.0.3",
     "webpack-bundle-analyzer": "^4.4.0"
-  }
+  },
+  "packageManager": "yarn@3.2.4"
 }
