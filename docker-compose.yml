@@ -3,15 +3,15 @@ networks:
   web:
     external: true
 services:
-    landing:
+    rigami-landing:
         build: .
         restart: unless-stopped
         networks:
           - web
         labels:
           - "traefik.enable=true"
-          - "traefik.http.routers.landing.rule=Host(`rigami.io`)"
-          - "traefik.http.routers.landing.entrypoints=web-http,web-https"
-          - "traefik.http.routers.landing.tls=true"
-          - "traefik.http.routers.landing.tls.certresolver=letsEncrypt"
-          - "traefik.http.services.landing-service.loadbalancer.server.port=3000"
+          - "traefik.http.routers.rigami-landing.rule=Host(`rigami.io`)"
+          - "traefik.http.routers.rigami-landing.entrypoints=web-http,web-https"
+          - "traefik.http.routers.rigami-landing.tls=true"
+          - "traefik.http.routers.rigami-landing.tls.certresolver=letsEncrypt"
+          - "traefik.http.services.rigami-landing-service.loadbalancer.server.port=3000"
